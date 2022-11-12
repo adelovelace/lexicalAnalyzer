@@ -1,14 +1,16 @@
 import ply.lex as lex
 
 reserved = {
-  'LET':'let',
-  'FUTURE':'future',
-  'DEFICION':'def',
-  'FUNCION':'fn',
-  'DEFMACRO':'defmacro',
-  'CLASE':'class',
-  'IMPRIMIR': 'println',
-  'NUEVO': 'new'
+  'let': 'LET',
+  'future': 'FUTURE',
+  'def': 'DEFICION',
+  'fn':'FUNCION',
+  'defmacro': 'DEFMACRO',
+  'class': 'CLASE',
+  'println': 'IMPRIMIR',
+  'new': 'NUEVO', 
+  'if': 'IF',
+  'do':'DO'
 }
 
 tokens = [
@@ -21,19 +23,13 @@ tokens = [
   'DIVISION',
   'LPAREN',
   'RPAREN',
-  'LCORC',
-  'RCORC',
   'VARIABLE',
   'IGUAL',
   'MENORQUE',
   'MAYORQUE',
   'DIFERENTE',
-  'MENORIGUALQUE',
-  'MAYORIGUALQUE',
   'COMPARA_IGUAL',
-  'DIFERENTE',
-  'PUNTO_COMA',
-  'COMA'
+    'PUNTO_COMA',
 ] + list(reserved.values())
 
 # Regular expression rules for simple tokens
@@ -43,15 +39,12 @@ t_PRODUCTO   = r'\*'
 t_DIVISION = r'/'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
-t_LCORC = r'\['
-t_RCORC = r'\]'
 t_IGUAL = r'='
 t_MENORQUE = r'<'
 t_MAYORQUE = r'>'
-t_DIFERENTE = r'not='
+t_DIFERENTE = r'!='
 t_COMPARA_IGUAL = r'=='
 t_PUNTO_COMA = r';'
-
 
 # A regular expression rule with some action code
 def t_FLOTANTE(t):
@@ -60,6 +53,10 @@ def t_FLOTANTE(t):
   
 def t_ENTERO(t):
   r'\d+' 
+  return t
+
+def t_COMPLEJO(t): #un tipo de dato nuevo
+  r'\d+j+' 
   return t
 
 def t_VARIABLE(t):
@@ -84,4 +81,5 @@ def t_error(t):
   t.lexer.skip(1)
  
  # Build the lexer
-# lexer = lex.lex()
+lexer = lex.lex()
+
