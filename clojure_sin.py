@@ -9,7 +9,11 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | diferencia
                     | producto
                     | division
-                    | condicional'''  
+                    | condicional
+                    | vectores
+                    | conjuntos
+                    | mapas'''
+                      
 def p_asignacion(p): #puede reconocer a=20
   'asignacion : VARIABLE IGUAL valor'
 
@@ -52,7 +56,15 @@ def p_division(p):
 def p_booleanos(p):
       'condicional : LPAREN operacion valor valor RPAREN'
       
-
+def p_vectores(p):
+      'vectores : VECTORES'
+      
+def p_conjuntos(p):
+      'conjuntos : CONJUNTOS'
+    
+def p_mapas(p):
+      'mapas : MAPAS'
+      
  # Error rule for syntax errors
 def p_error(p):
   if p:

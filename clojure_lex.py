@@ -27,6 +27,9 @@ tokens = [
   'ENTERO',
   'FLOTANTE',
   'BOOLEAN',
+  'VECTORES',
+  'CONJUNTOS',
+  'MAPAS',
   'MENOS',
   'MAS',
   'PRODUCTO',
@@ -86,6 +89,21 @@ def t_BOOLEAN(t):
     r'(true|false)'
     t.type = reserved.get(t.value,'BOOLEAN')
     return t
+  
+def t_VECTORES(t):
+      r'^[\[]([a-zA-Z0-9]+[\s][a-zA-Z0-9]+)+[\]]$'
+      t.type = reserved.get(t.value,'VECTORES')
+      return t
+    
+def t_CONJUNTOS(t):
+      r'^\#[\{]{1}(([a-zA-Z]+[\s]{0,})+|([\d]+[\s]{0,})+){1,}[\}]{1}'
+      t.type = reserved.get(t.value,'CONJUNTOS')
+      return t
+
+def t_MAPAS(t):
+      r'^[\{](([\:]{1}[\w]+[\s][\w]+)[\s]{0,})+[\}]$'
+      t.type = reserved.get(t.value,'MAPAS')
+      return t
   
 def t_newline(t):
   r'\n+'
