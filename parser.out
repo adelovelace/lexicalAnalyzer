@@ -36,70 +36,79 @@ Rule 4     instrucciones -> diferencia
 Rule 5     instrucciones -> producto
 Rule 6     instrucciones -> division
 Rule 7     instrucciones -> condicional
-Rule 8     asignacion -> VARIABLE IGUAL valor
-Rule 9     impresion -> IMPRIMIR LPAREN valor RPAREN
-Rule 10    valor -> ENTERO
-Rule 11    valor -> FLOTANTE
-Rule 12    valor -> BOOLEAN
-Rule 13    valor -> VARIABLE
-Rule 14    operacion -> MAS
-Rule 15    operacion -> MENOS
-Rule 16    operacion -> PRODUCTO
-Rule 17    operacion -> DIVISION
-Rule 18    operacion -> MENORQUE
-Rule 19    operacion -> MAYORQUE
-Rule 20    operacion -> MAYORIGUALQUE
-Rule 21    operacion -> MENORIGUALQUE
-Rule 22    operacion -> DIFERENTE
-Rule 23    operacion -> COMPARA_IGUAL
-Rule 24    sumatoria -> LPAREN operacion valor valor RPAREN
-Rule 25    diferencia -> LPAREN operacion valor valor RPAREN
-Rule 26    producto -> LPAREN operacion valor valor RPAREN
-Rule 27    division -> LPAREN operacion valor valor RPAREN
-Rule 28    condicional -> LPAREN operacion valor valor RPAREN
+Rule 8     instrucciones -> vectores
+Rule 9     instrucciones -> conjuntos
+Rule 10    instrucciones -> mapas
+Rule 11    asignacion -> VARIABLE IGUAL valor
+Rule 12    impresion -> IMPRIMIR LPAREN valor RPAREN
+Rule 13    valor -> ENTERO
+Rule 14    valor -> FLOTANTE
+Rule 15    valor -> BOOLEAN
+Rule 16    valor -> VARIABLE
+Rule 17    operacion -> MAS
+Rule 18    operacion -> MENOS
+Rule 19    operacion -> PRODUCTO
+Rule 20    operacion -> DIVISION
+Rule 21    operacion -> MENORQUE
+Rule 22    operacion -> MAYORQUE
+Rule 23    operacion -> MAYORIGUALQUE
+Rule 24    operacion -> MENORIGUALQUE
+Rule 25    operacion -> DIFERENTE
+Rule 26    operacion -> COMPARA_IGUAL
+Rule 27    sumatoria -> LPAREN operacion valor valor RPAREN
+Rule 28    diferencia -> LPAREN operacion valor valor RPAREN
+Rule 29    producto -> LPAREN operacion valor valor RPAREN
+Rule 30    division -> LPAREN operacion valor valor RPAREN
+Rule 31    condicional -> LPAREN operacion valor valor RPAREN
+Rule 32    vectores -> VECTORES
+Rule 33    conjuntos -> CONJUNTOS
+Rule 34    mapas -> MAPAS
 
 Terminals, with rules where they appear
 
-BOOLEAN              : 12
+BOOLEAN              : 15
 CASE                 : 
 CLASE                : 
-COMPARA_IGUAL        : 23
+COMPARA_IGUAL        : 26
 COND                 : 
+CONJUNTOS            : 33
 DEFFUNCION           : 
 DEFICION             : 
 DEFMACRO             : 
-DIFERENTE            : 22
-DIVISION             : 17
+DIFERENTE            : 25
+DIVISION             : 20
 DO                   : 
 DOSEQ                : 
 DOTIMES              : 
 ELSE                 : 
-ENTERO               : 10
-FLOTANTE             : 11
+ENTERO               : 13
+FLOTANTE             : 14
 FUNCION              : 
 FUTURE               : 
 IF                   : 
-IGUAL                : 8
-IMPRIMIR             : 9
+IGUAL                : 11
+IMPRIMIR             : 12
 LCOR                 : 
 LET                  : 
 LOOP                 : 
-LPAREN               : 9 24 25 26 27 28
+LPAREN               : 12 27 28 29 30 31
 L_LLAVE              : 
-MAS                  : 14
-MAYORIGUALQUE        : 20
-MAYORQUE             : 19
-MENORIGUALQUE        : 21
-MENORQUE             : 18
-MENOS                : 15
+MAPAS                : 34
+MAS                  : 17
+MAYORIGUALQUE        : 23
+MAYORQUE             : 22
+MENORIGUALQUE        : 24
+MENORQUE             : 21
+MENOS                : 18
 NUEVO                : 
-PRODUCTO             : 16
+PRODUCTO             : 19
 PUNTO_COMA           : 
 RCOR                 : 
 RECURSION            : 
-RPAREN               : 9 24 25 26 27 28
+RPAREN               : 12 27 28 29 30 31
 R_LLAVE              : 
-VARIABLE             : 8 13
+VARIABLE             : 11 16
+VECTORES             : 32
 WHEN                 : 
 error                : 
 
@@ -107,14 +116,17 @@ Nonterminals, with rules where they appear
 
 asignacion           : 1
 condicional          : 7
+conjuntos            : 9
 diferencia           : 4
 division             : 6
 impresion            : 2
 instrucciones        : 0
-operacion            : 24 25 26 27 28
+mapas                : 10
+operacion            : 27 28 29 30 31
 producto             : 5
 sumatoria            : 3
-valor                : 8 9 24 24 25 25 26 26 27 27 28 28
+valor                : 11 12 27 27 28 28 29 29 30 30 31 31
+vectores             : 8
 
 Parsing method: LALR
 
@@ -128,17 +140,26 @@ state 0
     (5) instrucciones -> . producto
     (6) instrucciones -> . division
     (7) instrucciones -> . condicional
-    (8) asignacion -> . VARIABLE IGUAL valor
-    (9) impresion -> . IMPRIMIR LPAREN valor RPAREN
-    (24) sumatoria -> . LPAREN operacion valor valor RPAREN
-    (25) diferencia -> . LPAREN operacion valor valor RPAREN
-    (26) producto -> . LPAREN operacion valor valor RPAREN
-    (27) division -> . LPAREN operacion valor valor RPAREN
-    (28) condicional -> . LPAREN operacion valor valor RPAREN
+    (8) instrucciones -> . vectores
+    (9) instrucciones -> . conjuntos
+    (10) instrucciones -> . mapas
+    (11) asignacion -> . VARIABLE IGUAL valor
+    (12) impresion -> . IMPRIMIR LPAREN valor RPAREN
+    (27) sumatoria -> . LPAREN operacion valor valor RPAREN
+    (28) diferencia -> . LPAREN operacion valor valor RPAREN
+    (29) producto -> . LPAREN operacion valor valor RPAREN
+    (30) division -> . LPAREN operacion valor valor RPAREN
+    (31) condicional -> . LPAREN operacion valor valor RPAREN
+    (32) vectores -> . VECTORES
+    (33) conjuntos -> . CONJUNTOS
+    (34) mapas -> . MAPAS
 
-    VARIABLE        shift and go to state 9
-    IMPRIMIR        shift and go to state 10
-    LPAREN          shift and go to state 11
+    VARIABLE        shift and go to state 12
+    IMPRIMIR        shift and go to state 13
+    LPAREN          shift and go to state 14
+    VECTORES        shift and go to state 15
+    CONJUNTOS       shift and go to state 16
+    MAPAS           shift and go to state 17
 
     instrucciones                  shift and go to state 1
     asignacion                     shift and go to state 2
@@ -148,6 +169,9 @@ state 0
     producto                       shift and go to state 6
     division                       shift and go to state 7
     condicional                    shift and go to state 8
+    vectores                       shift and go to state 9
+    conjuntos                      shift and go to state 10
+    mapas                          shift and go to state 11
 
 state 1
 
@@ -206,327 +230,369 @@ state 8
 
 state 9
 
-    (8) asignacion -> VARIABLE . IGUAL valor
+    (8) instrucciones -> vectores .
 
-    IGUAL           shift and go to state 12
+    $end            reduce using rule 8 (instrucciones -> vectores .)
 
 
 state 10
 
-    (9) impresion -> IMPRIMIR . LPAREN valor RPAREN
+    (9) instrucciones -> conjuntos .
 
-    LPAREN          shift and go to state 13
+    $end            reduce using rule 9 (instrucciones -> conjuntos .)
 
 
 state 11
 
-    (24) sumatoria -> LPAREN . operacion valor valor RPAREN
-    (25) diferencia -> LPAREN . operacion valor valor RPAREN
-    (26) producto -> LPAREN . operacion valor valor RPAREN
-    (27) division -> LPAREN . operacion valor valor RPAREN
-    (28) condicional -> LPAREN . operacion valor valor RPAREN
-    (14) operacion -> . MAS
-    (15) operacion -> . MENOS
-    (16) operacion -> . PRODUCTO
-    (17) operacion -> . DIVISION
-    (18) operacion -> . MENORQUE
-    (19) operacion -> . MAYORQUE
-    (20) operacion -> . MAYORIGUALQUE
-    (21) operacion -> . MENORIGUALQUE
-    (22) operacion -> . DIFERENTE
-    (23) operacion -> . COMPARA_IGUAL
+    (10) instrucciones -> mapas .
 
-    MAS             shift and go to state 15
-    MENOS           shift and go to state 16
-    PRODUCTO        shift and go to state 17
-    DIVISION        shift and go to state 18
-    MENORQUE        shift and go to state 19
-    MAYORQUE        shift and go to state 20
-    MAYORIGUALQUE   shift and go to state 21
-    MENORIGUALQUE   shift and go to state 22
-    DIFERENTE       shift and go to state 23
-    COMPARA_IGUAL   shift and go to state 24
+    $end            reduce using rule 10 (instrucciones -> mapas .)
 
-    operacion                      shift and go to state 14
 
 state 12
 
-    (8) asignacion -> VARIABLE IGUAL . valor
-    (10) valor -> . ENTERO
-    (11) valor -> . FLOTANTE
-    (12) valor -> . BOOLEAN
-    (13) valor -> . VARIABLE
+    (11) asignacion -> VARIABLE . IGUAL valor
 
-    ENTERO          shift and go to state 27
-    FLOTANTE        shift and go to state 28
-    BOOLEAN         shift and go to state 29
-    VARIABLE        shift and go to state 25
+    IGUAL           shift and go to state 18
 
-    valor                          shift and go to state 26
 
 state 13
 
-    (9) impresion -> IMPRIMIR LPAREN . valor RPAREN
-    (10) valor -> . ENTERO
-    (11) valor -> . FLOTANTE
-    (12) valor -> . BOOLEAN
-    (13) valor -> . VARIABLE
+    (12) impresion -> IMPRIMIR . LPAREN valor RPAREN
 
-    ENTERO          shift and go to state 27
-    FLOTANTE        shift and go to state 28
-    BOOLEAN         shift and go to state 29
-    VARIABLE        shift and go to state 25
+    LPAREN          shift and go to state 19
 
-    valor                          shift and go to state 30
 
 state 14
 
-    (24) sumatoria -> LPAREN operacion . valor valor RPAREN
-    (25) diferencia -> LPAREN operacion . valor valor RPAREN
-    (26) producto -> LPAREN operacion . valor valor RPAREN
-    (27) division -> LPAREN operacion . valor valor RPAREN
-    (28) condicional -> LPAREN operacion . valor valor RPAREN
-    (10) valor -> . ENTERO
-    (11) valor -> . FLOTANTE
-    (12) valor -> . BOOLEAN
-    (13) valor -> . VARIABLE
+    (27) sumatoria -> LPAREN . operacion valor valor RPAREN
+    (28) diferencia -> LPAREN . operacion valor valor RPAREN
+    (29) producto -> LPAREN . operacion valor valor RPAREN
+    (30) division -> LPAREN . operacion valor valor RPAREN
+    (31) condicional -> LPAREN . operacion valor valor RPAREN
+    (17) operacion -> . MAS
+    (18) operacion -> . MENOS
+    (19) operacion -> . PRODUCTO
+    (20) operacion -> . DIVISION
+    (21) operacion -> . MENORQUE
+    (22) operacion -> . MAYORQUE
+    (23) operacion -> . MAYORIGUALQUE
+    (24) operacion -> . MENORIGUALQUE
+    (25) operacion -> . DIFERENTE
+    (26) operacion -> . COMPARA_IGUAL
 
-    ENTERO          shift and go to state 27
-    FLOTANTE        shift and go to state 28
-    BOOLEAN         shift and go to state 29
-    VARIABLE        shift and go to state 25
+    MAS             shift and go to state 21
+    MENOS           shift and go to state 22
+    PRODUCTO        shift and go to state 23
+    DIVISION        shift and go to state 24
+    MENORQUE        shift and go to state 25
+    MAYORQUE        shift and go to state 26
+    MAYORIGUALQUE   shift and go to state 27
+    MENORIGUALQUE   shift and go to state 28
+    DIFERENTE       shift and go to state 29
+    COMPARA_IGUAL   shift and go to state 30
 
-    valor                          shift and go to state 31
+    operacion                      shift and go to state 20
 
 state 15
 
-    (14) operacion -> MAS .
+    (32) vectores -> VECTORES .
 
-    ENTERO          reduce using rule 14 (operacion -> MAS .)
-    FLOTANTE        reduce using rule 14 (operacion -> MAS .)
-    BOOLEAN         reduce using rule 14 (operacion -> MAS .)
-    VARIABLE        reduce using rule 14 (operacion -> MAS .)
+    $end            reduce using rule 32 (vectores -> VECTORES .)
 
 
 state 16
 
-    (15) operacion -> MENOS .
+    (33) conjuntos -> CONJUNTOS .
 
-    ENTERO          reduce using rule 15 (operacion -> MENOS .)
-    FLOTANTE        reduce using rule 15 (operacion -> MENOS .)
-    BOOLEAN         reduce using rule 15 (operacion -> MENOS .)
-    VARIABLE        reduce using rule 15 (operacion -> MENOS .)
+    $end            reduce using rule 33 (conjuntos -> CONJUNTOS .)
 
 
 state 17
 
-    (16) operacion -> PRODUCTO .
+    (34) mapas -> MAPAS .
 
-    ENTERO          reduce using rule 16 (operacion -> PRODUCTO .)
-    FLOTANTE        reduce using rule 16 (operacion -> PRODUCTO .)
-    BOOLEAN         reduce using rule 16 (operacion -> PRODUCTO .)
-    VARIABLE        reduce using rule 16 (operacion -> PRODUCTO .)
+    $end            reduce using rule 34 (mapas -> MAPAS .)
 
 
 state 18
 
-    (17) operacion -> DIVISION .
+    (11) asignacion -> VARIABLE IGUAL . valor
+    (13) valor -> . ENTERO
+    (14) valor -> . FLOTANTE
+    (15) valor -> . BOOLEAN
+    (16) valor -> . VARIABLE
 
-    ENTERO          reduce using rule 17 (operacion -> DIVISION .)
-    FLOTANTE        reduce using rule 17 (operacion -> DIVISION .)
-    BOOLEAN         reduce using rule 17 (operacion -> DIVISION .)
-    VARIABLE        reduce using rule 17 (operacion -> DIVISION .)
+    ENTERO          shift and go to state 33
+    FLOTANTE        shift and go to state 34
+    BOOLEAN         shift and go to state 35
+    VARIABLE        shift and go to state 31
 
+    valor                          shift and go to state 32
 
 state 19
 
-    (18) operacion -> MENORQUE .
+    (12) impresion -> IMPRIMIR LPAREN . valor RPAREN
+    (13) valor -> . ENTERO
+    (14) valor -> . FLOTANTE
+    (15) valor -> . BOOLEAN
+    (16) valor -> . VARIABLE
 
-    ENTERO          reduce using rule 18 (operacion -> MENORQUE .)
-    FLOTANTE        reduce using rule 18 (operacion -> MENORQUE .)
-    BOOLEAN         reduce using rule 18 (operacion -> MENORQUE .)
-    VARIABLE        reduce using rule 18 (operacion -> MENORQUE .)
+    ENTERO          shift and go to state 33
+    FLOTANTE        shift and go to state 34
+    BOOLEAN         shift and go to state 35
+    VARIABLE        shift and go to state 31
 
+    valor                          shift and go to state 36
 
 state 20
 
-    (19) operacion -> MAYORQUE .
+    (27) sumatoria -> LPAREN operacion . valor valor RPAREN
+    (28) diferencia -> LPAREN operacion . valor valor RPAREN
+    (29) producto -> LPAREN operacion . valor valor RPAREN
+    (30) division -> LPAREN operacion . valor valor RPAREN
+    (31) condicional -> LPAREN operacion . valor valor RPAREN
+    (13) valor -> . ENTERO
+    (14) valor -> . FLOTANTE
+    (15) valor -> . BOOLEAN
+    (16) valor -> . VARIABLE
 
-    ENTERO          reduce using rule 19 (operacion -> MAYORQUE .)
-    FLOTANTE        reduce using rule 19 (operacion -> MAYORQUE .)
-    BOOLEAN         reduce using rule 19 (operacion -> MAYORQUE .)
-    VARIABLE        reduce using rule 19 (operacion -> MAYORQUE .)
+    ENTERO          shift and go to state 33
+    FLOTANTE        shift and go to state 34
+    BOOLEAN         shift and go to state 35
+    VARIABLE        shift and go to state 31
 
+    valor                          shift and go to state 37
 
 state 21
 
-    (20) operacion -> MAYORIGUALQUE .
+    (17) operacion -> MAS .
 
-    ENTERO          reduce using rule 20 (operacion -> MAYORIGUALQUE .)
-    FLOTANTE        reduce using rule 20 (operacion -> MAYORIGUALQUE .)
-    BOOLEAN         reduce using rule 20 (operacion -> MAYORIGUALQUE .)
-    VARIABLE        reduce using rule 20 (operacion -> MAYORIGUALQUE .)
+    ENTERO          reduce using rule 17 (operacion -> MAS .)
+    FLOTANTE        reduce using rule 17 (operacion -> MAS .)
+    BOOLEAN         reduce using rule 17 (operacion -> MAS .)
+    VARIABLE        reduce using rule 17 (operacion -> MAS .)
 
 
 state 22
 
-    (21) operacion -> MENORIGUALQUE .
+    (18) operacion -> MENOS .
 
-    ENTERO          reduce using rule 21 (operacion -> MENORIGUALQUE .)
-    FLOTANTE        reduce using rule 21 (operacion -> MENORIGUALQUE .)
-    BOOLEAN         reduce using rule 21 (operacion -> MENORIGUALQUE .)
-    VARIABLE        reduce using rule 21 (operacion -> MENORIGUALQUE .)
+    ENTERO          reduce using rule 18 (operacion -> MENOS .)
+    FLOTANTE        reduce using rule 18 (operacion -> MENOS .)
+    BOOLEAN         reduce using rule 18 (operacion -> MENOS .)
+    VARIABLE        reduce using rule 18 (operacion -> MENOS .)
 
 
 state 23
 
-    (22) operacion -> DIFERENTE .
+    (19) operacion -> PRODUCTO .
 
-    ENTERO          reduce using rule 22 (operacion -> DIFERENTE .)
-    FLOTANTE        reduce using rule 22 (operacion -> DIFERENTE .)
-    BOOLEAN         reduce using rule 22 (operacion -> DIFERENTE .)
-    VARIABLE        reduce using rule 22 (operacion -> DIFERENTE .)
+    ENTERO          reduce using rule 19 (operacion -> PRODUCTO .)
+    FLOTANTE        reduce using rule 19 (operacion -> PRODUCTO .)
+    BOOLEAN         reduce using rule 19 (operacion -> PRODUCTO .)
+    VARIABLE        reduce using rule 19 (operacion -> PRODUCTO .)
 
 
 state 24
 
-    (23) operacion -> COMPARA_IGUAL .
+    (20) operacion -> DIVISION .
 
-    ENTERO          reduce using rule 23 (operacion -> COMPARA_IGUAL .)
-    FLOTANTE        reduce using rule 23 (operacion -> COMPARA_IGUAL .)
-    BOOLEAN         reduce using rule 23 (operacion -> COMPARA_IGUAL .)
-    VARIABLE        reduce using rule 23 (operacion -> COMPARA_IGUAL .)
+    ENTERO          reduce using rule 20 (operacion -> DIVISION .)
+    FLOTANTE        reduce using rule 20 (operacion -> DIVISION .)
+    BOOLEAN         reduce using rule 20 (operacion -> DIVISION .)
+    VARIABLE        reduce using rule 20 (operacion -> DIVISION .)
 
 
 state 25
 
-    (13) valor -> VARIABLE .
+    (21) operacion -> MENORQUE .
 
-    $end            reduce using rule 13 (valor -> VARIABLE .)
-    RPAREN          reduce using rule 13 (valor -> VARIABLE .)
-    ENTERO          reduce using rule 13 (valor -> VARIABLE .)
-    FLOTANTE        reduce using rule 13 (valor -> VARIABLE .)
-    BOOLEAN         reduce using rule 13 (valor -> VARIABLE .)
-    VARIABLE        reduce using rule 13 (valor -> VARIABLE .)
+    ENTERO          reduce using rule 21 (operacion -> MENORQUE .)
+    FLOTANTE        reduce using rule 21 (operacion -> MENORQUE .)
+    BOOLEAN         reduce using rule 21 (operacion -> MENORQUE .)
+    VARIABLE        reduce using rule 21 (operacion -> MENORQUE .)
 
 
 state 26
 
-    (8) asignacion -> VARIABLE IGUAL valor .
+    (22) operacion -> MAYORQUE .
 
-    $end            reduce using rule 8 (asignacion -> VARIABLE IGUAL valor .)
+    ENTERO          reduce using rule 22 (operacion -> MAYORQUE .)
+    FLOTANTE        reduce using rule 22 (operacion -> MAYORQUE .)
+    BOOLEAN         reduce using rule 22 (operacion -> MAYORQUE .)
+    VARIABLE        reduce using rule 22 (operacion -> MAYORQUE .)
 
 
 state 27
 
-    (10) valor -> ENTERO .
+    (23) operacion -> MAYORIGUALQUE .
 
-    $end            reduce using rule 10 (valor -> ENTERO .)
-    RPAREN          reduce using rule 10 (valor -> ENTERO .)
-    ENTERO          reduce using rule 10 (valor -> ENTERO .)
-    FLOTANTE        reduce using rule 10 (valor -> ENTERO .)
-    BOOLEAN         reduce using rule 10 (valor -> ENTERO .)
-    VARIABLE        reduce using rule 10 (valor -> ENTERO .)
+    ENTERO          reduce using rule 23 (operacion -> MAYORIGUALQUE .)
+    FLOTANTE        reduce using rule 23 (operacion -> MAYORIGUALQUE .)
+    BOOLEAN         reduce using rule 23 (operacion -> MAYORIGUALQUE .)
+    VARIABLE        reduce using rule 23 (operacion -> MAYORIGUALQUE .)
 
 
 state 28
 
-    (11) valor -> FLOTANTE .
+    (24) operacion -> MENORIGUALQUE .
 
-    $end            reduce using rule 11 (valor -> FLOTANTE .)
-    RPAREN          reduce using rule 11 (valor -> FLOTANTE .)
-    ENTERO          reduce using rule 11 (valor -> FLOTANTE .)
-    FLOTANTE        reduce using rule 11 (valor -> FLOTANTE .)
-    BOOLEAN         reduce using rule 11 (valor -> FLOTANTE .)
-    VARIABLE        reduce using rule 11 (valor -> FLOTANTE .)
+    ENTERO          reduce using rule 24 (operacion -> MENORIGUALQUE .)
+    FLOTANTE        reduce using rule 24 (operacion -> MENORIGUALQUE .)
+    BOOLEAN         reduce using rule 24 (operacion -> MENORIGUALQUE .)
+    VARIABLE        reduce using rule 24 (operacion -> MENORIGUALQUE .)
 
 
 state 29
 
-    (12) valor -> BOOLEAN .
+    (25) operacion -> DIFERENTE .
 
-    $end            reduce using rule 12 (valor -> BOOLEAN .)
-    RPAREN          reduce using rule 12 (valor -> BOOLEAN .)
-    ENTERO          reduce using rule 12 (valor -> BOOLEAN .)
-    FLOTANTE        reduce using rule 12 (valor -> BOOLEAN .)
-    BOOLEAN         reduce using rule 12 (valor -> BOOLEAN .)
-    VARIABLE        reduce using rule 12 (valor -> BOOLEAN .)
+    ENTERO          reduce using rule 25 (operacion -> DIFERENTE .)
+    FLOTANTE        reduce using rule 25 (operacion -> DIFERENTE .)
+    BOOLEAN         reduce using rule 25 (operacion -> DIFERENTE .)
+    VARIABLE        reduce using rule 25 (operacion -> DIFERENTE .)
 
 
 state 30
 
-    (9) impresion -> IMPRIMIR LPAREN valor . RPAREN
+    (26) operacion -> COMPARA_IGUAL .
 
-    RPAREN          shift and go to state 32
+    ENTERO          reduce using rule 26 (operacion -> COMPARA_IGUAL .)
+    FLOTANTE        reduce using rule 26 (operacion -> COMPARA_IGUAL .)
+    BOOLEAN         reduce using rule 26 (operacion -> COMPARA_IGUAL .)
+    VARIABLE        reduce using rule 26 (operacion -> COMPARA_IGUAL .)
 
 
 state 31
 
-    (24) sumatoria -> LPAREN operacion valor . valor RPAREN
-    (25) diferencia -> LPAREN operacion valor . valor RPAREN
-    (26) producto -> LPAREN operacion valor . valor RPAREN
-    (27) division -> LPAREN operacion valor . valor RPAREN
-    (28) condicional -> LPAREN operacion valor . valor RPAREN
-    (10) valor -> . ENTERO
-    (11) valor -> . FLOTANTE
-    (12) valor -> . BOOLEAN
-    (13) valor -> . VARIABLE
+    (16) valor -> VARIABLE .
 
-    ENTERO          shift and go to state 27
-    FLOTANTE        shift and go to state 28
-    BOOLEAN         shift and go to state 29
-    VARIABLE        shift and go to state 25
+    $end            reduce using rule 16 (valor -> VARIABLE .)
+    RPAREN          reduce using rule 16 (valor -> VARIABLE .)
+    ENTERO          reduce using rule 16 (valor -> VARIABLE .)
+    FLOTANTE        reduce using rule 16 (valor -> VARIABLE .)
+    BOOLEAN         reduce using rule 16 (valor -> VARIABLE .)
+    VARIABLE        reduce using rule 16 (valor -> VARIABLE .)
 
-    valor                          shift and go to state 33
 
 state 32
 
-    (9) impresion -> IMPRIMIR LPAREN valor RPAREN .
+    (11) asignacion -> VARIABLE IGUAL valor .
 
-    $end            reduce using rule 9 (impresion -> IMPRIMIR LPAREN valor RPAREN .)
+    $end            reduce using rule 11 (asignacion -> VARIABLE IGUAL valor .)
 
 
 state 33
 
-    (24) sumatoria -> LPAREN operacion valor valor . RPAREN
-    (25) diferencia -> LPAREN operacion valor valor . RPAREN
-    (26) producto -> LPAREN operacion valor valor . RPAREN
-    (27) division -> LPAREN operacion valor valor . RPAREN
-    (28) condicional -> LPAREN operacion valor valor . RPAREN
+    (13) valor -> ENTERO .
 
-    RPAREN          shift and go to state 34
+    $end            reduce using rule 13 (valor -> ENTERO .)
+    RPAREN          reduce using rule 13 (valor -> ENTERO .)
+    ENTERO          reduce using rule 13 (valor -> ENTERO .)
+    FLOTANTE        reduce using rule 13 (valor -> ENTERO .)
+    BOOLEAN         reduce using rule 13 (valor -> ENTERO .)
+    VARIABLE        reduce using rule 13 (valor -> ENTERO .)
 
 
 state 34
 
-    (24) sumatoria -> LPAREN operacion valor valor RPAREN .
-    (25) diferencia -> LPAREN operacion valor valor RPAREN .
-    (26) producto -> LPAREN operacion valor valor RPAREN .
-    (27) division -> LPAREN operacion valor valor RPAREN .
-    (28) condicional -> LPAREN operacion valor valor RPAREN .
+    (14) valor -> FLOTANTE .
 
-  ! reduce/reduce conflict for $end resolved using rule 24 (sumatoria -> LPAREN operacion valor valor RPAREN .)
-  ! reduce/reduce conflict for $end resolved using rule 24 (sumatoria -> LPAREN operacion valor valor RPAREN .)
-  ! reduce/reduce conflict for $end resolved using rule 24 (sumatoria -> LPAREN operacion valor valor RPAREN .)
-  ! reduce/reduce conflict for $end resolved using rule 24 (sumatoria -> LPAREN operacion valor valor RPAREN .)
-    $end            reduce using rule 24 (sumatoria -> LPAREN operacion valor valor RPAREN .)
+    $end            reduce using rule 14 (valor -> FLOTANTE .)
+    RPAREN          reduce using rule 14 (valor -> FLOTANTE .)
+    ENTERO          reduce using rule 14 (valor -> FLOTANTE .)
+    FLOTANTE        reduce using rule 14 (valor -> FLOTANTE .)
+    BOOLEAN         reduce using rule 14 (valor -> FLOTANTE .)
+    VARIABLE        reduce using rule 14 (valor -> FLOTANTE .)
 
-  ! $end            [ reduce using rule 25 (diferencia -> LPAREN operacion valor valor RPAREN .) ]
-  ! $end            [ reduce using rule 26 (producto -> LPAREN operacion valor valor RPAREN .) ]
-  ! $end            [ reduce using rule 27 (division -> LPAREN operacion valor valor RPAREN .) ]
-  ! $end            [ reduce using rule 28 (condicional -> LPAREN operacion valor valor RPAREN .) ]
+
+state 35
+
+    (15) valor -> BOOLEAN .
+
+    $end            reduce using rule 15 (valor -> BOOLEAN .)
+    RPAREN          reduce using rule 15 (valor -> BOOLEAN .)
+    ENTERO          reduce using rule 15 (valor -> BOOLEAN .)
+    FLOTANTE        reduce using rule 15 (valor -> BOOLEAN .)
+    BOOLEAN         reduce using rule 15 (valor -> BOOLEAN .)
+    VARIABLE        reduce using rule 15 (valor -> BOOLEAN .)
+
+
+state 36
+
+    (12) impresion -> IMPRIMIR LPAREN valor . RPAREN
+
+    RPAREN          shift and go to state 38
+
+
+state 37
+
+    (27) sumatoria -> LPAREN operacion valor . valor RPAREN
+    (28) diferencia -> LPAREN operacion valor . valor RPAREN
+    (29) producto -> LPAREN operacion valor . valor RPAREN
+    (30) division -> LPAREN operacion valor . valor RPAREN
+    (31) condicional -> LPAREN operacion valor . valor RPAREN
+    (13) valor -> . ENTERO
+    (14) valor -> . FLOTANTE
+    (15) valor -> . BOOLEAN
+    (16) valor -> . VARIABLE
+
+    ENTERO          shift and go to state 33
+    FLOTANTE        shift and go to state 34
+    BOOLEAN         shift and go to state 35
+    VARIABLE        shift and go to state 31
+
+    valor                          shift and go to state 39
+
+state 38
+
+    (12) impresion -> IMPRIMIR LPAREN valor RPAREN .
+
+    $end            reduce using rule 12 (impresion -> IMPRIMIR LPAREN valor RPAREN .)
+
+
+state 39
+
+    (27) sumatoria -> LPAREN operacion valor valor . RPAREN
+    (28) diferencia -> LPAREN operacion valor valor . RPAREN
+    (29) producto -> LPAREN operacion valor valor . RPAREN
+    (30) division -> LPAREN operacion valor valor . RPAREN
+    (31) condicional -> LPAREN operacion valor valor . RPAREN
+
+    RPAREN          shift and go to state 40
+
+
+state 40
+
+    (27) sumatoria -> LPAREN operacion valor valor RPAREN .
+    (28) diferencia -> LPAREN operacion valor valor RPAREN .
+    (29) producto -> LPAREN operacion valor valor RPAREN .
+    (30) division -> LPAREN operacion valor valor RPAREN .
+    (31) condicional -> LPAREN operacion valor valor RPAREN .
+
+  ! reduce/reduce conflict for $end resolved using rule 27 (sumatoria -> LPAREN operacion valor valor RPAREN .)
+  ! reduce/reduce conflict for $end resolved using rule 27 (sumatoria -> LPAREN operacion valor valor RPAREN .)
+  ! reduce/reduce conflict for $end resolved using rule 27 (sumatoria -> LPAREN operacion valor valor RPAREN .)
+  ! reduce/reduce conflict for $end resolved using rule 27 (sumatoria -> LPAREN operacion valor valor RPAREN .)
+    $end            reduce using rule 27 (sumatoria -> LPAREN operacion valor valor RPAREN .)
+
+  ! $end            [ reduce using rule 28 (diferencia -> LPAREN operacion valor valor RPAREN .) ]
+  ! $end            [ reduce using rule 29 (producto -> LPAREN operacion valor valor RPAREN .) ]
+  ! $end            [ reduce using rule 30 (division -> LPAREN operacion valor valor RPAREN .) ]
+  ! $end            [ reduce using rule 31 (condicional -> LPAREN operacion valor valor RPAREN .) ]
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: reduce/reduce conflict in state 34 resolved using rule (sumatoria -> LPAREN operacion valor valor RPAREN)
-WARNING: rejected rule (diferencia -> LPAREN operacion valor valor RPAREN) in state 34
-WARNING: reduce/reduce conflict in state 34 resolved using rule (sumatoria -> LPAREN operacion valor valor RPAREN)
-WARNING: rejected rule (producto -> LPAREN operacion valor valor RPAREN) in state 34
-WARNING: reduce/reduce conflict in state 34 resolved using rule (sumatoria -> LPAREN operacion valor valor RPAREN)
-WARNING: rejected rule (division -> LPAREN operacion valor valor RPAREN) in state 34
-WARNING: reduce/reduce conflict in state 34 resolved using rule (sumatoria -> LPAREN operacion valor valor RPAREN)
-WARNING: rejected rule (condicional -> LPAREN operacion valor valor RPAREN) in state 34
+WARNING: reduce/reduce conflict in state 40 resolved using rule (sumatoria -> LPAREN operacion valor valor RPAREN)
+WARNING: rejected rule (diferencia -> LPAREN operacion valor valor RPAREN) in state 40
+WARNING: reduce/reduce conflict in state 40 resolved using rule (sumatoria -> LPAREN operacion valor valor RPAREN)
+WARNING: rejected rule (producto -> LPAREN operacion valor valor RPAREN) in state 40
+WARNING: reduce/reduce conflict in state 40 resolved using rule (sumatoria -> LPAREN operacion valor valor RPAREN)
+WARNING: rejected rule (division -> LPAREN operacion valor valor RPAREN) in state 40
+WARNING: reduce/reduce conflict in state 40 resolved using rule (sumatoria -> LPAREN operacion valor valor RPAREN)
+WARNING: rejected rule (condicional -> LPAREN operacion valor valor RPAREN) in state 40
 WARNING: Rule (diferencia -> LPAREN operacion valor valor RPAREN) is never reduced
 WARNING: Rule (producto -> LPAREN operacion valor valor RPAREN) is never reduced
 WARNING: Rule (division -> LPAREN operacion valor valor RPAREN) is never reduced
