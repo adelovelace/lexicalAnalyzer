@@ -26,6 +26,7 @@ reserved = {
 tokens = [
   'ENTERO',
   'FLOTANTE',
+  'BOOLEAN',
   'MENOS',
   'MAS',
   'PRODUCTO',
@@ -39,7 +40,9 @@ tokens = [
   'VARIABLE',
   'IGUAL',
   'MENORQUE',
+  'MENORIGUALQUE',
   'MAYORQUE',
+  'MAYORIGUALQUE',
   'DIFERENTE',
   'COMPARA_IGUAL',
   'PUNTO_COMA',
@@ -59,6 +62,8 @@ t_R_LLAVE = r'\}'
 t_IGUAL = r'='
 t_MENORQUE = r'<'
 t_MAYORQUE = r'>'
+t_MAYORIGUALQUE = r'>='
+t_MENORIGUALQUE = r'>='
 t_DIFERENTE = r'!='
 t_COMPARA_IGUAL = r'=='
 t_PUNTO_COMA = r';'
@@ -76,6 +81,11 @@ def t_VARIABLE(t):
   r'[a-zA-Z_][a-zA-Z0-9]*'
   t.type = reserved.get(t.value,'VARIABLE')
   return t
+
+def t_BOOLEAN(t):
+    r'(true|false)'
+    t.type = reserved.get(t.value,'BOOLEAN')
+    return t
   
 def t_newline(t):
   r'\n+'

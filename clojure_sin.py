@@ -8,7 +8,8 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | sumatoria
                     | diferencia
                     | producto
-                    | division'''  
+                    | division
+                    | condicional'''  
 def p_asignacion(p): #puede reconocer a=20
   'asignacion : VARIABLE IGUAL valor'
 
@@ -18,6 +19,7 @@ def p_impresion(p):
 def p_valor(p):
   '''valor : ENTERO
           | FLOTANTE
+          | BOOLEAN
           '''
 def p_valor_variable(p):
   'valor : VARIABLE'
@@ -27,7 +29,13 @@ def p_aritmetica1(p):
     '''operacion : MAS
           | MENOS
           | PRODUCTO
-          | DIVISION'''
+          | DIVISION
+          | MENORQUE
+          | MAYORQUE
+          | MAYORIGUALQUE
+          | MENORIGUALQUE
+          | DIFERENTE
+          | COMPARA_IGUAL'''
 
 def p_suma(p):
     'sumatoria : LPAREN operacion valor valor RPAREN'
@@ -40,6 +48,10 @@ def p_multiplicacion(p):
     
 def p_division(p):
     'division : LPAREN operacion valor valor RPAREN'
+    
+def p_booleanos(p):
+      'condicional : LPAREN operacion valor valor RPAREN'
+      
 
  # Error rule for syntax errors
 def p_error(p):
