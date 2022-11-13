@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'CASE CLASE COMPARA_IGUAL COND DEFFUNCION DEFICION DEFMACRO DIFERENTE DIVISION DO DOSEQ DOTIMES ELSE ENTERO FLOTANTE FUNCION FUTURE IF IGUAL IMPRIMIR LCOR LET LOOP LPAREN L_LLAVE MAS MAYORQUE MENORQUE MENOS NUEVO PRODUCTO PUNTO_COMA RCOR RECURSION RPAREN R_LLAVE VARIABLE WHENinstrucciones : asignacion\n                    | impresion\n                    | sumatoria\n                    | diferencia\n                    | producto\n                    | divisionasignacion : VARIABLE IGUAL valorimpresion : IMPRIMIR LPAREN valor RPARENvalor : ENTERO\n          | FLOTANTE\n          valor : VARIABLEoperacion : MAS\n          | MENOS\n          | PRODUCTO\n          | DIVISIONsumatoria : LPAREN operacion valor valor RPARENdiferencia : LPAREN operacion valor valor RPARENproducto : LPAREN operacion valor valor RPARENdivision : LPAREN operacion valor valor RPAREN'
+_lr_signature = 'BOOLEAN CASE CLASE COMPARA_IGUAL COND DEFFUNCION DEFICION DEFMACRO DIFERENTE DIVISION DO DOSEQ DOTIMES ELSE ENTERO FLOTANTE FUNCION FUTURE IF IGUAL IMPRIMIR LCOR LET LOOP LPAREN L_LLAVE MAS MAYORIGUALQUE MAYORQUE MENORIGUALQUE MENORQUE MENOS NUEVO PRODUCTO PUNTO_COMA RCOR RECURSION RPAREN R_LLAVE VARIABLE WHENinstrucciones : asignacion\n                    | impresion\n                    | sumatoria\n                    | diferencia\n                    | producto\n                    | division\n                    | condicionalasignacion : VARIABLE IGUAL valorimpresion : IMPRIMIR LPAREN valor RPARENvalor : ENTERO\n          | FLOTANTE\n          | BOOLEAN\n          valor : VARIABLEoperacion : MAS\n          | MENOS\n          | PRODUCTO\n          | DIVISION\n          | MENORQUE\n          | MAYORQUE\n          | MAYORIGUALQUE\n          | MENORIGUALQUE\n          | DIFERENTE\n          | COMPARA_IGUALsumatoria : LPAREN operacion valor valor RPARENdiferencia : LPAREN operacion valor valor RPARENproducto : LPAREN operacion valor valor RPARENdivision : LPAREN operacion valor valor RPARENcondicional : LPAREN operacion valor valor RPAREN'
     
-_lr_action_items = {'VARIABLE':([0,11,12,13,14,15,16,17,18,20,21,23,],[8,18,18,18,-12,-13,-14,-15,-11,-9,-10,18,]),'IMPRIMIR':([0,],[9,]),'LPAREN':([0,9,],[10,12,]),'$end':([1,2,3,4,5,6,7,18,19,20,21,24,26,],[0,-1,-2,-3,-4,-5,-6,-11,-7,-9,-10,-8,-16,]),'IGUAL':([8,],[11,]),'MAS':([10,],[14,]),'MENOS':([10,],[15,]),'PRODUCTO':([10,],[16,]),'DIVISION':([10,],[17,]),'ENTERO':([11,12,13,14,15,16,17,18,20,21,23,],[20,20,20,-12,-13,-14,-15,-11,-9,-10,20,]),'FLOTANTE':([11,12,13,14,15,16,17,18,20,21,23,],[21,21,21,-12,-13,-14,-15,-11,-9,-10,21,]),'RPAREN':([18,20,21,22,25,],[-11,-9,-10,24,26,]),}
+_lr_action_items = {'VARIABLE':([0,12,13,14,15,16,17,18,19,20,21,22,23,24,25,27,28,29,31,],[9,25,25,25,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-13,-10,-11,-12,25,]),'IMPRIMIR':([0,],[10,]),'LPAREN':([0,10,],[11,13,]),'$end':([1,2,3,4,5,6,7,8,25,26,27,28,29,32,34,],[0,-1,-2,-3,-4,-5,-6,-7,-13,-8,-10,-11,-12,-9,-24,]),'IGUAL':([9,],[12,]),'MAS':([11,],[15,]),'MENOS':([11,],[16,]),'PRODUCTO':([11,],[17,]),'DIVISION':([11,],[18,]),'MENORQUE':([11,],[19,]),'MAYORQUE':([11,],[20,]),'MAYORIGUALQUE':([11,],[21,]),'MENORIGUALQUE':([11,],[22,]),'DIFERENTE':([11,],[23,]),'COMPARA_IGUAL':([11,],[24,]),'ENTERO':([12,13,14,15,16,17,18,19,20,21,22,23,24,25,27,28,29,31,],[27,27,27,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-13,-10,-11,-12,27,]),'FLOTANTE':([12,13,14,15,16,17,18,19,20,21,22,23,24,25,27,28,29,31,],[28,28,28,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-13,-10,-11,-12,28,]),'BOOLEAN':([12,13,14,15,16,17,18,19,20,21,22,23,24,25,27,28,29,31,],[29,29,29,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-13,-10,-11,-12,29,]),'RPAREN':([25,27,28,29,30,33,],[-13,-10,-11,-12,32,34,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'instrucciones':([0,],[1,]),'asignacion':([0,],[2,]),'impresion':([0,],[3,]),'sumatoria':([0,],[4,]),'diferencia':([0,],[5,]),'producto':([0,],[6,]),'division':([0,],[7,]),'operacion':([10,],[13,]),'valor':([11,12,13,23,],[19,22,23,25,]),}
+_lr_goto_items = {'instrucciones':([0,],[1,]),'asignacion':([0,],[2,]),'impresion':([0,],[3,]),'sumatoria':([0,],[4,]),'diferencia':([0,],[5,]),'producto':([0,],[6,]),'division':([0,],[7,]),'condicional':([0,],[8,]),'operacion':([11,],[14,]),'valor':([12,13,14,31,],[26,30,31,33,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -33,17 +33,26 @@ _lr_productions = [
   ('instrucciones -> diferencia','instrucciones',1,'p_instrucciones','clojure_sin.py',9),
   ('instrucciones -> producto','instrucciones',1,'p_instrucciones','clojure_sin.py',10),
   ('instrucciones -> division','instrucciones',1,'p_instrucciones','clojure_sin.py',11),
-  ('asignacion -> VARIABLE IGUAL valor','asignacion',3,'p_asignacion','clojure_sin.py',13),
-  ('impresion -> IMPRIMIR LPAREN valor RPAREN','impresion',4,'p_impresion','clojure_sin.py',16),
-  ('valor -> ENTERO','valor',1,'p_valor','clojure_sin.py',19),
-  ('valor -> FLOTANTE','valor',1,'p_valor','clojure_sin.py',20),
-  ('valor -> VARIABLE','valor',1,'p_valor_variable','clojure_sin.py',23),
-  ('operacion -> MAS','operacion',1,'p_aritmetica1','clojure_sin.py',27),
-  ('operacion -> MENOS','operacion',1,'p_aritmetica1','clojure_sin.py',28),
-  ('operacion -> PRODUCTO','operacion',1,'p_aritmetica1','clojure_sin.py',29),
-  ('operacion -> DIVISION','operacion',1,'p_aritmetica1','clojure_sin.py',30),
-  ('sumatoria -> LPAREN operacion valor valor RPAREN','sumatoria',5,'p_suma','clojure_sin.py',33),
-  ('diferencia -> LPAREN operacion valor valor RPAREN','diferencia',5,'p_resta','clojure_sin.py',36),
-  ('producto -> LPAREN operacion valor valor RPAREN','producto',5,'p_multiplicacion','clojure_sin.py',39),
-  ('division -> LPAREN operacion valor valor RPAREN','division',5,'p_division','clojure_sin.py',42),
+  ('instrucciones -> condicional','instrucciones',1,'p_instrucciones','clojure_sin.py',12),
+  ('asignacion -> VARIABLE IGUAL valor','asignacion',3,'p_asignacion','clojure_sin.py',14),
+  ('impresion -> IMPRIMIR LPAREN valor RPAREN','impresion',4,'p_impresion','clojure_sin.py',17),
+  ('valor -> ENTERO','valor',1,'p_valor','clojure_sin.py',20),
+  ('valor -> FLOTANTE','valor',1,'p_valor','clojure_sin.py',21),
+  ('valor -> BOOLEAN','valor',1,'p_valor','clojure_sin.py',22),
+  ('valor -> VARIABLE','valor',1,'p_valor_variable','clojure_sin.py',25),
+  ('operacion -> MAS','operacion',1,'p_aritmetica1','clojure_sin.py',29),
+  ('operacion -> MENOS','operacion',1,'p_aritmetica1','clojure_sin.py',30),
+  ('operacion -> PRODUCTO','operacion',1,'p_aritmetica1','clojure_sin.py',31),
+  ('operacion -> DIVISION','operacion',1,'p_aritmetica1','clojure_sin.py',32),
+  ('operacion -> MENORQUE','operacion',1,'p_aritmetica1','clojure_sin.py',33),
+  ('operacion -> MAYORQUE','operacion',1,'p_aritmetica1','clojure_sin.py',34),
+  ('operacion -> MAYORIGUALQUE','operacion',1,'p_aritmetica1','clojure_sin.py',35),
+  ('operacion -> MENORIGUALQUE','operacion',1,'p_aritmetica1','clojure_sin.py',36),
+  ('operacion -> DIFERENTE','operacion',1,'p_aritmetica1','clojure_sin.py',37),
+  ('operacion -> COMPARA_IGUAL','operacion',1,'p_aritmetica1','clojure_sin.py',38),
+  ('sumatoria -> LPAREN operacion valor valor RPAREN','sumatoria',5,'p_suma','clojure_sin.py',41),
+  ('diferencia -> LPAREN operacion valor valor RPAREN','diferencia',5,'p_resta','clojure_sin.py',44),
+  ('producto -> LPAREN operacion valor valor RPAREN','producto',5,'p_multiplicacion','clojure_sin.py',47),
+  ('division -> LPAREN operacion valor valor RPAREN','division',5,'p_division','clojure_sin.py',50),
+  ('condicional -> LPAREN operacion valor valor RPAREN','condicional',5,'p_booleanos','clojure_sin.py',53),
 ]
