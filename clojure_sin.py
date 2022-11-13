@@ -4,7 +4,8 @@ from clojure_lex import tokens
 
 def p_instrucciones(p): #puede probar imprimir(var)
   '''instrucciones : asignacion
-                    | impresion '''  
+                    | impresion
+                    | sumatoria'''  
 def p_asignacion(p): #puede reconocer a=20
   'asignacion : VARIABLE IGUAL valor'
 
@@ -14,10 +15,20 @@ def p_impresion(p):
 def p_valor(p):
   '''valor : ENTERO
           | FLOTANTE
-          | COMPLEJO'''
-
+          '''
 def p_valor_variable(p):
   'valor : VARIABLE'
+
+# suma
+def p_aritmetica1(p):
+    '''operacion : MAS
+          | MENOS
+          | PRODUCTO
+          | DIVISION'''
+
+def p_suma(p):
+    'sumatoria : LPAREN operacion valor valor RPAREN'
+
  # Error rule for syntax errors
 def p_error(p):
   if p:

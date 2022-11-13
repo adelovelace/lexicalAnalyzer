@@ -10,26 +10,38 @@ reserved = {
   'println': 'IMPRIMIR',
   'new': 'NUEVO', 
   'if': 'IF',
-  'do':'DO'
+  'do':'DO', 
+  'when':'WHEN',
+  'cond':'COND',
+  'else': 'ELSE',
+  'case':'CASE',
+  'dotimes':'DOTIMES',
+  'doseq':'DOSEQ',
+  'loop':'LOOP',
+  'recur':'RECURSION',
+  'defn':'DEFFUNCION',
 }
 
 tokens = [
   'ENTERO',
   'FLOTANTE',
-  'COMPLEJO',
   'MENOS',
   'MAS',
   'PRODUCTO',
   'DIVISION',
   'LPAREN',
   'RPAREN',
+  'LCOR',
+  'RCOR',
+  'L_LLAVE',
+  'R_LLAVE',
   'VARIABLE',
   'IGUAL',
   'MENORQUE',
   'MAYORQUE',
   'DIFERENTE',
   'COMPARA_IGUAL',
-    'PUNTO_COMA',
+  'PUNTO_COMA',
 ] + list(reserved.values())
 
 # Regular expression rules for simple tokens
@@ -39,6 +51,10 @@ t_PRODUCTO   = r'\*'
 t_DIVISION = r'/'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
+t_LCOR = r'\['
+t_RCOR = r'\]'
+t_L_LLAVE = r'\{'
+t_R_LLAVE = r'\}'
 t_IGUAL = r'='
 t_MENORQUE = r'<'
 t_MAYORQUE = r'>'
@@ -53,10 +69,6 @@ def t_FLOTANTE(t):
   
 def t_ENTERO(t):
   r'\d+' 
-  return t
-
-def t_COMPLEJO(t): #un tipo de dato nuevo
-  r'\d+j+' 
   return t
 
 def t_VARIABLE(t):
