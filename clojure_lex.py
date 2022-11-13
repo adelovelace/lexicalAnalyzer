@@ -91,7 +91,8 @@ def t_BOOLEAN(t):
     return t
   
 def t_VECTORES(t):
-      r'^[\[]([a-zA-Z0-9]+[\s][a-zA-Z0-9]+)+[\]]$'
+      #r'^[\[]([a-zA-Z0-9]+[\s][a-zA-Z0-9]+)+[\]]$'
+      r'^[\[]([a-zA-Z0-9]+[\s]{0,})+[\]]$'
       t.type = reserved.get(t.value,'VECTORES')
       return t
     
