@@ -22,6 +22,16 @@ def p_valor(p):
           | FLOTANTE
           | BOOLEAN
           '''
+  
+ def p_valor(p):
+  '''valor : ENTERO
+          | FLOTANTE
+          | BOOLEAN
+          '''
+  
+def p_asignacion(p): #puede reconocer (def x 10)
+  'asignacion : LPAREN DEFICION VARIABLE dato RPAREN'
+  
 def p_valor_variable(p):
   'valor : VARIABLE'
 
