@@ -5,10 +5,7 @@ from clojure_lex import tokens
 def p_instrucciones(p): #puede probar imprimir(var)
   '''instrucciones : asignacion
                     | impresion
-                    | sumatoria
-                    | diferencia
-                    | producto
-                    | division
+                    | operacion_aritmetica1
                     | condicional
                     | vectores
                     | conjuntos
@@ -29,29 +26,14 @@ def p_valor_variable(p):
   'valor : VARIABLE'
 
 # suma
-def p_aritmetica1(p):
+def p_op_aritmetica1(p):
     '''operacion : MAS
           | MENOS
           | PRODUCTO
-          | DIVISION
-          | MENORQUE
-          | MAYORQUE
-          | MAYORIGUALQUE
-          | MENORIGUALQUE
-          | DIFERENTE
-          | COMPARA_IGUAL'''
+          | DIVISION '''
 
-def p_suma(p):
-    'sumatoria : LPAREN operacion valor valor RPAREN'
-
-def p_resta(p):
-    'diferencia : LPAREN operacion valor valor RPAREN'
-    
-def p_multiplicacion(p):
-    'producto : LPAREN operacion valor valor RPAREN'
-    
-def p_division(p):
-    'division : LPAREN operacion valor valor RPAREN'
+def p_operacion_aritmetica1(p):
+    'operacion_aritmetica1 : LPAREN operacion valor valor RPAREN'
     
 def p_booleanos(p):
       'condicional : LPAREN operacion valor valor RPAREN'
