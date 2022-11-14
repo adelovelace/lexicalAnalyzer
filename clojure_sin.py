@@ -23,7 +23,7 @@ def p_valor(p):
           | BOOLEAN
           '''
   
- def p_valor(p):
+def p_valor(p):
   '''valor : ENTERO
           | FLOTANTE
           | BOOLEAN
