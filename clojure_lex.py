@@ -88,22 +88,10 @@ def t_VARIABLE(t):
   t.type = reserved.get(t.value,'VARIABLE')
   return t
 
-def t_CHAR(t):
-  r'\\[a-zA-Z]{1}'
-  return t
-
-def t_STRING(t):
-  r'\"[\w|\s|.|\S]*\"'
-  return t
-
 def t_BOOLEAN(t):
     r'(true|false)'
     t.type = reserved.get(t.value,'BOOLEAN')
     return t
-
-def t_LISTA(t):
-  r'\(list\s([0-9]+\s*)+\)'
-  return t
 
 def t_VECTORES(t):
       #r'^[\[]([a-zA-Z0-9]+[\s][a-zA-Z0-9]+)+[\]]$'
@@ -120,7 +108,19 @@ def t_MAPAS(t):
       r'^[\{](([\:]{1}[\w]+[\s][\w]+)[\s]{0,})+[\}]$'
       t.type = reserved.get(t.value,'MAPAS')
       return t
-  
+
+def t_CHAR(t):
+  r'\\[a-zA-Z]{1}'
+  return t
+
+def t_STRING(t):
+  r'\"[\w|\s|.|\S]*\"'
+  return t
+
+def t_LISTA(t):
+  r'\(list\s([0-9]+\s*)+\)'
+  return t
+
 def t_newline(t):
   r'\n+'
   t.lexer.lineno += len(t.value)
@@ -136,8 +136,6 @@ def t_COMMENTS(t):
 def t_error(t):
   print("Caracter no permitido'%s'" % t.value[0])
   t.lexer.skip(1)
-
-
 
  # Build the lexer
 lexer = lex.lex()
