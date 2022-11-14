@@ -12,7 +12,7 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | mapas'''
                       
 def p_asignacion(p): #puede reconocer a=20
-  'asignacion : VARIABLE IGUAL valor'
+  'asignacion : LPAREN DEFICION VARIABLE valor R_LLAVE'
 
 def p_impresion(p):
   'impresion : IMPRIMIR LPAREN valor RPAREN'
