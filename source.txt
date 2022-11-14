@@ -37,3 +37,15 @@
 
 
 ;Fin: Andrea 
+
+;Inicio: Steven
+
+[2 4 5 7]
+
+#{4 5 7 8 9}
+
+#{as sd er tr}
+
+{:a c :b d :e t :w q}
+
+;Fin: Steven
