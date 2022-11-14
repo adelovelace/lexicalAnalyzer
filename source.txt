@@ -23,3 +23,17 @@
 (def x (read-line))
 
 ;Fin: Milca
+
+
+;Inicio: Andrea 
+
+(+ 3 4)
+
+(- 3 4)
+
+(* 3 4)
+
+(/ 3 4)
+
+
+;Fin: Andrea 
