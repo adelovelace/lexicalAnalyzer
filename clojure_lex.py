@@ -22,10 +22,11 @@ reserved = {
   'defn':'DEFFUNCION',
   'ns':'NS',
   'not':'NOT',
-  'str':'STR'
+  'str':'STR',
 }
 
 tokens = [
+  'INPUT',
   'ENTERO',
   'FLOTANTE',
   'BOOLEAN',
@@ -52,7 +53,7 @@ tokens = [
   'MAYORIGUALQUE',
   'DIFERENTE',
   'COMPARA_IGUAL',
-  'LISTA'
+  'LISTA',
 ] + list(reserved.values())
 
 # Regular expression rules for simple tokens
@@ -109,16 +110,20 @@ def t_MAPAS(t):
       t.type = reserved.get(t.value,'MAPAS')
       return t
 
+def t_INPUT(t):
+  r'\(read-line\)'
+  return t
+
+def t_LISTA(t):
+  r'\(list\s([0-9]+\s*)+\)'
+  return t
+
 def t_CHAR(t):
   r'\\[a-zA-Z]{1}'
   return t
 
 def t_STRING(t):
   r'\"[\w|\s|.|\S]*\"'
-  return t
-
-def t_LISTA(t):
-  r'\(list\s([0-9]+\s*)+\)'
   return t
 
 def t_newline(t):

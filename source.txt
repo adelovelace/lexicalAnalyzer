@@ -20,4 +20,6 @@
     ( do (println "no")
     false))
 
+(def x (read-line))
+
 ;Fin: Milca
