@@ -1,0 +1,21 @@
+;Inicio: Milca
+\c
+\A
+"Hello World"
+
+(list 1 2 3)
+(list 234234)
+
+(defn nameFunct
+    "Docstring"
+    [parametro1 parametro2]
+    ( str "Hola Clojure" )
+)
+
+(if (5 > 6)
+    (do (println "yes")
+    true)
+    ( do (println "no")
+    false))
+
+;Fin: Milca

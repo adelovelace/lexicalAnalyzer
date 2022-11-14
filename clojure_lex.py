@@ -6,7 +6,6 @@ reserved = {
   'future': 'FUTURE',
   'def': 'DEFICION',
   'fn':'FUNCION',
-  'defmacro': 'DEFMACRO',
   'class': 'CLASE',
   'println': 'IMPRIMIR',
   'new': 'NUEVO', 
@@ -21,12 +20,17 @@ reserved = {
   'loop':'LOOP',
   'recur':'RECURSION',
   'defn':'DEFFUNCION',
+  'ns':'NS',
+  'not':'NOT',
+  'str':'STR'
 }
 
 tokens = [
   'ENTERO',
   'FLOTANTE',
   'BOOLEAN',
+  'CHAR',
+  'STRING',
   'VECTORES',
   'CONJUNTOS',
   'MAPAS',
@@ -48,7 +52,7 @@ tokens = [
   'MAYORIGUALQUE',
   'DIFERENTE',
   'COMPARA_IGUAL',
-  'PUNTO_COMA',
+  'LISTA'
 ] + list(reserved.values())
 
 # Regular expression rules for simple tokens
@@ -66,10 +70,9 @@ t_IGUAL = r'='
 t_MENORQUE = r'<'
 t_MAYORQUE = r'>'
 t_MAYORIGUALQUE = r'>='
-t_MENORIGUALQUE = r'>='
+t_MENORIGUALQUE = r'<='
 t_DIFERENTE = r'!='
 t_COMPARA_IGUAL = r'=='
-t_PUNTO_COMA = r';'
 
 # A regular expression rule with some action code
 def t_FLOTANTE(t):
@@ -85,11 +88,23 @@ def t_VARIABLE(t):
   t.type = reserved.get(t.value,'VARIABLE')
   return t
 
+def t_CHAR(t):
+  r'\\[a-zA-Z]{1}'
+  return t
+
+def t_STRING(t):
+  r'\"[\w|\s|.|\S]*\"'
+  return t
+
 def t_BOOLEAN(t):
     r'(true|false)'
     t.type = reserved.get(t.value,'BOOLEAN')
     return t
-  
+
+def t_LISTA(t):
+  r'\(list\s([0-9]+\s*)+\)'
+  return t
+
 def t_VECTORES(t):
       #r'^[\[]([a-zA-Z0-9]+[\s][a-zA-Z0-9]+)+[\]]$'
       r'^[\[]([a-zA-Z0-9]+[\s]{0,})+[\]]$'
@@ -114,14 +129,52 @@ def t_newline(t):
 t_ignore  = ' \t'
 
 def t_COMMENTS(t):
-  r'\#.*'
+  r'\;.*'
   pass
-  
+
 # Error handling rule
 def t_error(t):
   print("Caracter no permitido'%s'" % t.value[0])
   t.lexer.skip(1)
- 
+
+
+
  # Build the lexer
 lexer = lex.lex()
 
+
+def getTokens(lexer):
+  for tok in lexer:
+    print(tok)
+
+
+print(f'Seleccione el modo de prueba:\n1. Ingresar datos. \n2. Evaluar por defecto. (source.txt)\n')
+
+selector = input(">>")
+try:
+  selector = int(selector)
+except:
+  selector = -1
+
+if (selector == 1):
+
+  linea = " "
+  while linea != "":
+    linea = input("Ingrese >>")
+    lexer.input(linea)
+    getTokens(lexer)
+
+elif (selector == 2):
+
+  file = open('source.txt', 'r')
+  lines = file.readlines()
+  for line in lines:
+    lexer.input(line)
+    getTokens(lexer)
+
+  print("Archivo leido")
+
+else:
+  pass
+
+print("Succesfull")
