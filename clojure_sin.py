@@ -12,10 +12,10 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | mapas'''
                       
 def p_asignacion(p): #puede reconocer a=20
-  'asignacion : LPAREN DEFICION VARIABLE valor RPAREN'
+  'asignacion : VARIABLE IGUAL valor'
 
 def p_impresion(p):
-  'impresion : IMPRIMIR LPAREN valor RPAREN'
+  'impresion : LPAREN IMPRIMIR string RPAREN'
 
 def p_valor(p):
   '''valor : ENTERO
@@ -24,6 +24,9 @@ def p_valor(p):
           '''
 def p_valor_variable(p):
   'valor : VARIABLE'
+
+def p_valor_string(p):
+  'string : STRING'
 
 # suma
 def p_op_aritmetica1(p):
