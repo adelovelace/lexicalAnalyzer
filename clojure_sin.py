@@ -1,7 +1,6 @@
 import ply.yacc as sintactico
 from clojure_lex import tokens
 
-
 def p_instrucciones(p): #puede probar imprimir(var)
   '''instrucciones : asignacion
                     | impresion
@@ -10,15 +9,11 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | vectores
                     | conjuntos
                     | mapas'''
-                      
-def p_asignacion(p): #puede reconocer a=20
-  'asignacion : VARIABLE IGUAL valor'
 
-def p_impresion(p):
-  'impresion : LPAREN IMPRIMIR string RPAREN'
-
-def p_valor(p):
-  '''valor : ENTERO
+def p_tipos_datos(p):
+  '''dato : STRING 
+          | CHAR
+          | ENTERO
           | FLOTANTE
           | BOOLEAN
           '''
@@ -31,12 +26,12 @@ def p_valor(p):
   
 def p_asignacion(p): #puede reconocer (def x 10)
   'asignacion : LPAREN DEFICION VARIABLE dato RPAREN'
-  
+
+def p_impresion(p):
+  'impresion : IMPRIMIR LPAREN valor RPAREN'
+
 def p_valor_variable(p):
   'valor : VARIABLE'
-
-def p_valor_string(p):
-  'string : STRING'
 
 # suma
 def p_op_aritmetica1(p):
