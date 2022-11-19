@@ -23,6 +23,11 @@ reserved = {
   'ns':'NS',
   'not':'NOT',
   'str':'STR',
+  'recur':'RECUR',
+  'inc':'INC',
+  'increase':'INCREASE',
+  'range' :'RANGE',
+  
 }
 
 tokens = [

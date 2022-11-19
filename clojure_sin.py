@@ -8,7 +8,10 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | condicional
                     | vectores
                     | conjuntos
-                    | defn'''
+                    | defn
+                    | operacionesLogicas
+                    | sentenciaLoopRecur
+                    | doseq'''
 
 def p_tipos_datos(p):
   '''dato : STRING 
@@ -40,6 +43,9 @@ def p_op_aritmetica1(p):
           | PRODUCTO
           | DIVISION '''
 
+def p_operacionesLogicas(p):
+      """operacionesLogicas : LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN"""
+
 def p_operacion_aritmetica1(p):
     'operacion_aritmetica1 : LPAREN operacion valor valor RPAREN'
     
@@ -49,9 +55,14 @@ def p_booleanos(p):
 def p_vectores(p):
       'vectores : VECTORES'
 
+def p_doseq(p):
+      'doseq : LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN'      
 
 def p_defn(p):
-      'defn : LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN'  
+      '''defn : LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
+                        | LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
+      
+      '''  
 
 def p_expresionDefnElse(p):
       'expresionDefnElse : CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING' 
@@ -66,6 +77,9 @@ def p_conjuntos(p):
                       | NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
       
       '''
+      
+def p_sentenciaLoopRecur(p):
+      'sentenciaLoopRecur : LPAREN LOOP LCOR VARIABLE ENTERO RCOR  operacionesLogicas RPAREN'
       
 def p_expresionConjuntoEnteros(p):
       '''expresionConjuntoEnteros : ENTERO
