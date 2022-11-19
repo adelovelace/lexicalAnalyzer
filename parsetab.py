@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'BOOLEAN CASE CHAR CLASE COMPARA_IGUAL COND CONJUNTOS DEFFUNCION DEFICION DIFERENTE DIVISION DO DOSEQ DOSPUNTOS DOTIMES ELSE ENTERO FLOTANTE FUNCION FUTURE IF IGUAL IMPRIMIR INPUT LCOR LET LISTA LOOP LPAREN L_LLAVE MAPAS MAS MAYORIGUALQUE MAYORQUE MENORIGUALQUE MENORQUE MENOS NOT NS NUEVO NUMERAL PRODUCTO RCOR RECURSION RPAREN R_LLAVE STR STRING VARIABLE VECTORES WHENinstrucciones : asignacion\n                    | impresion\n                    | operacion_aritmetica1\n                    | condicional\n                    | vectores\n                    | conjuntos\n                    | defndato : STRING \n          | CHAR\n          | ENTERO\n          | FLOTANTE\n          | BOOLEAN\n          valor : ENTERO\n          | FLOTANTE\n          | BOOLEAN\n          asignacion : LPAREN DEFICION VARIABLE dato RPAREN impresion : IMPRIMIR LPAREN valor RPARENvalor : VARIABLEoperacion : MAS\n          | MENOS\n          | PRODUCTO\n          | DIVISION operacion_aritmetica1 : LPAREN operacion valor valor RPARENcondicional : LPAREN operacion valor valor RPARENvectores : VECTORESdefn : LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPARENexpresionDefnElse : CASE VARIABLE expresionCase DOSPUNTOS ELSE STRINGexpresionCase : dato STRING conjuntos : NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE\n                      | NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE\n                      | NUMERAL L_LLAVE expresionConjuntoString R_LLAVE\n      \n      expresionConjuntoEnteros : ENTERO\n                     | ENTERO expresionConjuntoEnteros\n    expresionConjuntoDouble : FLOTANTE\n                     | FLOTANTE expresionConjuntoDouble\n    expresionConjuntoString : STRING\n                     | STRING expresionConjuntoString\n    '
+_lr_signature = 'BOOLEAN CASE CHAR CLASE COMPARA_IGUAL COND CONJUNTOS DEFFUNCION DEFICION DIFERENTE DIVISION DO DOSEQ DOSPUNTOS DOTIMES ELSE ENTERO FLOTANTE FUNCION FUTURE IF IGUAL IMPRIMIR INC INCREASE INPUT LCOR LET LISTA LOOP LPAREN L_LLAVE MAPAS MAS MAYORIGUALQUE MAYORQUE MENORIGUALQUE MENORQUE MENOS NOT NS NUEVO NUMERAL PRODUCTO RANGE RCOR RECUR RPAREN R_LLAVE STR STRING VARIABLE VECTORES WHENinstrucciones : asignacion\n                    | impresion\n                    | operacion_aritmetica1\n                    | condicional\n                    | vectores\n                    | conjuntos\n                    | defn\n                    | operacionesLogicas\n                    | sentenciaLoopRecur\n                    | doseqdato : STRING \n          | CHAR\n          | ENTERO\n          | FLOTANTE\n          | BOOLEAN\n          valor : ENTERO\n          | FLOTANTE\n          | BOOLEAN\n          asignacion : LPAREN DEFICION VARIABLE dato RPAREN impresion : IMPRIMIR LPAREN valor RPARENvalor : VARIABLEoperacion : MAS\n          | MENOS\n          | PRODUCTO\n          | DIVISION operacionesLogicas : LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPARENoperacion_aritmetica1 : LPAREN operacion valor valor RPARENcondicional : LPAREN operacion valor valor RPARENvectores : VECTORESdoseq : LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPARENdefn : LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN\n                        | LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN\n      \n      expresionDefnElse : CASE VARIABLE expresionCase DOSPUNTOS ELSE STRINGexpresionCase : dato STRING conjuntos : NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE\n                      | NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE\n                      | NUMERAL L_LLAVE expresionConjuntoString R_LLAVE\n      \n      sentenciaLoopRecur : LPAREN LOOP LCOR VARIABLE ENTERO RCOR  operacionesLogicas RPARENexpresionConjuntoEnteros : ENTERO\n                     | ENTERO expresionConjuntoEnteros\n    expresionConjuntoDouble : FLOTANTE\n                     | FLOTANTE expresionConjuntoDouble\n    expresionConjuntoString : STRING\n                     | STRING expresionConjuntoString\n    '
     
-_lr_action_items = {'LPAREN':([0,10,54,],[9,20,55,]),'IMPRIMIR':([0,],[10,]),'VECTORES':([0,],[11,]),'NUMERAL':([0,],[12,]),'$end':([1,2,3,4,5,6,7,8,11,44,45,46,47,51,52,60,],[0,-1,-2,-3,-4,-5,-6,-7,-25,-17,-29,-30,-31,-16,-23,-26,]),'DEFICION':([9,],[13,]),'DEFFUNCION':([9,],[15,]),'MAS':([9,],[16,]),'MENOS':([9,],[17,]),'PRODUCTO':([9,],[18,]),'DIVISION':([9,],[19,]),'L_LLAVE':([12,],[21,]),'VARIABLE':([13,14,15,16,17,18,19,20,23,24,25,26,27,43,57,],[22,27,28,-19,-20,-21,-22,27,27,-13,-14,-15,-18,53,59,]),'ENTERO':([14,16,17,18,19,20,21,22,23,24,25,26,27,33,59,],[24,-19,-20,-21,-22,24,33,39,24,-13,-14,-15,-18,33,39,]),'FLOTANTE':([14,16,17,18,19,20,21,22,23,24,25,26,27,34,59,],[25,-19,-20,-21,-22,25,34,40,25,-13,-14,-15,-18,34,40,]),'BOOLEAN':([14,16,17,18,19,20,22,23,24,25,26,27,59,],[26,-19,-20,-21,-22,26,41,26,-13,-14,-15,-18,41,]),'STRING':([21,22,35,37,38,39,40,41,59,62,65,],[35,37,35,-8,-9,-10,-11,-12,37,64,66,]),'CHAR':([22,59,],[38,38,]),'RPAREN':([24,25,26,27,29,36,37,38,39,40,41,42,56,58,66,],[-13,-14,-15,-18,44,51,-8,-9,-10,-11,-12,52,58,60,-27,]),'LCOR':([28,],[43,]),'R_LLAVE':([30,31,32,33,34,35,48,49,50,],[45,46,47,-32,-34,-36,-33,-35,-37,]),'RCOR':([53,],[54,]),'CASE':([55,],[57,]),'DOSPUNTOS':([61,64,],[63,-28,]),'ELSE':([63,],[65,]),}
+_lr_action_items = {'LPAREN':([0,13,19,57,72,73,75,80,91,92,100,],[12,26,36,71,77,78,78,86,96,97,103,]),'IMPRIMIR':([0,97,],[13,13,]),'VECTORES':([0,],[14,]),'NUMERAL':([0,],[15,]),'$end':([1,2,3,4,5,6,7,8,9,10,11,14,58,59,60,61,65,66,85,87,93,107,112,],[0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-29,-20,-35,-36,-37,-19,-27,-32,-38,-31,-30,-26,]),'DEFICION':([12,],[16,]),'DEFFUNCION':([12,],[18,]),'IF':([12,78,],[19,19,]),'LOOP':([12,],[20,]),'DOSEQ':([12,],[21,]),'MAS':([12,],[22,]),'MENOS':([12,],[23,]),'PRODUCTO':([12,],[24,]),'DIVISION':([12,],[25,]),'L_LLAVE':([15,],[27,]),'VARIABLE':([16,17,18,22,23,24,25,26,29,30,31,32,33,37,38,53,54,55,76,84,103,109,],[28,33,34,-22,-23,-24,-25,33,33,-16,-17,-18,-21,56,57,67,68,69,82,90,106,110,]),'ENTERO':([17,22,23,24,25,26,27,28,29,30,31,32,33,43,56,69,90,],[30,-22,-23,-24,-25,30,43,49,30,-16,-17,-18,-21,43,70,74,49,]),'FLOTANTE':([17,22,23,24,25,26,27,28,29,30,31,32,33,44,90,],[31,-22,-23,-24,-25,31,44,50,31,-16,-17,-18,-21,44,50,]),'BOOLEAN':([17,22,23,24,25,26,28,29,30,31,32,33,90,],[32,-22,-23,-24,-25,32,51,32,-16,-17,-18,-21,51,]),'INCREASE':([18,],[35,]),'LCOR':([20,21,34,35,],[37,38,53,54,]),'STRING':([27,28,45,47,48,49,50,51,90,95,102,],[45,47,45,-11,-12,-13,-14,-15,47,99,105,]),'CHAR':([28,90,],[48,48,]),'RPAREN':([30,31,32,33,39,46,47,48,49,50,51,52,58,74,79,81,82,83,89,101,104,105,106,108,110,111,112,],[-16,-17,-18,-21,58,65,-11,-12,-13,-14,-15,66,-20,80,85,87,88,89,93,104,107,-33,108,109,111,112,-26,]),'MENORQUE':([36,],[55,]),'R_LLAVE':([40,41,42,43,44,45,62,63,64,],[59,60,61,-39,-41,-43,-40,-42,-44,]),'RCOR':([67,68,70,88,],[72,73,75,92,]),'RANGE':([71,],[76,]),'CASE':([77,],[84,]),'RECUR':([86,],[91,]),'DOSPUNTOS':([94,99,],[98,-34,]),'INC':([96,],[100,]),'ELSE':([98,],[102,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'instrucciones':([0,],[1,]),'asignacion':([0,],[2,]),'impresion':([0,],[3,]),'operacion_aritmetica1':([0,],[4,]),'condicional':([0,],[5,]),'vectores':([0,],[6,]),'conjuntos':([0,],[7,]),'defn':([0,],[8,]),'operacion':([9,],[14,]),'valor':([14,20,23,],[23,29,42,]),'expresionConjuntoEnteros':([21,33,],[30,48,]),'expresionConjuntoDouble':([21,34,],[31,49,]),'expresionConjuntoString':([21,35,],[32,50,]),'dato':([22,59,],[36,62,]),'expresionDefnElse':([55,],[56,]),'expresionCase':([59,],[61,]),}
+_lr_goto_items = {'instrucciones':([0,],[1,]),'asignacion':([0,],[2,]),'impresion':([0,97,],[3,101,]),'operacion_aritmetica1':([0,],[4,]),'condicional':([0,],[5,]),'vectores':([0,],[6,]),'conjuntos':([0,],[7,]),'defn':([0,],[8,]),'operacionesLogicas':([0,73,75,],[9,79,81,]),'sentenciaLoopRecur':([0,],[10,]),'doseq':([0,],[11,]),'operacion':([12,],[17,]),'valor':([17,26,29,],[29,39,52,]),'expresionConjuntoEnteros':([27,43,],[40,62,]),'expresionConjuntoDouble':([27,44,],[41,63,]),'expresionConjuntoString':([27,45,],[42,64,]),'dato':([28,90,],[46,95,]),'expresionDefnElse':([77,],[83,]),'expresionCase':([90,],[94,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -34,34 +34,41 @@ _lr_productions = [
   ('instrucciones -> vectores','instrucciones',1,'p_instrucciones','clojure_sin.py',9),
   ('instrucciones -> conjuntos','instrucciones',1,'p_instrucciones','clojure_sin.py',10),
   ('instrucciones -> defn','instrucciones',1,'p_instrucciones','clojure_sin.py',11),
-  ('dato -> STRING','dato',1,'p_tipos_datos','clojure_sin.py',14),
-  ('dato -> CHAR','dato',1,'p_tipos_datos','clojure_sin.py',15),
-  ('dato -> ENTERO','dato',1,'p_tipos_datos','clojure_sin.py',16),
-  ('dato -> FLOTANTE','dato',1,'p_tipos_datos','clojure_sin.py',17),
-  ('dato -> BOOLEAN','dato',1,'p_tipos_datos','clojure_sin.py',18),
-  ('valor -> ENTERO','valor',1,'p_valor','clojure_sin.py',22),
-  ('valor -> FLOTANTE','valor',1,'p_valor','clojure_sin.py',23),
-  ('valor -> BOOLEAN','valor',1,'p_valor','clojure_sin.py',24),
-  ('asignacion -> LPAREN DEFICION VARIABLE dato RPAREN','asignacion',5,'p_asignacion','clojure_sin.py',28),
-  ('impresion -> IMPRIMIR LPAREN valor RPAREN','impresion',4,'p_impresion','clojure_sin.py',31),
-  ('valor -> VARIABLE','valor',1,'p_valor_variable','clojure_sin.py',34),
-  ('operacion -> MAS','operacion',1,'p_op_aritmetica1','clojure_sin.py',38),
-  ('operacion -> MENOS','operacion',1,'p_op_aritmetica1','clojure_sin.py',39),
-  ('operacion -> PRODUCTO','operacion',1,'p_op_aritmetica1','clojure_sin.py',40),
-  ('operacion -> DIVISION','operacion',1,'p_op_aritmetica1','clojure_sin.py',41),
-  ('operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN','operacion_aritmetica1',5,'p_operacion_aritmetica1','clojure_sin.py',44),
-  ('condicional -> LPAREN operacion valor valor RPAREN','condicional',5,'p_booleanos','clojure_sin.py',47),
-  ('vectores -> VECTORES','vectores',1,'p_vectores','clojure_sin.py',50),
-  ('defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN','defn',10,'p_defn','clojure_sin.py',54),
-  ('expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING','expresionDefnElse',6,'p_expresionDefnElse','clojure_sin.py',57),
-  ('expresionCase -> dato STRING','expresionCase',2,'p_expresionCase','clojure_sin.py',61),
-  ('conjuntos -> NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE','conjuntos',4,'p_conjuntos','clojure_sin.py',64),
-  ('conjuntos -> NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE','conjuntos',4,'p_conjuntos','clojure_sin.py',65),
-  ('conjuntos -> NUMERAL L_LLAVE expresionConjuntoString R_LLAVE','conjuntos',4,'p_conjuntos','clojure_sin.py',66),
-  ('expresionConjuntoEnteros -> ENTERO','expresionConjuntoEnteros',1,'p_expresionConjuntoEnteros','clojure_sin.py',71),
-  ('expresionConjuntoEnteros -> ENTERO expresionConjuntoEnteros','expresionConjuntoEnteros',2,'p_expresionConjuntoEnteros','clojure_sin.py',72),
-  ('expresionConjuntoDouble -> FLOTANTE','expresionConjuntoDouble',1,'p_expresionConjuntoDouble','clojure_sin.py',76),
-  ('expresionConjuntoDouble -> FLOTANTE expresionConjuntoDouble','expresionConjuntoDouble',2,'p_expresionConjuntoDouble','clojure_sin.py',77),
-  ('expresionConjuntoString -> STRING','expresionConjuntoString',1,'p_expresionConjuntoString','clojure_sin.py',81),
-  ('expresionConjuntoString -> STRING expresionConjuntoString','expresionConjuntoString',2,'p_expresionConjuntoString','clojure_sin.py',82),
+  ('instrucciones -> operacionesLogicas','instrucciones',1,'p_instrucciones','clojure_sin.py',12),
+  ('instrucciones -> sentenciaLoopRecur','instrucciones',1,'p_instrucciones','clojure_sin.py',13),
+  ('instrucciones -> doseq','instrucciones',1,'p_instrucciones','clojure_sin.py',14),
+  ('dato -> STRING','dato',1,'p_tipos_datos','clojure_sin.py',17),
+  ('dato -> CHAR','dato',1,'p_tipos_datos','clojure_sin.py',18),
+  ('dato -> ENTERO','dato',1,'p_tipos_datos','clojure_sin.py',19),
+  ('dato -> FLOTANTE','dato',1,'p_tipos_datos','clojure_sin.py',20),
+  ('dato -> BOOLEAN','dato',1,'p_tipos_datos','clojure_sin.py',21),
+  ('valor -> ENTERO','valor',1,'p_valor','clojure_sin.py',25),
+  ('valor -> FLOTANTE','valor',1,'p_valor','clojure_sin.py',26),
+  ('valor -> BOOLEAN','valor',1,'p_valor','clojure_sin.py',27),
+  ('asignacion -> LPAREN DEFICION VARIABLE dato RPAREN','asignacion',5,'p_asignacion','clojure_sin.py',31),
+  ('impresion -> IMPRIMIR LPAREN valor RPAREN','impresion',4,'p_impresion','clojure_sin.py',34),
+  ('valor -> VARIABLE','valor',1,'p_valor_variable','clojure_sin.py',37),
+  ('operacion -> MAS','operacion',1,'p_op_aritmetica1','clojure_sin.py',41),
+  ('operacion -> MENOS','operacion',1,'p_op_aritmetica1','clojure_sin.py',42),
+  ('operacion -> PRODUCTO','operacion',1,'p_op_aritmetica1','clojure_sin.py',43),
+  ('operacion -> DIVISION','operacion',1,'p_op_aritmetica1','clojure_sin.py',44),
+  ('operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN','operacionesLogicas',18,'p_operacionesLogicas','clojure_sin.py',47),
+  ('operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN','operacion_aritmetica1',5,'p_operacion_aritmetica1','clojure_sin.py',50),
+  ('condicional -> LPAREN operacion valor valor RPAREN','condicional',5,'p_booleanos','clojure_sin.py',53),
+  ('vectores -> VECTORES','vectores',1,'p_vectores','clojure_sin.py',56),
+  ('doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN','doseq',13,'p_doseq','clojure_sin.py',59),
+  ('defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN','defn',10,'p_defn','clojure_sin.py',62),
+  ('defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN','defn',8,'p_defn','clojure_sin.py',63),
+  ('expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING','expresionDefnElse',6,'p_expresionDefnElse','clojure_sin.py',68),
+  ('expresionCase -> dato STRING','expresionCase',2,'p_expresionCase','clojure_sin.py',72),
+  ('conjuntos -> NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE','conjuntos',4,'p_conjuntos','clojure_sin.py',75),
+  ('conjuntos -> NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE','conjuntos',4,'p_conjuntos','clojure_sin.py',76),
+  ('conjuntos -> NUMERAL L_LLAVE expresionConjuntoString R_LLAVE','conjuntos',4,'p_conjuntos','clojure_sin.py',77),
+  ('sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN','sentenciaLoopRecur',8,'p_sentenciaLoopRecur','clojure_sin.py',82),
+  ('expresionConjuntoEnteros -> ENTERO','expresionConjuntoEnteros',1,'p_expresionConjuntoEnteros','clojure_sin.py',85),
+  ('expresionConjuntoEnteros -> ENTERO expresionConjuntoEnteros','expresionConjuntoEnteros',2,'p_expresionConjuntoEnteros','clojure_sin.py',86),
+  ('expresionConjuntoDouble -> FLOTANTE','expresionConjuntoDouble',1,'p_expresionConjuntoDouble','clojure_sin.py',90),
+  ('expresionConjuntoDouble -> FLOTANTE expresionConjuntoDouble','expresionConjuntoDouble',2,'p_expresionConjuntoDouble','clojure_sin.py',91),
+  ('expresionConjuntoString -> STRING','expresionConjuntoString',1,'p_expresionConjuntoString','clojure_sin.py',95),
+  ('expresionConjuntoString -> STRING expresionConjuntoString','expresionConjuntoString',2,'p_expresionConjuntoString','clojure_sin.py',96),
 ]
