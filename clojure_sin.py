@@ -8,7 +8,7 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | condicional
                     | vectores
                     | conjuntos
-                    | mapas'''
+                    | defn'''
 
 def p_tipos_datos(p):
   '''dato : STRING 
@@ -25,7 +25,7 @@ def p_valor(p):
           '''
   
 def p_asignacion(p): #puede reconocer (def x 10)
-  'asignacion : LPAREN DEFICION VARIABLE dato RPAREN'
+  '''asignacion : LPAREN DEFICION VARIABLE dato RPAREN '''
 
 def p_impresion(p):
   'impresion : IMPRIMIR LPAREN valor RPAREN'
@@ -48,13 +48,40 @@ def p_booleanos(p):
       
 def p_vectores(p):
       'vectores : VECTORES'
-      
+
+
+def p_defn(p):
+      'defn : LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN'  
+
+def p_expresionDefnElse(p):
+      'expresionDefnElse : CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING' 
+
+  
+def p_expresionCase(p):
+      '''expresionCase : dato STRING '''
+  
 def p_conjuntos(p):
-      'conjuntos : CONJUNTOS'
-    
-def p_mapas(p):
-      'mapas : MAPAS'
+      '''conjuntos : NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
+                      | NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
+                      | NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
       
+      '''
+      
+def p_expresionConjuntoEnteros(p):
+      '''expresionConjuntoEnteros : ENTERO
+                     | ENTERO expresionConjuntoEnteros
+    '''
+
+def p_expresionConjuntoDouble(p):
+      '''expresionConjuntoDouble : FLOTANTE
+                     | FLOTANTE expresionConjuntoDouble
+    '''
+
+def p_expresionConjuntoString(p):
+      '''expresionConjuntoString : STRING
+                     | STRING expresionConjuntoString
+    '''  
+
  # Error rule for syntax errors
 def p_error(p):
   if p:
