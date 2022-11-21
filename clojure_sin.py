@@ -11,27 +11,50 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | defn
                     | operacionesLogicas
                     | sentenciaLoopRecur
-                    | doseq'''
+                    | doseq
+                    | cond_
+                    | sentencia_booleana
+                    | operador_comparadores'''
 
 def p_tipos_datos(p):
-  '''dato : STRING 
-          | CHAR
-          | ENTERO
-          | FLOTANTE
-          | BOOLEAN
-          '''
+  '''dato : STRING
+            | CHAR
+            | ENTERO
+            | FLOTANTE
+            | BOOLEAN'''
   
 def p_valor(p):
   '''valor : ENTERO
           | FLOTANTE
           | BOOLEAN
           '''
+
+def p_operadoresComparadores(p):
+    '''operador_comparadores : COMPARA_IGUAL
+                | MENORQUE
+                | MAYORQUE
+                | MAYORIGUALQUE
+                | MENORIGUALQUE
+                | DIFERENTE'''
   
 def p_asignacion(p): #puede reconocer (def x 10)
-  '''asignacion : LPAREN DEFICION VARIABLE dato RPAREN '''
+  '''asignacion : LPAREN DEFICION VARIABLE dato RPAREN
+                | LPAREN LET LCOR VARIABLE dato RCOR RPAREN'''
+
+def p_sentenciaBooleana(p):
+    '''sentencia_booleana : LPAREN operador_comparadores dato dato RPAREN'''
+
+def p_linecondition(p):
+    '''linecondition : sentencia_booleana impresion
+                    | sentencia_booleana dato'''
+
+#(cond (< 2 2) "x" (< 2 10) "1")
+#(cond (< 2 2) (println "x") (< 2 10) (println "1"))
+def p_cond(p):
+    '''cond_ : LPAREN COND linecondition RPAREN'''
 
 def p_impresion(p):
-  'impresion : IMPRIMIR LPAREN valor RPAREN'
+  'impresion : LPAREN IMPRIMIR dato RPAREN'
 
 def p_valor_variable(p):
   'valor : VARIABLE'
@@ -75,7 +98,6 @@ def p_conjuntos(p):
       '''conjuntos : NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
                       | NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
                       | NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
-      
       '''
       
 def p_sentenciaLoopRecur(p):
