@@ -16,6 +16,7 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | doseq
                     | case
                     | case_expression
+                    | lista
                     | sentencia_booleana
                     | operador_comparadores'''
 
@@ -69,6 +70,10 @@ def p_case(p):
 
 def p_case_expression(p):
     'case_expression : LPAREN CASE dato case case case impresion RPAREN'
+
+#(list 2 "3")
+def p_lista(p):
+    'lista : LPAREN LIST dato dato RPAREN'
 
 def p_impresion(p):
   'impresion : LPAREN IMPRIMIR dato RPAREN'

@@ -27,6 +27,7 @@ reserved = {
   'inc':'INC',
   'increase':'INCREASE',
   'range' :'RANGE',
+  'list': 'LIST',
   
 }
 
