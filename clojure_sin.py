@@ -13,6 +13,7 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | sentenciaLoopRecur
                     | doseq
                     | cond_
+                    | cond_else
                     | sentencia_booleana
                     | operador_comparadores'''
 
@@ -45,13 +46,19 @@ def p_sentenciaBooleana(p):
     '''sentencia_booleana : LPAREN operador_comparadores dato dato RPAREN'''
 
 def p_linecondition(p):
-    '''linecondition : sentencia_booleana impresion
-                    | sentencia_booleana dato'''
+    '''linecondition : sentencia_booleana impresion'''
 
-#(cond (< 2 2) "x" (< 2 10) "1")
+
 #(cond (< 2 2) (println "x") (< 2 10) (println "1"))
+#(cond (< 2 2) (println "x") (< 2 10) (println 1))
+#(cond (< 4 5) (println "3") (< 4 5) (println 3))
+
 def p_cond(p):
-    '''cond_ : LPAREN COND linecondition RPAREN'''
+    '''cond_ : LPAREN COND linecondition linecondition RPAREN'''
+
+#(cond (< 4 5) (println "3") (< 4 5) (println 3) : else (println 9))
+def p_condElse(p):
+    'cond_else : LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN'
 
 def p_impresion(p):
   'impresion : LPAREN IMPRIMIR dato RPAREN'
