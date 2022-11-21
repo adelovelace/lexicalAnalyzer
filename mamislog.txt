@@ -1,0 +1,5 @@
+Seleccione el modo de prueba:
+1. Ingresar datos. 
+2. Evaluar por defecto. (source.txt)
+
+>>

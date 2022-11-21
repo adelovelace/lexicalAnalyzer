@@ -21,7 +21,8 @@ def p_tipos_datos(p):
             | CHAR
             | ENTERO
             | FLOTANTE
-            | BOOLEAN'''
+            | BOOLEAN
+            | VARIABLE '''
   
 def p_valor(p):
   '''valor : ENTERO
