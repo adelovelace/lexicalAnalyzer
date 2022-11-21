@@ -14,11 +14,10 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | cond_
                     | cond_else
                     | doseq
-                    | case
                     | case_expression
                     | lista
                     | sentencia_booleana
-                    | operador_comparadores'''
+                    | definition'''
 
 def p_tipos_datos(p):
   '''dato : STRING
@@ -63,17 +62,42 @@ def p_cond(p):
 def p_condElse(p):
     'cond_else : LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN'
 
-# (case x 5 (println "x is 5") 10 (println "x is 10")
-#       (println "x is neither 5 nor 10"))
+# (case x 5 (println "x is 5") 10 (println "x is 10") (println "x is neither 5 nor 10"))
 def p_case(p):
     'case : dato impresion'
 
 def p_case_expression(p):
-    'case_expression : LPAREN CASE dato case case case impresion RPAREN'
+    'case_expression : LPAREN CASE dato case case impresion RPAREN'
 
 #(list 2 "3")
 def p_lista(p):
     'lista : LPAREN LIST dato dato RPAREN'
+
+# (defn saludar
+# 	“Retorna un saludo predeterminado con el nombre de la persona ingresada como parámetro”
+# 	[ name ]
+# 	( str “OH! Eres ” name “?! Que emoción verte nuevamente! :D” )
+# )
+def p_description(p):
+    'description : STRING'
+
+def p_argumments(p):
+    '''argumments : LCOR dato dato dato RCOR
+                   | LCOR dato dato RCOR
+                   | LCOR dato RCOR'''
+def p_body(p):
+    'body : instrucciones'
+def p_internos(p):
+    '''internos : description
+                | argumments
+                | body
+                | argumments body
+                | description argumments body'''
+
+#(defn holi "sp"[x] (println 2))
+def p_function(p):
+    'definition : LPAREN DEFFUNCION VARIABLE internos RPAREN'
+
 
 def p_impresion(p):
   'impresion : LPAREN IMPRIMIR dato RPAREN'
