@@ -1,5 +1,5 @@
 import ply.lex as lex
-
+from datetime import datetime
 
 reserved = {
   'let': 'LET',
@@ -153,7 +153,7 @@ def t_error(t):
   print("Caracter no permitido'%s'" % t.value[0])
   t.lexer.skip(1)
 
- # Build the lexer
+# Build the lexer
 lexer = lex.lex()
 
 
@@ -181,11 +181,15 @@ if (selector == 1):
 elif (selector == 2):
 
   file = open('source.txt', 'r')
+  log_file = open('log.txt', 'a')
   lines = file.readlines()
+  prueba = "Prueba: " + datetime.today().strftime("%d/%m/%Y") + " " + datetime.now().strftime("%H:%M:%S") + '\n'
   for line in lines:
     lexer.input(line)
     getTokens(lexer)
 
+  log_file.writelines(prueba)
+  
   print("Archivo leido")
 
 else:

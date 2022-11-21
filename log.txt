@@ -1,0 +1,35 @@
+Prueba: 20/11/2022 22:14:26
+calc > (+ 1 3)
+Prueba: 20/11/2022 22:14:32
+calc > (- 2 4)
+Prueba: 20/11/2022 22:14:22
+Prueba: 20/11/2022 22:24:45
+calc > (cond (< 2 2) (println "x") (< 2 10) (println "1"))
+Prueba: 20/11/2022 22:24:56
+calc > (cond (< 4 5) (println "3") (< 4 5) (println 3))
+Prueba: 20/11/2022 22:25:14
+calc > (cond (< 2 2) (println 1) (< 2 10) (println "1"))
+Prueba: 20/11/2022 22:25:22
+calc > (cond (< 4 5) (println "3") (< 4 5) (println 3) : else (println 9))
+Prueba: 20/11/2022 22:25:33
+calc > (println x)
+Prueba: 20/11/2022 22:25:37
+calc > (println "x")
+Prueba: 20/11/2022 22:25:42
+calc > (println 3234242)
+Prueba: 20/11/2022 22:25:45
+calc > (println 323.242342)
+Prueba: 20/11/2022 23:04:19
+calc > 
+Prueba: 20/11/2022 23:04:57
+calc > (case 2 1 (println "s") 1 (println "s") 1 (println "s")
+Prueba: 20/11/2022 23:05:12
+calc > (case x 1 (println "s") 1 (println "s") 1 (println "s")
+Prueba: 20/11/2022 23:05:23
+calc > (case x 1 (println "s") 1 (println "s") 1 (println 6)
+Prueba: 20/11/2022 23:05:30
+calc > (case x 1 (println "s") 1 (println 8) 1 (println 6)
+Prueba: 20/11/2022 23:06:16
+calc > (case x 1 (println "s") 1 (println 8) 1 (println 6) (println "6")) 
+Prueba: 20/11/2022 23:06:29
+calc > (case x 1 (println "s") 1 (println 8) 1 (println 6) (println 0)) 

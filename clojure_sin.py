@@ -11,9 +11,11 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | defn
                     | operacionesLogicas
                     | sentenciaLoopRecur
-                    | doseq
                     | cond_
                     | cond_else
+                    | doseq
+                    | case
+                    | case_expression
                     | sentencia_booleana
                     | operador_comparadores'''
 
@@ -22,7 +24,8 @@ def p_tipos_datos(p):
             | CHAR
             | ENTERO
             | FLOTANTE
-            | BOOLEAN'''
+            | BOOLEAN
+            | VARIABLE '''
   
 def p_valor(p):
   '''valor : ENTERO
@@ -49,8 +52,7 @@ def p_linecondition(p):
     '''linecondition : sentencia_booleana impresion'''
 
 
-#(cond (< 2 2) (println "x") (< 2 10) (println "1"))
-#(cond (< 2 2) (println "x") (< 2 10) (println 1))
+#(cond (< 2 2) (println 1) (< 2 10) (println "1"))
 #(cond (< 4 5) (println "3") (< 4 5) (println 3))
 
 def p_cond(p):
@@ -59,6 +61,14 @@ def p_cond(p):
 #(cond (< 4 5) (println "3") (< 4 5) (println 3) : else (println 9))
 def p_condElse(p):
     'cond_else : LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN'
+
+# (case x 5 (println "x is 5") 10 (println "x is 10")
+#       (println "x is neither 5 nor 10"))
+def p_case(p):
+    'case : dato impresion'
+
+def p_case_expression(p):
+    'case_expression : LPAREN CASE dato case case case impresion RPAREN'
 
 def p_impresion(p):
   'impresion : LPAREN IMPRIMIR dato RPAREN'
@@ -86,7 +96,7 @@ def p_vectores(p):
       'vectores : VECTORES'
 
 def p_doseq(p):
-      'doseq : LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN'      
+      'doseq : LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN'
 
 def p_defn(p):
       '''defn : LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
