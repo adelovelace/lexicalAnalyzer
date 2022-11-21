@@ -127,3 +127,19 @@ Prueba: 20/11/2022 23:45:39
 calc > (defn holi "sp"
 Prueba: 20/11/2022 23:45:55
 calc > (defn holi "sp" [ x ] (println 2))
+Prueba: 20/11/2022 23:52:35
+Prueba: 20/11/2022 23:55:41
+calc > ( if ( = 2 2)(do ("H") true))
+Prueba: 20/11/2022 23:55:56
+calc > [1 2 3 4]
+Prueba: 20/11/2022 23:56:13
+calc > [1.0 2.0 3.0 4.0]
+Prueba: 20/11/2022 23:56:38
+calc > {a: 1 b:2 c:3 }
+Prueba: 20/11/2022 23:56:44
+calc > {a: 1.0 b:2.0 c:3.0 }
+Prueba: 20/11/2022 23:56:45
+calc > {a: 1.0 b:2.0 c:3.0 }
+Prueba: 20/11/2022 23:56:54
+calc > {a: 1 b:2 c:3 }
+Prueba: 20/11/2022 23:54:36

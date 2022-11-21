@@ -6,8 +6,13 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | impresion
                     | operacion_aritmetica1
                     | condicional
-                    | vectores
                     | conjuntos
+                    | vector_entero
+                    | vector_flotante
+                    | mapa_entero
+                    | mapa_flotante
+                    | if
+                    | if_do
                     | defn
                     | operacionesLogicas
                     | sentenciaLoopRecur
@@ -105,7 +110,28 @@ def p_impresion(p):
 def p_valor_variable(p):
   'valor : VARIABLE'
 
-# suma
+
+def p_vector_entero(p):
+  'vector_entero : VECTOR_ENTERO'
+
+def p_vector_flotante(p):
+  'vector_flotante : VECTOR_FLOTANTE'
+
+def p_mapa_entero(p):
+  'mapa_entero : MAPA_ENTERO'
+
+def p_mapa_flotante(p):
+  'mapa_flotante : MAPA_FLOTANTE'
+
+def p_if(p):
+    'if :  IF LPAREN operador_comparadores dato dato RPAREN'
+
+def p_if_do(p):
+    'if_do : LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN'
+
+# def p_dotimes(p):
+#     'dotimes: '
+
 def p_op_aritmetica1(p):
     '''operacion : MAS
           | MENOS
@@ -120,9 +146,6 @@ def p_operacion_aritmetica1(p):
     
 def p_booleanos(p):
       'condicional : LPAREN operacion valor valor RPAREN'
-      
-def p_vectores(p):
-      'vectores : VECTORES'
 
 def p_doseq(p):
       'doseq : LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN'

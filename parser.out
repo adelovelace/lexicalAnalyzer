@@ -4,14 +4,12 @@ Unused terminals:
 
     CLASE
     CONJUNTOS
-    DO
     DOTIMES
     FUNCION
     FUTURE
     IGUAL
     INPUT
     LISTA
-    MAPAS
     NOT
     NS
     NUEVO
@@ -25,172 +23,189 @@ Rule 1     instrucciones -> asignacion
 Rule 2     instrucciones -> impresion
 Rule 3     instrucciones -> operacion_aritmetica1
 Rule 4     instrucciones -> condicional
-Rule 5     instrucciones -> vectores
-Rule 6     instrucciones -> conjuntos
-Rule 7     instrucciones -> defn
-Rule 8     instrucciones -> operacionesLogicas
-Rule 9     instrucciones -> sentenciaLoopRecur
-Rule 10    instrucciones -> cond_
-Rule 11    instrucciones -> cond_else
-Rule 12    instrucciones -> doseq
-Rule 13    instrucciones -> case_expression
-Rule 14    instrucciones -> lista
-Rule 15    instrucciones -> sentencia_booleana
-Rule 16    instrucciones -> definition
-Rule 17    dato -> STRING
-Rule 18    dato -> CHAR
-Rule 19    dato -> ENTERO
-Rule 20    dato -> FLOTANTE
-Rule 21    dato -> BOOLEAN
-Rule 22    dato -> VARIABLE
-Rule 23    valor -> ENTERO
-Rule 24    valor -> FLOTANTE
-Rule 25    valor -> BOOLEAN
-Rule 26    operador_comparadores -> COMPARA_IGUAL
-Rule 27    operador_comparadores -> MENORQUE
-Rule 28    operador_comparadores -> MAYORQUE
-Rule 29    operador_comparadores -> MAYORIGUALQUE
-Rule 30    operador_comparadores -> MENORIGUALQUE
-Rule 31    operador_comparadores -> DIFERENTE
-Rule 32    asignacion -> LPAREN DEFICION VARIABLE dato RPAREN
-Rule 33    asignacion -> LPAREN LET LCOR VARIABLE dato RCOR RPAREN
-Rule 34    sentencia_booleana -> LPAREN operador_comparadores dato dato RPAREN
-Rule 35    linecondition -> sentencia_booleana impresion
-Rule 36    cond_ -> LPAREN COND linecondition linecondition RPAREN
-Rule 37    cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
-Rule 38    case -> dato impresion
-Rule 39    case_expression -> LPAREN CASE dato case case impresion RPAREN
-Rule 40    lista -> LPAREN LIST dato dato RPAREN
-Rule 41    description -> STRING
-Rule 42    argumments -> LCOR dato dato dato RCOR
-Rule 43    argumments -> LCOR dato dato RCOR
-Rule 44    argumments -> LCOR dato RCOR
-Rule 45    body -> instrucciones
-Rule 46    internos -> description
-Rule 47    internos -> argumments
-Rule 48    internos -> body
-Rule 49    internos -> argumments body
-Rule 50    internos -> description argumments body
-Rule 51    definition -> LPAREN DEFFUNCION VARIABLE internos
-Rule 52    impresion -> LPAREN IMPRIMIR dato RPAREN
-Rule 53    valor -> VARIABLE
-Rule 54    operacion -> MAS
-Rule 55    operacion -> MENOS
-Rule 56    operacion -> PRODUCTO
-Rule 57    operacion -> DIVISION
-Rule 58    operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
-Rule 59    operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN
-Rule 60    condicional -> LPAREN operacion valor valor RPAREN
-Rule 61    vectores -> VECTORES
-Rule 62    doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
-Rule 63    defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
-Rule 64    defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
-Rule 65    expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING
-Rule 66    expresionCase -> dato STRING
-Rule 67    conjuntos -> NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
-Rule 68    conjuntos -> NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
-Rule 69    conjuntos -> NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
-Rule 70    sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
-Rule 71    expresionConjuntoEnteros -> ENTERO
-Rule 72    expresionConjuntoEnteros -> ENTERO expresionConjuntoEnteros
-Rule 73    expresionConjuntoDouble -> FLOTANTE
-Rule 74    expresionConjuntoDouble -> FLOTANTE expresionConjuntoDouble
-Rule 75    expresionConjuntoString -> STRING
-Rule 76    expresionConjuntoString -> STRING expresionConjuntoString
+Rule 5     instrucciones -> conjuntos
+Rule 6     instrucciones -> vector_entero
+Rule 7     instrucciones -> vector_flotante
+Rule 8     instrucciones -> mapa_entero
+Rule 9     instrucciones -> mapa_flotante
+Rule 10    instrucciones -> if
+Rule 11    instrucciones -> if_do
+Rule 12    instrucciones -> defn
+Rule 13    instrucciones -> operacionesLogicas
+Rule 14    instrucciones -> sentenciaLoopRecur
+Rule 15    instrucciones -> cond_
+Rule 16    instrucciones -> cond_else
+Rule 17    instrucciones -> doseq
+Rule 18    instrucciones -> case_expression
+Rule 19    instrucciones -> lista
+Rule 20    instrucciones -> sentencia_booleana
+Rule 21    instrucciones -> definition
+Rule 22    dato -> STRING
+Rule 23    dato -> CHAR
+Rule 24    dato -> ENTERO
+Rule 25    dato -> FLOTANTE
+Rule 26    dato -> BOOLEAN
+Rule 27    dato -> VARIABLE
+Rule 28    valor -> ENTERO
+Rule 29    valor -> FLOTANTE
+Rule 30    valor -> BOOLEAN
+Rule 31    operador_comparadores -> COMPARA_IGUAL
+Rule 32    operador_comparadores -> MENORQUE
+Rule 33    operador_comparadores -> MAYORQUE
+Rule 34    operador_comparadores -> MAYORIGUALQUE
+Rule 35    operador_comparadores -> MENORIGUALQUE
+Rule 36    operador_comparadores -> DIFERENTE
+Rule 37    asignacion -> LPAREN DEFICION VARIABLE dato RPAREN
+Rule 38    asignacion -> LPAREN LET LCOR VARIABLE dato RCOR RPAREN
+Rule 39    sentencia_booleana -> LPAREN operador_comparadores dato dato RPAREN
+Rule 40    linecondition -> sentencia_booleana impresion
+Rule 41    cond_ -> LPAREN COND linecondition linecondition RPAREN
+Rule 42    cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
+Rule 43    case -> dato impresion
+Rule 44    case_expression -> LPAREN CASE dato case case impresion RPAREN
+Rule 45    lista -> LPAREN LIST dato dato RPAREN
+Rule 46    description -> STRING
+Rule 47    argumments -> LCOR dato dato dato RCOR
+Rule 48    argumments -> LCOR dato dato RCOR
+Rule 49    argumments -> LCOR dato RCOR
+Rule 50    body -> instrucciones
+Rule 51    internos -> description
+Rule 52    internos -> argumments
+Rule 53    internos -> body
+Rule 54    internos -> argumments body
+Rule 55    internos -> description argumments body
+Rule 56    definition -> LPAREN DEFFUNCION VARIABLE internos RPAREN
+Rule 57    impresion -> LPAREN IMPRIMIR dato RPAREN
+Rule 58    valor -> VARIABLE
+Rule 59    vector_entero -> VECTOR_ENTERO
+Rule 60    vector_flotante -> VECTOR_FLOTANTE
+Rule 61    mapa_entero -> MAPA_ENTERO
+Rule 62    mapa_flotante -> MAPA_FLOTANTE
+Rule 63    if -> IF LPAREN operador_comparadores dato dato RPAREN
+Rule 64    if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+Rule 65    operacion -> MAS
+Rule 66    operacion -> MENOS
+Rule 67    operacion -> PRODUCTO
+Rule 68    operacion -> DIVISION
+Rule 69    operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+Rule 70    operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN
+Rule 71    condicional -> LPAREN operacion valor valor RPAREN
+Rule 72    doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+Rule 73    defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
+Rule 74    defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
+Rule 75    expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING
+Rule 76    expresionCase -> dato STRING
+Rule 77    conjuntos -> NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
+Rule 78    conjuntos -> NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
+Rule 79    conjuntos -> NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
+Rule 80    sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
+Rule 81    expresionConjuntoEnteros -> ENTERO
+Rule 82    expresionConjuntoEnteros -> ENTERO expresionConjuntoEnteros
+Rule 83    expresionConjuntoDouble -> FLOTANTE
+Rule 84    expresionConjuntoDouble -> FLOTANTE expresionConjuntoDouble
+Rule 85    expresionConjuntoString -> STRING
+Rule 86    expresionConjuntoString -> STRING expresionConjuntoString
 
 Terminals, with rules where they appear
 
-BOOLEAN              : 21 25
-CASE                 : 39 65
-CHAR                 : 18
+BOOLEAN              : 26 30 64
+CASE                 : 44 75
+CHAR                 : 23
 CLASE                : 
-COMPARA_IGUAL        : 26
-COND                 : 36 37
+COMPARA_IGUAL        : 31
+COND                 : 41 42
 CONJUNTOS            : 
-DEFFUNCION           : 51 63 64
-DEFICION             : 32
-DIFERENTE            : 31
-DIVISION             : 57
-DO                   : 
-DOSEQ                : 62
-DOSPUNTOS            : 37 65
+DEFFUNCION           : 56 73 74
+DEFICION             : 37
+DIFERENTE            : 36
+DIVISION             : 68
+DO                   : 64
+DOSEQ                : 72
+DOSPUNTOS            : 42 75
 DOTIMES              : 
-ELSE                 : 37 65
-ENTERO               : 19 23 58 70 71 72
-FLOTANTE             : 20 24 73 74
+ELSE                 : 42 75
+ENTERO               : 24 28 69 80 81 82
+FLOTANTE             : 25 29 83 84
 FUNCION              : 
 FUTURE               : 
-IF                   : 58
+IF                   : 63 64 69
 IGUAL                : 
-IMPRIMIR             : 52
-INC                  : 58
-INCREASE             : 64
+IMPRIMIR             : 57
+INC                  : 69
+INCREASE             : 74
 INPUT                : 
-LCOR                 : 33 42 43 44 62 63 64 70
-LET                  : 33
-LIST                 : 40
+LCOR                 : 38 47 48 49 72 73 74 80
+LET                  : 38
+LIST                 : 45
 LISTA                : 
-LOOP                 : 70
-LPAREN               : 32 33 34 36 37 39 40 51 52 58 58 58 58 58 59 60 62 62 62 63 63 64 70
-L_LLAVE              : 67 68 69
-MAPAS                : 
-MAS                  : 54
-MAYORIGUALQUE        : 29
-MAYORQUE             : 28
-MENORIGUALQUE        : 30
-MENORQUE             : 27 58
-MENOS                : 55
+LOOP                 : 80
+LPAREN               : 37 38 39 41 42 44 45 56 57 63 64 64 64 64 69 69 69 69 69 70 71 72 72 72 73 73 74 80
+L_LLAVE              : 77 78 79
+MAPA_ENTERO          : 61
+MAPA_FLOTANTE        : 62
+MAS                  : 65
+MAYORIGUALQUE        : 34
+MAYORQUE             : 33
+MENORIGUALQUE        : 35
+MENORQUE             : 32 69
+MENOS                : 66
 NOT                  : 
 NS                   : 
 NUEVO                : 
-NUMERAL              : 67 68 69
-PRODUCTO             : 56
-RANGE                : 62
-RCOR                 : 33 42 43 44 62 63 64 70
-RECUR                : 58
-RPAREN               : 32 33 34 36 37 39 40 52 58 58 58 58 58 59 60 62 62 62 63 63 64 70
-R_LLAVE              : 67 68 69
+NUMERAL              : 77 78 79
+PRODUCTO             : 67
+RANGE                : 72
+RCOR                 : 38 47 48 49 72 73 74 80
+RECUR                : 69
+RPAREN               : 37 38 39 41 42 44 45 56 57 63 64 64 64 64 69 69 69 69 69 70 71 72 72 72 73 73 74 80
+R_LLAVE              : 77 78 79
 STR                  : 
-STRING               : 17 41 65 66 75 76
-VARIABLE             : 22 32 33 51 53 58 58 58 62 62 63 63 64 65 70
-VECTORES             : 61
+STRING               : 22 46 75 76 85 86
+VARIABLE             : 27 37 38 56 58 69 69 69 72 72 73 73 74 75 80
+VECTOR_ENTERO        : 59
+VECTOR_FLOTANTE      : 60
 WHEN                 : 
 error                : 
 
 Nonterminals, with rules where they appear
 
-argumments           : 47 49 50
+argumments           : 52 54 55
 asignacion           : 1
-body                 : 48 49 50
-case                 : 39 39
-case_expression      : 13
-cond_                : 10
-cond_else            : 11
+body                 : 53 54 55
+case                 : 44 44
+case_expression      : 18
+cond_                : 15
+cond_else            : 16
 condicional          : 4
-conjuntos            : 6
-dato                 : 32 33 34 34 38 39 40 40 42 42 42 43 43 44 52 66
-definition           : 16
-defn                 : 7
-description          : 46 50
-doseq                : 12
-expresionCase        : 65
-expresionConjuntoDouble : 68 74
-expresionConjuntoEnteros : 67 72
-expresionConjuntoString : 69 76
-expresionDefnElse    : 63
-impresion            : 2 35 37 38 39 62
-instrucciones        : 45 0
-internos             : 51
-linecondition        : 36 36 37 37
-lista                : 14
-operacion            : 59 60
+conjuntos            : 5
+dato                 : 37 38 39 39 43 44 45 45 47 47 47 48 48 49 57 63 63 64 64 64 76
+definition           : 21
+defn                 : 12
+description          : 51 55
+doseq                : 17
+expresionCase        : 75
+expresionConjuntoDouble : 78 84
+expresionConjuntoEnteros : 77 82
+expresionConjuntoString : 79 86
+expresionDefnElse    : 73
+if                   : 10
+if_do                : 11
+impresion            : 2 40 42 43 44 72
+instrucciones        : 50 0
+internos             : 56
+linecondition        : 41 41 42 42
+lista                : 19
+mapa_entero          : 8
+mapa_flotante        : 9
+operacion            : 70 71
 operacion_aritmetica1 : 3
-operacionesLogicas   : 8 64 70
-operador_comparadores : 34
-sentenciaLoopRecur   : 9
-sentencia_booleana   : 15 35
-valor                : 59 59 60 60
-vectores             : 5
+operacionesLogicas   : 13 74 80
+operador_comparadores : 39 63 64
+sentenciaLoopRecur   : 14
+sentencia_booleana   : 20 40
+valor                : 70 70 71 71
+vector_entero        : 6
+vector_flotante      : 7
 
 Parsing method: LALR
 
@@ -201,60 +216,79 @@ state 0
     (2) instrucciones -> . impresion
     (3) instrucciones -> . operacion_aritmetica1
     (4) instrucciones -> . condicional
-    (5) instrucciones -> . vectores
-    (6) instrucciones -> . conjuntos
-    (7) instrucciones -> . defn
-    (8) instrucciones -> . operacionesLogicas
-    (9) instrucciones -> . sentenciaLoopRecur
-    (10) instrucciones -> . cond_
-    (11) instrucciones -> . cond_else
-    (12) instrucciones -> . doseq
-    (13) instrucciones -> . case_expression
-    (14) instrucciones -> . lista
-    (15) instrucciones -> . sentencia_booleana
-    (16) instrucciones -> . definition
-    (32) asignacion -> . LPAREN DEFICION VARIABLE dato RPAREN
-    (33) asignacion -> . LPAREN LET LCOR VARIABLE dato RCOR RPAREN
-    (52) impresion -> . LPAREN IMPRIMIR dato RPAREN
-    (59) operacion_aritmetica1 -> . LPAREN operacion valor valor RPAREN
-    (60) condicional -> . LPAREN operacion valor valor RPAREN
-    (61) vectores -> . VECTORES
-    (67) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
-    (68) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
-    (69) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
-    (63) defn -> . LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
-    (64) defn -> . LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
-    (58) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
-    (70) sentenciaLoopRecur -> . LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
-    (36) cond_ -> . LPAREN COND linecondition linecondition RPAREN
-    (37) cond_else -> . LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
-    (62) doseq -> . LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
-    (39) case_expression -> . LPAREN CASE dato case case impresion RPAREN
-    (40) lista -> . LPAREN LIST dato dato RPAREN
-    (34) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
-    (51) definition -> . LPAREN DEFFUNCION VARIABLE internos
+    (5) instrucciones -> . conjuntos
+    (6) instrucciones -> . vector_entero
+    (7) instrucciones -> . vector_flotante
+    (8) instrucciones -> . mapa_entero
+    (9) instrucciones -> . mapa_flotante
+    (10) instrucciones -> . if
+    (11) instrucciones -> . if_do
+    (12) instrucciones -> . defn
+    (13) instrucciones -> . operacionesLogicas
+    (14) instrucciones -> . sentenciaLoopRecur
+    (15) instrucciones -> . cond_
+    (16) instrucciones -> . cond_else
+    (17) instrucciones -> . doseq
+    (18) instrucciones -> . case_expression
+    (19) instrucciones -> . lista
+    (20) instrucciones -> . sentencia_booleana
+    (21) instrucciones -> . definition
+    (37) asignacion -> . LPAREN DEFICION VARIABLE dato RPAREN
+    (38) asignacion -> . LPAREN LET LCOR VARIABLE dato RCOR RPAREN
+    (57) impresion -> . LPAREN IMPRIMIR dato RPAREN
+    (70) operacion_aritmetica1 -> . LPAREN operacion valor valor RPAREN
+    (71) condicional -> . LPAREN operacion valor valor RPAREN
+    (77) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
+    (78) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
+    (79) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
+    (59) vector_entero -> . VECTOR_ENTERO
+    (60) vector_flotante -> . VECTOR_FLOTANTE
+    (61) mapa_entero -> . MAPA_ENTERO
+    (62) mapa_flotante -> . MAPA_FLOTANTE
+    (63) if -> . IF LPAREN operador_comparadores dato dato RPAREN
+    (64) if_do -> . LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+    (73) defn -> . LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
+    (74) defn -> . LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
+    (69) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (80) sentenciaLoopRecur -> . LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
+    (41) cond_ -> . LPAREN COND linecondition linecondition RPAREN
+    (42) cond_else -> . LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
+    (72) doseq -> . LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+    (44) case_expression -> . LPAREN CASE dato case case impresion RPAREN
+    (45) lista -> . LPAREN LIST dato dato RPAREN
+    (39) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
+    (56) definition -> . LPAREN DEFFUNCION VARIABLE internos RPAREN
 
-    LPAREN          shift and go to state 18
-    VECTORES        shift and go to state 19
-    NUMERAL         shift and go to state 20
+    LPAREN          shift and go to state 23
+    NUMERAL         shift and go to state 24
+    VECTOR_ENTERO   shift and go to state 25
+    VECTOR_FLOTANTE shift and go to state 26
+    MAPA_ENTERO     shift and go to state 27
+    MAPA_FLOTANTE   shift and go to state 28
+    IF              shift and go to state 29
 
     instrucciones                  shift and go to state 1
     asignacion                     shift and go to state 2
     impresion                      shift and go to state 3
     operacion_aritmetica1          shift and go to state 4
     condicional                    shift and go to state 5
-    vectores                       shift and go to state 6
-    conjuntos                      shift and go to state 7
-    defn                           shift and go to state 8
-    operacionesLogicas             shift and go to state 9
-    sentenciaLoopRecur             shift and go to state 10
-    cond_                          shift and go to state 11
-    cond_else                      shift and go to state 12
-    doseq                          shift and go to state 13
-    case_expression                shift and go to state 14
-    lista                          shift and go to state 15
-    sentencia_booleana             shift and go to state 16
-    definition                     shift and go to state 17
+    conjuntos                      shift and go to state 6
+    vector_entero                  shift and go to state 7
+    vector_flotante                shift and go to state 8
+    mapa_entero                    shift and go to state 9
+    mapa_flotante                  shift and go to state 10
+    if                             shift and go to state 11
+    if_do                          shift and go to state 12
+    defn                           shift and go to state 13
+    operacionesLogicas             shift and go to state 14
+    sentenciaLoopRecur             shift and go to state 15
+    cond_                          shift and go to state 16
+    cond_else                      shift and go to state 17
+    doseq                          shift and go to state 18
+    case_expression                shift and go to state 19
+    lista                          shift and go to state 20
+    sentencia_booleana             shift and go to state 21
+    definition                     shift and go to state 22
 
 state 1
 
@@ -267,6 +301,7 @@ state 2
     (1) instrucciones -> asignacion .
 
     $end            reduce using rule 1 (instrucciones -> asignacion .)
+    RPAREN          reduce using rule 1 (instrucciones -> asignacion .)
 
 
 state 3
@@ -274,6 +309,7 @@ state 3
     (2) instrucciones -> impresion .
 
     $end            reduce using rule 2 (instrucciones -> impresion .)
+    RPAREN          reduce using rule 2 (instrucciones -> impresion .)
 
 
 state 4
@@ -281,6 +317,7 @@ state 4
     (3) instrucciones -> operacion_aritmetica1 .
 
     $end            reduce using rule 3 (instrucciones -> operacion_aritmetica1 .)
+    RPAREN          reduce using rule 3 (instrucciones -> operacion_aritmetica1 .)
 
 
 state 5
@@ -288,1871 +325,2289 @@ state 5
     (4) instrucciones -> condicional .
 
     $end            reduce using rule 4 (instrucciones -> condicional .)
+    RPAREN          reduce using rule 4 (instrucciones -> condicional .)
 
 
 state 6
 
-    (5) instrucciones -> vectores .
+    (5) instrucciones -> conjuntos .
 
-    $end            reduce using rule 5 (instrucciones -> vectores .)
+    $end            reduce using rule 5 (instrucciones -> conjuntos .)
+    RPAREN          reduce using rule 5 (instrucciones -> conjuntos .)
 
 
 state 7
 
-    (6) instrucciones -> conjuntos .
+    (6) instrucciones -> vector_entero .
 
-    $end            reduce using rule 6 (instrucciones -> conjuntos .)
+    $end            reduce using rule 6 (instrucciones -> vector_entero .)
+    RPAREN          reduce using rule 6 (instrucciones -> vector_entero .)
 
 
 state 8
 
-    (7) instrucciones -> defn .
+    (7) instrucciones -> vector_flotante .
 
-    $end            reduce using rule 7 (instrucciones -> defn .)
+    $end            reduce using rule 7 (instrucciones -> vector_flotante .)
+    RPAREN          reduce using rule 7 (instrucciones -> vector_flotante .)
 
 
 state 9
 
-    (8) instrucciones -> operacionesLogicas .
+    (8) instrucciones -> mapa_entero .
 
-    $end            reduce using rule 8 (instrucciones -> operacionesLogicas .)
+    $end            reduce using rule 8 (instrucciones -> mapa_entero .)
+    RPAREN          reduce using rule 8 (instrucciones -> mapa_entero .)
 
 
 state 10
 
-    (9) instrucciones -> sentenciaLoopRecur .
+    (9) instrucciones -> mapa_flotante .
 
-    $end            reduce using rule 9 (instrucciones -> sentenciaLoopRecur .)
+    $end            reduce using rule 9 (instrucciones -> mapa_flotante .)
+    RPAREN          reduce using rule 9 (instrucciones -> mapa_flotante .)
 
 
 state 11
 
-    (10) instrucciones -> cond_ .
+    (10) instrucciones -> if .
 
-    $end            reduce using rule 10 (instrucciones -> cond_ .)
+    $end            reduce using rule 10 (instrucciones -> if .)
+    RPAREN          reduce using rule 10 (instrucciones -> if .)
 
 
 state 12
 
-    (11) instrucciones -> cond_else .
+    (11) instrucciones -> if_do .
 
-    $end            reduce using rule 11 (instrucciones -> cond_else .)
+    $end            reduce using rule 11 (instrucciones -> if_do .)
+    RPAREN          reduce using rule 11 (instrucciones -> if_do .)
 
 
 state 13
 
-    (12) instrucciones -> doseq .
+    (12) instrucciones -> defn .
 
-    $end            reduce using rule 12 (instrucciones -> doseq .)
+    $end            reduce using rule 12 (instrucciones -> defn .)
+    RPAREN          reduce using rule 12 (instrucciones -> defn .)
 
 
 state 14
 
-    (13) instrucciones -> case_expression .
+    (13) instrucciones -> operacionesLogicas .
 
-    $end            reduce using rule 13 (instrucciones -> case_expression .)
+    $end            reduce using rule 13 (instrucciones -> operacionesLogicas .)
+    RPAREN          reduce using rule 13 (instrucciones -> operacionesLogicas .)
 
 
 state 15
 
-    (14) instrucciones -> lista .
+    (14) instrucciones -> sentenciaLoopRecur .
 
-    $end            reduce using rule 14 (instrucciones -> lista .)
+    $end            reduce using rule 14 (instrucciones -> sentenciaLoopRecur .)
+    RPAREN          reduce using rule 14 (instrucciones -> sentenciaLoopRecur .)
 
 
 state 16
 
-    (15) instrucciones -> sentencia_booleana .
+    (15) instrucciones -> cond_ .
 
-    $end            reduce using rule 15 (instrucciones -> sentencia_booleana .)
+    $end            reduce using rule 15 (instrucciones -> cond_ .)
+    RPAREN          reduce using rule 15 (instrucciones -> cond_ .)
 
 
 state 17
 
-    (16) instrucciones -> definition .
+    (16) instrucciones -> cond_else .
 
-    $end            reduce using rule 16 (instrucciones -> definition .)
+    $end            reduce using rule 16 (instrucciones -> cond_else .)
+    RPAREN          reduce using rule 16 (instrucciones -> cond_else .)
 
 
 state 18
 
-    (32) asignacion -> LPAREN . DEFICION VARIABLE dato RPAREN
-    (33) asignacion -> LPAREN . LET LCOR VARIABLE dato RCOR RPAREN
-    (52) impresion -> LPAREN . IMPRIMIR dato RPAREN
-    (59) operacion_aritmetica1 -> LPAREN . operacion valor valor RPAREN
-    (60) condicional -> LPAREN . operacion valor valor RPAREN
-    (63) defn -> LPAREN . DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
-    (64) defn -> LPAREN . DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
-    (58) operacionesLogicas -> LPAREN . IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
-    (70) sentenciaLoopRecur -> LPAREN . LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
-    (36) cond_ -> LPAREN . COND linecondition linecondition RPAREN
-    (37) cond_else -> LPAREN . COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
-    (62) doseq -> LPAREN . DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
-    (39) case_expression -> LPAREN . CASE dato case case impresion RPAREN
-    (40) lista -> LPAREN . LIST dato dato RPAREN
-    (34) sentencia_booleana -> LPAREN . operador_comparadores dato dato RPAREN
-    (51) definition -> LPAREN . DEFFUNCION VARIABLE internos
-    (54) operacion -> . MAS
-    (55) operacion -> . MENOS
-    (56) operacion -> . PRODUCTO
-    (57) operacion -> . DIVISION
-    (26) operador_comparadores -> . COMPARA_IGUAL
-    (27) operador_comparadores -> . MENORQUE
-    (28) operador_comparadores -> . MAYORQUE
-    (29) operador_comparadores -> . MAYORIGUALQUE
-    (30) operador_comparadores -> . MENORIGUALQUE
-    (31) operador_comparadores -> . DIFERENTE
+    (17) instrucciones -> doseq .
 
-    DEFICION        shift and go to state 21
-    LET             shift and go to state 22
-    IMPRIMIR        shift and go to state 23
-    DEFFUNCION      shift and go to state 25
-    IF              shift and go to state 26
-    LOOP            shift and go to state 28
-    COND            shift and go to state 29
-    DOSEQ           shift and go to state 30
-    CASE            shift and go to state 31
-    LIST            shift and go to state 32
-    MAS             shift and go to state 34
-    MENOS           shift and go to state 35
-    PRODUCTO        shift and go to state 36
-    DIVISION        shift and go to state 37
-    COMPARA_IGUAL   shift and go to state 38
-    MENORQUE        shift and go to state 27
-    MAYORQUE        shift and go to state 39
-    MAYORIGUALQUE   shift and go to state 40
-    MENORIGUALQUE   shift and go to state 41
-    DIFERENTE       shift and go to state 42
+    $end            reduce using rule 17 (instrucciones -> doseq .)
+    RPAREN          reduce using rule 17 (instrucciones -> doseq .)
 
-    operacion                      shift and go to state 24
-    operador_comparadores          shift and go to state 33
 
 state 19
 
-    (61) vectores -> VECTORES .
+    (18) instrucciones -> case_expression .
 
-    $end            reduce using rule 61 (vectores -> VECTORES .)
+    $end            reduce using rule 18 (instrucciones -> case_expression .)
+    RPAREN          reduce using rule 18 (instrucciones -> case_expression .)
 
 
 state 20
 
-    (67) conjuntos -> NUMERAL . L_LLAVE expresionConjuntoEnteros R_LLAVE
-    (68) conjuntos -> NUMERAL . L_LLAVE expresionConjuntoDouble R_LLAVE
-    (69) conjuntos -> NUMERAL . L_LLAVE expresionConjuntoString R_LLAVE
+    (19) instrucciones -> lista .
 
-    L_LLAVE         shift and go to state 43
+    $end            reduce using rule 19 (instrucciones -> lista .)
+    RPAREN          reduce using rule 19 (instrucciones -> lista .)
 
 
 state 21
 
-    (32) asignacion -> LPAREN DEFICION . VARIABLE dato RPAREN
+    (20) instrucciones -> sentencia_booleana .
 
-    VARIABLE        shift and go to state 44
+    $end            reduce using rule 20 (instrucciones -> sentencia_booleana .)
+    RPAREN          reduce using rule 20 (instrucciones -> sentencia_booleana .)
 
 
 state 22
 
-    (33) asignacion -> LPAREN LET . LCOR VARIABLE dato RCOR RPAREN
+    (21) instrucciones -> definition .
 
-    LCOR            shift and go to state 45
+    $end            reduce using rule 21 (instrucciones -> definition .)
+    RPAREN          reduce using rule 21 (instrucciones -> definition .)
 
 
 state 23
 
-    (52) impresion -> LPAREN IMPRIMIR . dato RPAREN
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (37) asignacion -> LPAREN . DEFICION VARIABLE dato RPAREN
+    (38) asignacion -> LPAREN . LET LCOR VARIABLE dato RCOR RPAREN
+    (57) impresion -> LPAREN . IMPRIMIR dato RPAREN
+    (70) operacion_aritmetica1 -> LPAREN . operacion valor valor RPAREN
+    (71) condicional -> LPAREN . operacion valor valor RPAREN
+    (64) if_do -> LPAREN . IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+    (73) defn -> LPAREN . DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
+    (74) defn -> LPAREN . DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
+    (69) operacionesLogicas -> LPAREN . IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (80) sentenciaLoopRecur -> LPAREN . LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
+    (41) cond_ -> LPAREN . COND linecondition linecondition RPAREN
+    (42) cond_else -> LPAREN . COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
+    (72) doseq -> LPAREN . DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+    (44) case_expression -> LPAREN . CASE dato case case impresion RPAREN
+    (45) lista -> LPAREN . LIST dato dato RPAREN
+    (39) sentencia_booleana -> LPAREN . operador_comparadores dato dato RPAREN
+    (56) definition -> LPAREN . DEFFUNCION VARIABLE internos RPAREN
+    (65) operacion -> . MAS
+    (66) operacion -> . MENOS
+    (67) operacion -> . PRODUCTO
+    (68) operacion -> . DIVISION
+    (31) operador_comparadores -> . COMPARA_IGUAL
+    (32) operador_comparadores -> . MENORQUE
+    (33) operador_comparadores -> . MAYORQUE
+    (34) operador_comparadores -> . MAYORIGUALQUE
+    (35) operador_comparadores -> . MENORIGUALQUE
+    (36) operador_comparadores -> . DIFERENTE
 
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    DEFICION        shift and go to state 30
+    LET             shift and go to state 31
+    IMPRIMIR        shift and go to state 32
+    IF              shift and go to state 34
+    DEFFUNCION      shift and go to state 36
+    LOOP            shift and go to state 38
+    COND            shift and go to state 39
+    DOSEQ           shift and go to state 40
+    CASE            shift and go to state 41
+    LIST            shift and go to state 42
+    MAS             shift and go to state 43
+    MENOS           shift and go to state 44
+    PRODUCTO        shift and go to state 45
+    DIVISION        shift and go to state 46
+    COMPARA_IGUAL   shift and go to state 47
+    MENORQUE        shift and go to state 37
+    MAYORQUE        shift and go to state 48
+    MAYORIGUALQUE   shift and go to state 49
+    MENORIGUALQUE   shift and go to state 50
+    DIFERENTE       shift and go to state 51
 
-    dato                           shift and go to state 46
+    operacion                      shift and go to state 33
+    operador_comparadores          shift and go to state 35
 
 state 24
 
-    (59) operacion_aritmetica1 -> LPAREN operacion . valor valor RPAREN
-    (60) condicional -> LPAREN operacion . valor valor RPAREN
-    (23) valor -> . ENTERO
-    (24) valor -> . FLOTANTE
-    (25) valor -> . BOOLEAN
-    (53) valor -> . VARIABLE
+    (77) conjuntos -> NUMERAL . L_LLAVE expresionConjuntoEnteros R_LLAVE
+    (78) conjuntos -> NUMERAL . L_LLAVE expresionConjuntoDouble R_LLAVE
+    (79) conjuntos -> NUMERAL . L_LLAVE expresionConjuntoString R_LLAVE
 
-    ENTERO          shift and go to state 54
-    FLOTANTE        shift and go to state 55
-    BOOLEAN         shift and go to state 56
-    VARIABLE        shift and go to state 57
+    L_LLAVE         shift and go to state 52
 
-    valor                          shift and go to state 53
 
 state 25
 
-    (63) defn -> LPAREN DEFFUNCION . VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
-    (64) defn -> LPAREN DEFFUNCION . INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
-    (51) definition -> LPAREN DEFFUNCION . VARIABLE internos
+    (59) vector_entero -> VECTOR_ENTERO .
 
-    VARIABLE        shift and go to state 58
-    INCREASE        shift and go to state 59
+    $end            reduce using rule 59 (vector_entero -> VECTOR_ENTERO .)
+    RPAREN          reduce using rule 59 (vector_entero -> VECTOR_ENTERO .)
 
 
 state 26
 
-    (58) operacionesLogicas -> LPAREN IF . LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (60) vector_flotante -> VECTOR_FLOTANTE .
 
-    LPAREN          shift and go to state 60
+    $end            reduce using rule 60 (vector_flotante -> VECTOR_FLOTANTE .)
+    RPAREN          reduce using rule 60 (vector_flotante -> VECTOR_FLOTANTE .)
 
 
 state 27
 
-    (27) operador_comparadores -> MENORQUE .
+    (61) mapa_entero -> MAPA_ENTERO .
 
-    STRING          reduce using rule 27 (operador_comparadores -> MENORQUE .)
-    CHAR            reduce using rule 27 (operador_comparadores -> MENORQUE .)
-    ENTERO          reduce using rule 27 (operador_comparadores -> MENORQUE .)
-    FLOTANTE        reduce using rule 27 (operador_comparadores -> MENORQUE .)
-    BOOLEAN         reduce using rule 27 (operador_comparadores -> MENORQUE .)
-    VARIABLE        reduce using rule 27 (operador_comparadores -> MENORQUE .)
+    $end            reduce using rule 61 (mapa_entero -> MAPA_ENTERO .)
+    RPAREN          reduce using rule 61 (mapa_entero -> MAPA_ENTERO .)
 
 
 state 28
 
-    (70) sentenciaLoopRecur -> LPAREN LOOP . LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
+    (62) mapa_flotante -> MAPA_FLOTANTE .
 
-    LCOR            shift and go to state 61
+    $end            reduce using rule 62 (mapa_flotante -> MAPA_FLOTANTE .)
+    RPAREN          reduce using rule 62 (mapa_flotante -> MAPA_FLOTANTE .)
 
 
 state 29
 
-    (36) cond_ -> LPAREN COND . linecondition linecondition RPAREN
-    (37) cond_else -> LPAREN COND . linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
-    (35) linecondition -> . sentencia_booleana impresion
-    (34) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
+    (63) if -> IF . LPAREN operador_comparadores dato dato RPAREN
 
-    LPAREN          shift and go to state 62
+    LPAREN          shift and go to state 53
 
-    linecondition                  shift and go to state 63
-    sentencia_booleana             shift and go to state 64
 
 state 30
 
-    (62) doseq -> LPAREN DOSEQ . LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+    (37) asignacion -> LPAREN DEFICION . VARIABLE dato RPAREN
 
-    LCOR            shift and go to state 65
+    VARIABLE        shift and go to state 54
 
 
 state 31
 
-    (39) case_expression -> LPAREN CASE . dato case case impresion RPAREN
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (38) asignacion -> LPAREN LET . LCOR VARIABLE dato RCOR RPAREN
 
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    LCOR            shift and go to state 55
 
-    dato                           shift and go to state 66
 
 state 32
 
-    (40) lista -> LPAREN LIST . dato dato RPAREN
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (57) impresion -> LPAREN IMPRIMIR . dato RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
-    dato                           shift and go to state 67
+    dato                           shift and go to state 56
 
 state 33
 
-    (34) sentencia_booleana -> LPAREN operador_comparadores . dato dato RPAREN
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (70) operacion_aritmetica1 -> LPAREN operacion . valor valor RPAREN
+    (71) condicional -> LPAREN operacion . valor valor RPAREN
+    (28) valor -> . ENTERO
+    (29) valor -> . FLOTANTE
+    (30) valor -> . BOOLEAN
+    (58) valor -> . VARIABLE
 
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    ENTERO          shift and go to state 64
+    FLOTANTE        shift and go to state 65
+    BOOLEAN         shift and go to state 66
+    VARIABLE        shift and go to state 67
 
-    dato                           shift and go to state 68
+    valor                          shift and go to state 63
 
 state 34
 
-    (54) operacion -> MAS .
+    (64) if_do -> LPAREN IF . LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+    (69) operacionesLogicas -> LPAREN IF . LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
 
-    ENTERO          reduce using rule 54 (operacion -> MAS .)
-    FLOTANTE        reduce using rule 54 (operacion -> MAS .)
-    BOOLEAN         reduce using rule 54 (operacion -> MAS .)
-    VARIABLE        reduce using rule 54 (operacion -> MAS .)
+    LPAREN          shift and go to state 68
 
 
 state 35
 
-    (55) operacion -> MENOS .
+    (39) sentencia_booleana -> LPAREN operador_comparadores . dato dato RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    ENTERO          reduce using rule 55 (operacion -> MENOS .)
-    FLOTANTE        reduce using rule 55 (operacion -> MENOS .)
-    BOOLEAN         reduce using rule 55 (operacion -> MENOS .)
-    VARIABLE        reduce using rule 55 (operacion -> MENOS .)
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 69
 
 state 36
 
-    (56) operacion -> PRODUCTO .
+    (73) defn -> LPAREN DEFFUNCION . VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
+    (74) defn -> LPAREN DEFFUNCION . INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
+    (56) definition -> LPAREN DEFFUNCION . VARIABLE internos RPAREN
 
-    ENTERO          reduce using rule 56 (operacion -> PRODUCTO .)
-    FLOTANTE        reduce using rule 56 (operacion -> PRODUCTO .)
-    BOOLEAN         reduce using rule 56 (operacion -> PRODUCTO .)
-    VARIABLE        reduce using rule 56 (operacion -> PRODUCTO .)
+    VARIABLE        shift and go to state 70
+    INCREASE        shift and go to state 71
 
 
 state 37
 
-    (57) operacion -> DIVISION .
+    (32) operador_comparadores -> MENORQUE .
 
-    ENTERO          reduce using rule 57 (operacion -> DIVISION .)
-    FLOTANTE        reduce using rule 57 (operacion -> DIVISION .)
-    BOOLEAN         reduce using rule 57 (operacion -> DIVISION .)
-    VARIABLE        reduce using rule 57 (operacion -> DIVISION .)
+    STRING          reduce using rule 32 (operador_comparadores -> MENORQUE .)
+    CHAR            reduce using rule 32 (operador_comparadores -> MENORQUE .)
+    ENTERO          reduce using rule 32 (operador_comparadores -> MENORQUE .)
+    FLOTANTE        reduce using rule 32 (operador_comparadores -> MENORQUE .)
+    BOOLEAN         reduce using rule 32 (operador_comparadores -> MENORQUE .)
+    VARIABLE        reduce using rule 32 (operador_comparadores -> MENORQUE .)
 
 
 state 38
 
-    (26) operador_comparadores -> COMPARA_IGUAL .
+    (80) sentenciaLoopRecur -> LPAREN LOOP . LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
 
-    STRING          reduce using rule 26 (operador_comparadores -> COMPARA_IGUAL .)
-    CHAR            reduce using rule 26 (operador_comparadores -> COMPARA_IGUAL .)
-    ENTERO          reduce using rule 26 (operador_comparadores -> COMPARA_IGUAL .)
-    FLOTANTE        reduce using rule 26 (operador_comparadores -> COMPARA_IGUAL .)
-    BOOLEAN         reduce using rule 26 (operador_comparadores -> COMPARA_IGUAL .)
-    VARIABLE        reduce using rule 26 (operador_comparadores -> COMPARA_IGUAL .)
+    LCOR            shift and go to state 72
 
 
 state 39
 
-    (28) operador_comparadores -> MAYORQUE .
+    (41) cond_ -> LPAREN COND . linecondition linecondition RPAREN
+    (42) cond_else -> LPAREN COND . linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
+    (40) linecondition -> . sentencia_booleana impresion
+    (39) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
 
-    STRING          reduce using rule 28 (operador_comparadores -> MAYORQUE .)
-    CHAR            reduce using rule 28 (operador_comparadores -> MAYORQUE .)
-    ENTERO          reduce using rule 28 (operador_comparadores -> MAYORQUE .)
-    FLOTANTE        reduce using rule 28 (operador_comparadores -> MAYORQUE .)
-    BOOLEAN         reduce using rule 28 (operador_comparadores -> MAYORQUE .)
-    VARIABLE        reduce using rule 28 (operador_comparadores -> MAYORQUE .)
+    LPAREN          shift and go to state 73
 
+    linecondition                  shift and go to state 74
+    sentencia_booleana             shift and go to state 75
 
 state 40
 
-    (29) operador_comparadores -> MAYORIGUALQUE .
+    (72) doseq -> LPAREN DOSEQ . LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
 
-    STRING          reduce using rule 29 (operador_comparadores -> MAYORIGUALQUE .)
-    CHAR            reduce using rule 29 (operador_comparadores -> MAYORIGUALQUE .)
-    ENTERO          reduce using rule 29 (operador_comparadores -> MAYORIGUALQUE .)
-    FLOTANTE        reduce using rule 29 (operador_comparadores -> MAYORIGUALQUE .)
-    BOOLEAN         reduce using rule 29 (operador_comparadores -> MAYORIGUALQUE .)
-    VARIABLE        reduce using rule 29 (operador_comparadores -> MAYORIGUALQUE .)
+    LCOR            shift and go to state 76
 
 
 state 41
 
-    (30) operador_comparadores -> MENORIGUALQUE .
+    (44) case_expression -> LPAREN CASE . dato case case impresion RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    STRING          reduce using rule 30 (operador_comparadores -> MENORIGUALQUE .)
-    CHAR            reduce using rule 30 (operador_comparadores -> MENORIGUALQUE .)
-    ENTERO          reduce using rule 30 (operador_comparadores -> MENORIGUALQUE .)
-    FLOTANTE        reduce using rule 30 (operador_comparadores -> MENORIGUALQUE .)
-    BOOLEAN         reduce using rule 30 (operador_comparadores -> MENORIGUALQUE .)
-    VARIABLE        reduce using rule 30 (operador_comparadores -> MENORIGUALQUE .)
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 77
 
 state 42
 
-    (31) operador_comparadores -> DIFERENTE .
+    (45) lista -> LPAREN LIST . dato dato RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    STRING          reduce using rule 31 (operador_comparadores -> DIFERENTE .)
-    CHAR            reduce using rule 31 (operador_comparadores -> DIFERENTE .)
-    ENTERO          reduce using rule 31 (operador_comparadores -> DIFERENTE .)
-    FLOTANTE        reduce using rule 31 (operador_comparadores -> DIFERENTE .)
-    BOOLEAN         reduce using rule 31 (operador_comparadores -> DIFERENTE .)
-    VARIABLE        reduce using rule 31 (operador_comparadores -> DIFERENTE .)
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 78
 
 state 43
 
-    (67) conjuntos -> NUMERAL L_LLAVE . expresionConjuntoEnteros R_LLAVE
-    (68) conjuntos -> NUMERAL L_LLAVE . expresionConjuntoDouble R_LLAVE
-    (69) conjuntos -> NUMERAL L_LLAVE . expresionConjuntoString R_LLAVE
-    (71) expresionConjuntoEnteros -> . ENTERO
-    (72) expresionConjuntoEnteros -> . ENTERO expresionConjuntoEnteros
-    (73) expresionConjuntoDouble -> . FLOTANTE
-    (74) expresionConjuntoDouble -> . FLOTANTE expresionConjuntoDouble
-    (75) expresionConjuntoString -> . STRING
-    (76) expresionConjuntoString -> . STRING expresionConjuntoString
+    (65) operacion -> MAS .
 
-    ENTERO          shift and go to state 72
-    FLOTANTE        shift and go to state 73
-    STRING          shift and go to state 74
+    ENTERO          reduce using rule 65 (operacion -> MAS .)
+    FLOTANTE        reduce using rule 65 (operacion -> MAS .)
+    BOOLEAN         reduce using rule 65 (operacion -> MAS .)
+    VARIABLE        reduce using rule 65 (operacion -> MAS .)
 
-    expresionConjuntoEnteros       shift and go to state 69
-    expresionConjuntoDouble        shift and go to state 70
-    expresionConjuntoString        shift and go to state 71
 
 state 44
 
-    (32) asignacion -> LPAREN DEFICION VARIABLE . dato RPAREN
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (66) operacion -> MENOS .
 
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    ENTERO          reduce using rule 66 (operacion -> MENOS .)
+    FLOTANTE        reduce using rule 66 (operacion -> MENOS .)
+    BOOLEAN         reduce using rule 66 (operacion -> MENOS .)
+    VARIABLE        reduce using rule 66 (operacion -> MENOS .)
 
-    dato                           shift and go to state 75
 
 state 45
 
-    (33) asignacion -> LPAREN LET LCOR . VARIABLE dato RCOR RPAREN
+    (67) operacion -> PRODUCTO .
 
-    VARIABLE        shift and go to state 76
+    ENTERO          reduce using rule 67 (operacion -> PRODUCTO .)
+    FLOTANTE        reduce using rule 67 (operacion -> PRODUCTO .)
+    BOOLEAN         reduce using rule 67 (operacion -> PRODUCTO .)
+    VARIABLE        reduce using rule 67 (operacion -> PRODUCTO .)
 
 
 state 46
 
-    (52) impresion -> LPAREN IMPRIMIR dato . RPAREN
+    (68) operacion -> DIVISION .
 
-    RPAREN          shift and go to state 77
+    ENTERO          reduce using rule 68 (operacion -> DIVISION .)
+    FLOTANTE        reduce using rule 68 (operacion -> DIVISION .)
+    BOOLEAN         reduce using rule 68 (operacion -> DIVISION .)
+    VARIABLE        reduce using rule 68 (operacion -> DIVISION .)
 
 
 state 47
 
-    (17) dato -> STRING .
+    (31) operador_comparadores -> COMPARA_IGUAL .
 
-    RPAREN          reduce using rule 17 (dato -> STRING .)
-    STRING          reduce using rule 17 (dato -> STRING .)
-    CHAR            reduce using rule 17 (dato -> STRING .)
-    ENTERO          reduce using rule 17 (dato -> STRING .)
-    FLOTANTE        reduce using rule 17 (dato -> STRING .)
-    BOOLEAN         reduce using rule 17 (dato -> STRING .)
-    VARIABLE        reduce using rule 17 (dato -> STRING .)
-    LPAREN          reduce using rule 17 (dato -> STRING .)
-    RCOR            reduce using rule 17 (dato -> STRING .)
+    STRING          reduce using rule 31 (operador_comparadores -> COMPARA_IGUAL .)
+    CHAR            reduce using rule 31 (operador_comparadores -> COMPARA_IGUAL .)
+    ENTERO          reduce using rule 31 (operador_comparadores -> COMPARA_IGUAL .)
+    FLOTANTE        reduce using rule 31 (operador_comparadores -> COMPARA_IGUAL .)
+    BOOLEAN         reduce using rule 31 (operador_comparadores -> COMPARA_IGUAL .)
+    VARIABLE        reduce using rule 31 (operador_comparadores -> COMPARA_IGUAL .)
 
 
 state 48
 
-    (18) dato -> CHAR .
+    (33) operador_comparadores -> MAYORQUE .
 
-    RPAREN          reduce using rule 18 (dato -> CHAR .)
-    STRING          reduce using rule 18 (dato -> CHAR .)
-    CHAR            reduce using rule 18 (dato -> CHAR .)
-    ENTERO          reduce using rule 18 (dato -> CHAR .)
-    FLOTANTE        reduce using rule 18 (dato -> CHAR .)
-    BOOLEAN         reduce using rule 18 (dato -> CHAR .)
-    VARIABLE        reduce using rule 18 (dato -> CHAR .)
-    LPAREN          reduce using rule 18 (dato -> CHAR .)
-    RCOR            reduce using rule 18 (dato -> CHAR .)
+    STRING          reduce using rule 33 (operador_comparadores -> MAYORQUE .)
+    CHAR            reduce using rule 33 (operador_comparadores -> MAYORQUE .)
+    ENTERO          reduce using rule 33 (operador_comparadores -> MAYORQUE .)
+    FLOTANTE        reduce using rule 33 (operador_comparadores -> MAYORQUE .)
+    BOOLEAN         reduce using rule 33 (operador_comparadores -> MAYORQUE .)
+    VARIABLE        reduce using rule 33 (operador_comparadores -> MAYORQUE .)
 
 
 state 49
 
-    (19) dato -> ENTERO .
+    (34) operador_comparadores -> MAYORIGUALQUE .
 
-    RPAREN          reduce using rule 19 (dato -> ENTERO .)
-    STRING          reduce using rule 19 (dato -> ENTERO .)
-    CHAR            reduce using rule 19 (dato -> ENTERO .)
-    ENTERO          reduce using rule 19 (dato -> ENTERO .)
-    FLOTANTE        reduce using rule 19 (dato -> ENTERO .)
-    BOOLEAN         reduce using rule 19 (dato -> ENTERO .)
-    VARIABLE        reduce using rule 19 (dato -> ENTERO .)
-    LPAREN          reduce using rule 19 (dato -> ENTERO .)
-    RCOR            reduce using rule 19 (dato -> ENTERO .)
+    STRING          reduce using rule 34 (operador_comparadores -> MAYORIGUALQUE .)
+    CHAR            reduce using rule 34 (operador_comparadores -> MAYORIGUALQUE .)
+    ENTERO          reduce using rule 34 (operador_comparadores -> MAYORIGUALQUE .)
+    FLOTANTE        reduce using rule 34 (operador_comparadores -> MAYORIGUALQUE .)
+    BOOLEAN         reduce using rule 34 (operador_comparadores -> MAYORIGUALQUE .)
+    VARIABLE        reduce using rule 34 (operador_comparadores -> MAYORIGUALQUE .)
 
 
 state 50
 
-    (20) dato -> FLOTANTE .
+    (35) operador_comparadores -> MENORIGUALQUE .
 
-    RPAREN          reduce using rule 20 (dato -> FLOTANTE .)
-    STRING          reduce using rule 20 (dato -> FLOTANTE .)
-    CHAR            reduce using rule 20 (dato -> FLOTANTE .)
-    ENTERO          reduce using rule 20 (dato -> FLOTANTE .)
-    FLOTANTE        reduce using rule 20 (dato -> FLOTANTE .)
-    BOOLEAN         reduce using rule 20 (dato -> FLOTANTE .)
-    VARIABLE        reduce using rule 20 (dato -> FLOTANTE .)
-    LPAREN          reduce using rule 20 (dato -> FLOTANTE .)
-    RCOR            reduce using rule 20 (dato -> FLOTANTE .)
+    STRING          reduce using rule 35 (operador_comparadores -> MENORIGUALQUE .)
+    CHAR            reduce using rule 35 (operador_comparadores -> MENORIGUALQUE .)
+    ENTERO          reduce using rule 35 (operador_comparadores -> MENORIGUALQUE .)
+    FLOTANTE        reduce using rule 35 (operador_comparadores -> MENORIGUALQUE .)
+    BOOLEAN         reduce using rule 35 (operador_comparadores -> MENORIGUALQUE .)
+    VARIABLE        reduce using rule 35 (operador_comparadores -> MENORIGUALQUE .)
 
 
 state 51
 
-    (21) dato -> BOOLEAN .
+    (36) operador_comparadores -> DIFERENTE .
 
-    RPAREN          reduce using rule 21 (dato -> BOOLEAN .)
-    STRING          reduce using rule 21 (dato -> BOOLEAN .)
-    CHAR            reduce using rule 21 (dato -> BOOLEAN .)
-    ENTERO          reduce using rule 21 (dato -> BOOLEAN .)
-    FLOTANTE        reduce using rule 21 (dato -> BOOLEAN .)
-    BOOLEAN         reduce using rule 21 (dato -> BOOLEAN .)
-    VARIABLE        reduce using rule 21 (dato -> BOOLEAN .)
-    LPAREN          reduce using rule 21 (dato -> BOOLEAN .)
-    RCOR            reduce using rule 21 (dato -> BOOLEAN .)
+    STRING          reduce using rule 36 (operador_comparadores -> DIFERENTE .)
+    CHAR            reduce using rule 36 (operador_comparadores -> DIFERENTE .)
+    ENTERO          reduce using rule 36 (operador_comparadores -> DIFERENTE .)
+    FLOTANTE        reduce using rule 36 (operador_comparadores -> DIFERENTE .)
+    BOOLEAN         reduce using rule 36 (operador_comparadores -> DIFERENTE .)
+    VARIABLE        reduce using rule 36 (operador_comparadores -> DIFERENTE .)
 
 
 state 52
 
-    (22) dato -> VARIABLE .
+    (77) conjuntos -> NUMERAL L_LLAVE . expresionConjuntoEnteros R_LLAVE
+    (78) conjuntos -> NUMERAL L_LLAVE . expresionConjuntoDouble R_LLAVE
+    (79) conjuntos -> NUMERAL L_LLAVE . expresionConjuntoString R_LLAVE
+    (81) expresionConjuntoEnteros -> . ENTERO
+    (82) expresionConjuntoEnteros -> . ENTERO expresionConjuntoEnteros
+    (83) expresionConjuntoDouble -> . FLOTANTE
+    (84) expresionConjuntoDouble -> . FLOTANTE expresionConjuntoDouble
+    (85) expresionConjuntoString -> . STRING
+    (86) expresionConjuntoString -> . STRING expresionConjuntoString
 
-    RPAREN          reduce using rule 22 (dato -> VARIABLE .)
-    STRING          reduce using rule 22 (dato -> VARIABLE .)
-    CHAR            reduce using rule 22 (dato -> VARIABLE .)
-    ENTERO          reduce using rule 22 (dato -> VARIABLE .)
-    FLOTANTE        reduce using rule 22 (dato -> VARIABLE .)
-    BOOLEAN         reduce using rule 22 (dato -> VARIABLE .)
-    VARIABLE        reduce using rule 22 (dato -> VARIABLE .)
-    LPAREN          reduce using rule 22 (dato -> VARIABLE .)
-    RCOR            reduce using rule 22 (dato -> VARIABLE .)
+    ENTERO          shift and go to state 82
+    FLOTANTE        shift and go to state 83
+    STRING          shift and go to state 84
 
+    expresionConjuntoEnteros       shift and go to state 79
+    expresionConjuntoDouble        shift and go to state 80
+    expresionConjuntoString        shift and go to state 81
 
 state 53
 
-    (59) operacion_aritmetica1 -> LPAREN operacion valor . valor RPAREN
-    (60) condicional -> LPAREN operacion valor . valor RPAREN
-    (23) valor -> . ENTERO
-    (24) valor -> . FLOTANTE
-    (25) valor -> . BOOLEAN
-    (53) valor -> . VARIABLE
+    (63) if -> IF LPAREN . operador_comparadores dato dato RPAREN
+    (31) operador_comparadores -> . COMPARA_IGUAL
+    (32) operador_comparadores -> . MENORQUE
+    (33) operador_comparadores -> . MAYORQUE
+    (34) operador_comparadores -> . MAYORIGUALQUE
+    (35) operador_comparadores -> . MENORIGUALQUE
+    (36) operador_comparadores -> . DIFERENTE
 
-    ENTERO          shift and go to state 54
-    FLOTANTE        shift and go to state 55
-    BOOLEAN         shift and go to state 56
-    VARIABLE        shift and go to state 57
+    COMPARA_IGUAL   shift and go to state 47
+    MENORQUE        shift and go to state 37
+    MAYORQUE        shift and go to state 48
+    MAYORIGUALQUE   shift and go to state 49
+    MENORIGUALQUE   shift and go to state 50
+    DIFERENTE       shift and go to state 51
 
-    valor                          shift and go to state 78
+    operador_comparadores          shift and go to state 85
 
 state 54
 
-    (23) valor -> ENTERO .
+    (37) asignacion -> LPAREN DEFICION VARIABLE . dato RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    ENTERO          reduce using rule 23 (valor -> ENTERO .)
-    FLOTANTE        reduce using rule 23 (valor -> ENTERO .)
-    BOOLEAN         reduce using rule 23 (valor -> ENTERO .)
-    VARIABLE        reduce using rule 23 (valor -> ENTERO .)
-    RPAREN          reduce using rule 23 (valor -> ENTERO .)
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 86
 
 state 55
 
-    (24) valor -> FLOTANTE .
+    (38) asignacion -> LPAREN LET LCOR . VARIABLE dato RCOR RPAREN
 
-    ENTERO          reduce using rule 24 (valor -> FLOTANTE .)
-    FLOTANTE        reduce using rule 24 (valor -> FLOTANTE .)
-    BOOLEAN         reduce using rule 24 (valor -> FLOTANTE .)
-    VARIABLE        reduce using rule 24 (valor -> FLOTANTE .)
-    RPAREN          reduce using rule 24 (valor -> FLOTANTE .)
+    VARIABLE        shift and go to state 87
 
 
 state 56
 
-    (25) valor -> BOOLEAN .
+    (57) impresion -> LPAREN IMPRIMIR dato . RPAREN
 
-    ENTERO          reduce using rule 25 (valor -> BOOLEAN .)
-    FLOTANTE        reduce using rule 25 (valor -> BOOLEAN .)
-    BOOLEAN         reduce using rule 25 (valor -> BOOLEAN .)
-    VARIABLE        reduce using rule 25 (valor -> BOOLEAN .)
-    RPAREN          reduce using rule 25 (valor -> BOOLEAN .)
+    RPAREN          shift and go to state 88
 
 
 state 57
 
-    (53) valor -> VARIABLE .
+    (22) dato -> STRING .
 
-    ENTERO          reduce using rule 53 (valor -> VARIABLE .)
-    FLOTANTE        reduce using rule 53 (valor -> VARIABLE .)
-    BOOLEAN         reduce using rule 53 (valor -> VARIABLE .)
-    VARIABLE        reduce using rule 53 (valor -> VARIABLE .)
-    RPAREN          reduce using rule 53 (valor -> VARIABLE .)
+    RPAREN          reduce using rule 22 (dato -> STRING .)
+    STRING          reduce using rule 22 (dato -> STRING .)
+    CHAR            reduce using rule 22 (dato -> STRING .)
+    ENTERO          reduce using rule 22 (dato -> STRING .)
+    FLOTANTE        reduce using rule 22 (dato -> STRING .)
+    BOOLEAN         reduce using rule 22 (dato -> STRING .)
+    VARIABLE        reduce using rule 22 (dato -> STRING .)
+    LPAREN          reduce using rule 22 (dato -> STRING .)
+    RCOR            reduce using rule 22 (dato -> STRING .)
 
 
 state 58
 
-    (63) defn -> LPAREN DEFFUNCION VARIABLE . LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
-    (51) definition -> LPAREN DEFFUNCION VARIABLE . internos
-    (46) internos -> . description
-    (47) internos -> . argumments
-    (48) internos -> . body
-    (49) internos -> . argumments body
-    (50) internos -> . description argumments body
-    (41) description -> . STRING
-    (42) argumments -> . LCOR dato dato dato RCOR
-    (43) argumments -> . LCOR dato dato RCOR
-    (44) argumments -> . LCOR dato RCOR
-    (45) body -> . instrucciones
-    (1) instrucciones -> . asignacion
-    (2) instrucciones -> . impresion
-    (3) instrucciones -> . operacion_aritmetica1
-    (4) instrucciones -> . condicional
-    (5) instrucciones -> . vectores
-    (6) instrucciones -> . conjuntos
-    (7) instrucciones -> . defn
-    (8) instrucciones -> . operacionesLogicas
-    (9) instrucciones -> . sentenciaLoopRecur
-    (10) instrucciones -> . cond_
-    (11) instrucciones -> . cond_else
-    (12) instrucciones -> . doseq
-    (13) instrucciones -> . case_expression
-    (14) instrucciones -> . lista
-    (15) instrucciones -> . sentencia_booleana
-    (16) instrucciones -> . definition
-    (32) asignacion -> . LPAREN DEFICION VARIABLE dato RPAREN
-    (33) asignacion -> . LPAREN LET LCOR VARIABLE dato RCOR RPAREN
-    (52) impresion -> . LPAREN IMPRIMIR dato RPAREN
-    (59) operacion_aritmetica1 -> . LPAREN operacion valor valor RPAREN
-    (60) condicional -> . LPAREN operacion valor valor RPAREN
-    (61) vectores -> . VECTORES
-    (67) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
-    (68) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
-    (69) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
-    (63) defn -> . LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
-    (64) defn -> . LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
-    (58) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
-    (70) sentenciaLoopRecur -> . LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
-    (36) cond_ -> . LPAREN COND linecondition linecondition RPAREN
-    (37) cond_else -> . LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
-    (62) doseq -> . LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
-    (39) case_expression -> . LPAREN CASE dato case case impresion RPAREN
-    (40) lista -> . LPAREN LIST dato dato RPAREN
-    (34) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
-    (51) definition -> . LPAREN DEFFUNCION VARIABLE internos
+    (23) dato -> CHAR .
 
-    LCOR            shift and go to state 79
-    STRING          shift and go to state 84
-    LPAREN          shift and go to state 18
-    VECTORES        shift and go to state 19
-    NUMERAL         shift and go to state 20
+    RPAREN          reduce using rule 23 (dato -> CHAR .)
+    STRING          reduce using rule 23 (dato -> CHAR .)
+    CHAR            reduce using rule 23 (dato -> CHAR .)
+    ENTERO          reduce using rule 23 (dato -> CHAR .)
+    FLOTANTE        reduce using rule 23 (dato -> CHAR .)
+    BOOLEAN         reduce using rule 23 (dato -> CHAR .)
+    VARIABLE        reduce using rule 23 (dato -> CHAR .)
+    LPAREN          reduce using rule 23 (dato -> CHAR .)
+    RCOR            reduce using rule 23 (dato -> CHAR .)
 
-    internos                       shift and go to state 80
-    description                    shift and go to state 81
-    argumments                     shift and go to state 82
-    body                           shift and go to state 83
-    instrucciones                  shift and go to state 85
-    asignacion                     shift and go to state 2
-    impresion                      shift and go to state 3
-    operacion_aritmetica1          shift and go to state 4
-    condicional                    shift and go to state 5
-    vectores                       shift and go to state 6
-    conjuntos                      shift and go to state 7
-    defn                           shift and go to state 8
-    operacionesLogicas             shift and go to state 9
-    sentenciaLoopRecur             shift and go to state 10
-    cond_                          shift and go to state 11
-    cond_else                      shift and go to state 12
-    doseq                          shift and go to state 13
-    case_expression                shift and go to state 14
-    lista                          shift and go to state 15
-    sentencia_booleana             shift and go to state 16
-    definition                     shift and go to state 17
 
 state 59
 
-    (64) defn -> LPAREN DEFFUNCION INCREASE . LCOR VARIABLE RCOR operacionesLogicas RPAREN
+    (24) dato -> ENTERO .
 
-    LCOR            shift and go to state 86
+    RPAREN          reduce using rule 24 (dato -> ENTERO .)
+    STRING          reduce using rule 24 (dato -> ENTERO .)
+    CHAR            reduce using rule 24 (dato -> ENTERO .)
+    ENTERO          reduce using rule 24 (dato -> ENTERO .)
+    FLOTANTE        reduce using rule 24 (dato -> ENTERO .)
+    BOOLEAN         reduce using rule 24 (dato -> ENTERO .)
+    VARIABLE        reduce using rule 24 (dato -> ENTERO .)
+    LPAREN          reduce using rule 24 (dato -> ENTERO .)
+    RCOR            reduce using rule 24 (dato -> ENTERO .)
 
 
 state 60
 
-    (58) operacionesLogicas -> LPAREN IF LPAREN . MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (25) dato -> FLOTANTE .
 
-    MENORQUE        shift and go to state 87
+    RPAREN          reduce using rule 25 (dato -> FLOTANTE .)
+    STRING          reduce using rule 25 (dato -> FLOTANTE .)
+    CHAR            reduce using rule 25 (dato -> FLOTANTE .)
+    ENTERO          reduce using rule 25 (dato -> FLOTANTE .)
+    FLOTANTE        reduce using rule 25 (dato -> FLOTANTE .)
+    BOOLEAN         reduce using rule 25 (dato -> FLOTANTE .)
+    VARIABLE        reduce using rule 25 (dato -> FLOTANTE .)
+    LPAREN          reduce using rule 25 (dato -> FLOTANTE .)
+    RCOR            reduce using rule 25 (dato -> FLOTANTE .)
 
 
 state 61
 
-    (70) sentenciaLoopRecur -> LPAREN LOOP LCOR . VARIABLE ENTERO RCOR operacionesLogicas RPAREN
+    (26) dato -> BOOLEAN .
 
-    VARIABLE        shift and go to state 88
+    RPAREN          reduce using rule 26 (dato -> BOOLEAN .)
+    STRING          reduce using rule 26 (dato -> BOOLEAN .)
+    CHAR            reduce using rule 26 (dato -> BOOLEAN .)
+    ENTERO          reduce using rule 26 (dato -> BOOLEAN .)
+    FLOTANTE        reduce using rule 26 (dato -> BOOLEAN .)
+    BOOLEAN         reduce using rule 26 (dato -> BOOLEAN .)
+    VARIABLE        reduce using rule 26 (dato -> BOOLEAN .)
+    LPAREN          reduce using rule 26 (dato -> BOOLEAN .)
+    RCOR            reduce using rule 26 (dato -> BOOLEAN .)
 
 
 state 62
 
-    (34) sentencia_booleana -> LPAREN . operador_comparadores dato dato RPAREN
-    (26) operador_comparadores -> . COMPARA_IGUAL
-    (27) operador_comparadores -> . MENORQUE
-    (28) operador_comparadores -> . MAYORQUE
-    (29) operador_comparadores -> . MAYORIGUALQUE
-    (30) operador_comparadores -> . MENORIGUALQUE
-    (31) operador_comparadores -> . DIFERENTE
+    (27) dato -> VARIABLE .
 
-    COMPARA_IGUAL   shift and go to state 38
-    MENORQUE        shift and go to state 27
-    MAYORQUE        shift and go to state 39
-    MAYORIGUALQUE   shift and go to state 40
-    MENORIGUALQUE   shift and go to state 41
-    DIFERENTE       shift and go to state 42
+    RPAREN          reduce using rule 27 (dato -> VARIABLE .)
+    STRING          reduce using rule 27 (dato -> VARIABLE .)
+    CHAR            reduce using rule 27 (dato -> VARIABLE .)
+    ENTERO          reduce using rule 27 (dato -> VARIABLE .)
+    FLOTANTE        reduce using rule 27 (dato -> VARIABLE .)
+    BOOLEAN         reduce using rule 27 (dato -> VARIABLE .)
+    VARIABLE        reduce using rule 27 (dato -> VARIABLE .)
+    LPAREN          reduce using rule 27 (dato -> VARIABLE .)
+    RCOR            reduce using rule 27 (dato -> VARIABLE .)
 
-    operador_comparadores          shift and go to state 33
 
 state 63
 
-    (36) cond_ -> LPAREN COND linecondition . linecondition RPAREN
-    (37) cond_else -> LPAREN COND linecondition . linecondition DOSPUNTOS ELSE impresion RPAREN
-    (35) linecondition -> . sentencia_booleana impresion
-    (34) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
+    (70) operacion_aritmetica1 -> LPAREN operacion valor . valor RPAREN
+    (71) condicional -> LPAREN operacion valor . valor RPAREN
+    (28) valor -> . ENTERO
+    (29) valor -> . FLOTANTE
+    (30) valor -> . BOOLEAN
+    (58) valor -> . VARIABLE
 
-    LPAREN          shift and go to state 62
+    ENTERO          shift and go to state 64
+    FLOTANTE        shift and go to state 65
+    BOOLEAN         shift and go to state 66
+    VARIABLE        shift and go to state 67
 
-    linecondition                  shift and go to state 89
-    sentencia_booleana             shift and go to state 64
+    valor                          shift and go to state 89
 
 state 64
 
-    (35) linecondition -> sentencia_booleana . impresion
-    (52) impresion -> . LPAREN IMPRIMIR dato RPAREN
+    (28) valor -> ENTERO .
 
-    LPAREN          shift and go to state 91
+    ENTERO          reduce using rule 28 (valor -> ENTERO .)
+    FLOTANTE        reduce using rule 28 (valor -> ENTERO .)
+    BOOLEAN         reduce using rule 28 (valor -> ENTERO .)
+    VARIABLE        reduce using rule 28 (valor -> ENTERO .)
+    RPAREN          reduce using rule 28 (valor -> ENTERO .)
 
-    impresion                      shift and go to state 90
 
 state 65
 
-    (62) doseq -> LPAREN DOSEQ LCOR . VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+    (29) valor -> FLOTANTE .
 
-    VARIABLE        shift and go to state 92
+    ENTERO          reduce using rule 29 (valor -> FLOTANTE .)
+    FLOTANTE        reduce using rule 29 (valor -> FLOTANTE .)
+    BOOLEAN         reduce using rule 29 (valor -> FLOTANTE .)
+    VARIABLE        reduce using rule 29 (valor -> FLOTANTE .)
+    RPAREN          reduce using rule 29 (valor -> FLOTANTE .)
 
 
 state 66
 
-    (39) case_expression -> LPAREN CASE dato . case case impresion RPAREN
-    (38) case -> . dato impresion
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (30) valor -> BOOLEAN .
 
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    ENTERO          reduce using rule 30 (valor -> BOOLEAN .)
+    FLOTANTE        reduce using rule 30 (valor -> BOOLEAN .)
+    BOOLEAN         reduce using rule 30 (valor -> BOOLEAN .)
+    VARIABLE        reduce using rule 30 (valor -> BOOLEAN .)
+    RPAREN          reduce using rule 30 (valor -> BOOLEAN .)
 
-    dato                           shift and go to state 93
-    case                           shift and go to state 94
 
 state 67
 
-    (40) lista -> LPAREN LIST dato . dato RPAREN
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (58) valor -> VARIABLE .
 
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    ENTERO          reduce using rule 58 (valor -> VARIABLE .)
+    FLOTANTE        reduce using rule 58 (valor -> VARIABLE .)
+    BOOLEAN         reduce using rule 58 (valor -> VARIABLE .)
+    VARIABLE        reduce using rule 58 (valor -> VARIABLE .)
+    RPAREN          reduce using rule 58 (valor -> VARIABLE .)
 
-    dato                           shift and go to state 95
 
 state 68
 
-    (34) sentencia_booleana -> LPAREN operador_comparadores dato . dato RPAREN
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (64) if_do -> LPAREN IF LPAREN . operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+    (69) operacionesLogicas -> LPAREN IF LPAREN . MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (31) operador_comparadores -> . COMPARA_IGUAL
+    (32) operador_comparadores -> . MENORQUE
+    (33) operador_comparadores -> . MAYORQUE
+    (34) operador_comparadores -> . MAYORIGUALQUE
+    (35) operador_comparadores -> . MENORIGUALQUE
+    (36) operador_comparadores -> . DIFERENTE
 
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    MENORQUE        shift and go to state 91
+    COMPARA_IGUAL   shift and go to state 47
+    MAYORQUE        shift and go to state 48
+    MAYORIGUALQUE   shift and go to state 49
+    MENORIGUALQUE   shift and go to state 50
+    DIFERENTE       shift and go to state 51
 
-    dato                           shift and go to state 96
+    operador_comparadores          shift and go to state 90
 
 state 69
 
-    (67) conjuntos -> NUMERAL L_LLAVE expresionConjuntoEnteros . R_LLAVE
+    (39) sentencia_booleana -> LPAREN operador_comparadores dato . dato RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    R_LLAVE         shift and go to state 97
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 92
 
 state 70
 
-    (68) conjuntos -> NUMERAL L_LLAVE expresionConjuntoDouble . R_LLAVE
+    (73) defn -> LPAREN DEFFUNCION VARIABLE . LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
+    (56) definition -> LPAREN DEFFUNCION VARIABLE . internos RPAREN
+    (51) internos -> . description
+    (52) internos -> . argumments
+    (53) internos -> . body
+    (54) internos -> . argumments body
+    (55) internos -> . description argumments body
+    (46) description -> . STRING
+    (47) argumments -> . LCOR dato dato dato RCOR
+    (48) argumments -> . LCOR dato dato RCOR
+    (49) argumments -> . LCOR dato RCOR
+    (50) body -> . instrucciones
+    (1) instrucciones -> . asignacion
+    (2) instrucciones -> . impresion
+    (3) instrucciones -> . operacion_aritmetica1
+    (4) instrucciones -> . condicional
+    (5) instrucciones -> . conjuntos
+    (6) instrucciones -> . vector_entero
+    (7) instrucciones -> . vector_flotante
+    (8) instrucciones -> . mapa_entero
+    (9) instrucciones -> . mapa_flotante
+    (10) instrucciones -> . if
+    (11) instrucciones -> . if_do
+    (12) instrucciones -> . defn
+    (13) instrucciones -> . operacionesLogicas
+    (14) instrucciones -> . sentenciaLoopRecur
+    (15) instrucciones -> . cond_
+    (16) instrucciones -> . cond_else
+    (17) instrucciones -> . doseq
+    (18) instrucciones -> . case_expression
+    (19) instrucciones -> . lista
+    (20) instrucciones -> . sentencia_booleana
+    (21) instrucciones -> . definition
+    (37) asignacion -> . LPAREN DEFICION VARIABLE dato RPAREN
+    (38) asignacion -> . LPAREN LET LCOR VARIABLE dato RCOR RPAREN
+    (57) impresion -> . LPAREN IMPRIMIR dato RPAREN
+    (70) operacion_aritmetica1 -> . LPAREN operacion valor valor RPAREN
+    (71) condicional -> . LPAREN operacion valor valor RPAREN
+    (77) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
+    (78) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
+    (79) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
+    (59) vector_entero -> . VECTOR_ENTERO
+    (60) vector_flotante -> . VECTOR_FLOTANTE
+    (61) mapa_entero -> . MAPA_ENTERO
+    (62) mapa_flotante -> . MAPA_FLOTANTE
+    (63) if -> . IF LPAREN operador_comparadores dato dato RPAREN
+    (64) if_do -> . LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+    (73) defn -> . LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
+    (74) defn -> . LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
+    (69) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (80) sentenciaLoopRecur -> . LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
+    (41) cond_ -> . LPAREN COND linecondition linecondition RPAREN
+    (42) cond_else -> . LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
+    (72) doseq -> . LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+    (44) case_expression -> . LPAREN CASE dato case case impresion RPAREN
+    (45) lista -> . LPAREN LIST dato dato RPAREN
+    (39) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
+    (56) definition -> . LPAREN DEFFUNCION VARIABLE internos RPAREN
 
-    R_LLAVE         shift and go to state 98
+    LCOR            shift and go to state 93
+    STRING          shift and go to state 98
+    LPAREN          shift and go to state 23
+    NUMERAL         shift and go to state 24
+    VECTOR_ENTERO   shift and go to state 25
+    VECTOR_FLOTANTE shift and go to state 26
+    MAPA_ENTERO     shift and go to state 27
+    MAPA_FLOTANTE   shift and go to state 28
+    IF              shift and go to state 29
 
+    internos                       shift and go to state 94
+    description                    shift and go to state 95
+    argumments                     shift and go to state 96
+    body                           shift and go to state 97
+    instrucciones                  shift and go to state 99
+    asignacion                     shift and go to state 2
+    impresion                      shift and go to state 3
+    operacion_aritmetica1          shift and go to state 4
+    condicional                    shift and go to state 5
+    conjuntos                      shift and go to state 6
+    vector_entero                  shift and go to state 7
+    vector_flotante                shift and go to state 8
+    mapa_entero                    shift and go to state 9
+    mapa_flotante                  shift and go to state 10
+    if                             shift and go to state 11
+    if_do                          shift and go to state 12
+    defn                           shift and go to state 13
+    operacionesLogicas             shift and go to state 14
+    sentenciaLoopRecur             shift and go to state 15
+    cond_                          shift and go to state 16
+    cond_else                      shift and go to state 17
+    doseq                          shift and go to state 18
+    case_expression                shift and go to state 19
+    lista                          shift and go to state 20
+    sentencia_booleana             shift and go to state 21
+    definition                     shift and go to state 22
 
 state 71
 
-    (69) conjuntos -> NUMERAL L_LLAVE expresionConjuntoString . R_LLAVE
+    (74) defn -> LPAREN DEFFUNCION INCREASE . LCOR VARIABLE RCOR operacionesLogicas RPAREN
 
-    R_LLAVE         shift and go to state 99
+    LCOR            shift and go to state 100
 
 
 state 72
 
-    (71) expresionConjuntoEnteros -> ENTERO .
-    (72) expresionConjuntoEnteros -> ENTERO . expresionConjuntoEnteros
-    (71) expresionConjuntoEnteros -> . ENTERO
-    (72) expresionConjuntoEnteros -> . ENTERO expresionConjuntoEnteros
+    (80) sentenciaLoopRecur -> LPAREN LOOP LCOR . VARIABLE ENTERO RCOR operacionesLogicas RPAREN
 
-    R_LLAVE         reduce using rule 71 (expresionConjuntoEnteros -> ENTERO .)
-    ENTERO          shift and go to state 72
+    VARIABLE        shift and go to state 101
 
-    expresionConjuntoEnteros       shift and go to state 100
 
 state 73
 
-    (73) expresionConjuntoDouble -> FLOTANTE .
-    (74) expresionConjuntoDouble -> FLOTANTE . expresionConjuntoDouble
-    (73) expresionConjuntoDouble -> . FLOTANTE
-    (74) expresionConjuntoDouble -> . FLOTANTE expresionConjuntoDouble
+    (39) sentencia_booleana -> LPAREN . operador_comparadores dato dato RPAREN
+    (31) operador_comparadores -> . COMPARA_IGUAL
+    (32) operador_comparadores -> . MENORQUE
+    (33) operador_comparadores -> . MAYORQUE
+    (34) operador_comparadores -> . MAYORIGUALQUE
+    (35) operador_comparadores -> . MENORIGUALQUE
+    (36) operador_comparadores -> . DIFERENTE
 
-    R_LLAVE         reduce using rule 73 (expresionConjuntoDouble -> FLOTANTE .)
-    FLOTANTE        shift and go to state 73
+    COMPARA_IGUAL   shift and go to state 47
+    MENORQUE        shift and go to state 37
+    MAYORQUE        shift and go to state 48
+    MAYORIGUALQUE   shift and go to state 49
+    MENORIGUALQUE   shift and go to state 50
+    DIFERENTE       shift and go to state 51
 
-    expresionConjuntoDouble        shift and go to state 101
+    operador_comparadores          shift and go to state 35
 
 state 74
 
-    (75) expresionConjuntoString -> STRING .
-    (76) expresionConjuntoString -> STRING . expresionConjuntoString
-    (75) expresionConjuntoString -> . STRING
-    (76) expresionConjuntoString -> . STRING expresionConjuntoString
+    (41) cond_ -> LPAREN COND linecondition . linecondition RPAREN
+    (42) cond_else -> LPAREN COND linecondition . linecondition DOSPUNTOS ELSE impresion RPAREN
+    (40) linecondition -> . sentencia_booleana impresion
+    (39) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
 
-    R_LLAVE         reduce using rule 75 (expresionConjuntoString -> STRING .)
-    STRING          shift and go to state 74
+    LPAREN          shift and go to state 73
 
-    expresionConjuntoString        shift and go to state 102
+    linecondition                  shift and go to state 102
+    sentencia_booleana             shift and go to state 75
 
 state 75
 
-    (32) asignacion -> LPAREN DEFICION VARIABLE dato . RPAREN
+    (40) linecondition -> sentencia_booleana . impresion
+    (57) impresion -> . LPAREN IMPRIMIR dato RPAREN
 
-    RPAREN          shift and go to state 103
+    LPAREN          shift and go to state 104
 
+    impresion                      shift and go to state 103
 
 state 76
 
-    (33) asignacion -> LPAREN LET LCOR VARIABLE . dato RCOR RPAREN
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (72) doseq -> LPAREN DOSEQ LCOR . VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
 
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    VARIABLE        shift and go to state 105
 
-    dato                           shift and go to state 104
 
 state 77
 
-    (52) impresion -> LPAREN IMPRIMIR dato RPAREN .
+    (44) case_expression -> LPAREN CASE dato . case case impresion RPAREN
+    (43) case -> . dato impresion
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    $end            reduce using rule 52 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
-    LPAREN          reduce using rule 52 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
-    RPAREN          reduce using rule 52 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
-    DOSPUNTOS       reduce using rule 52 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
-    STRING          reduce using rule 52 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
-    CHAR            reduce using rule 52 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
-    ENTERO          reduce using rule 52 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
-    FLOTANTE        reduce using rule 52 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
-    BOOLEAN         reduce using rule 52 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
-    VARIABLE        reduce using rule 52 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 106
+    case                           shift and go to state 107
 
 state 78
 
-    (59) operacion_aritmetica1 -> LPAREN operacion valor valor . RPAREN
-    (60) condicional -> LPAREN operacion valor valor . RPAREN
+    (45) lista -> LPAREN LIST dato . dato RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    RPAREN          shift and go to state 105
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 108
 
 state 79
 
-    (63) defn -> LPAREN DEFFUNCION VARIABLE LCOR . VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
-    (42) argumments -> LCOR . dato dato dato RCOR
-    (43) argumments -> LCOR . dato dato RCOR
-    (44) argumments -> LCOR . dato RCOR
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (77) conjuntos -> NUMERAL L_LLAVE expresionConjuntoEnteros . R_LLAVE
 
-    VARIABLE        shift and go to state 106
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
+    R_LLAVE         shift and go to state 109
 
-    dato                           shift and go to state 107
 
 state 80
 
-    (51) definition -> LPAREN DEFFUNCION VARIABLE internos .
+    (78) conjuntos -> NUMERAL L_LLAVE expresionConjuntoDouble . R_LLAVE
 
-    $end            reduce using rule 51 (definition -> LPAREN DEFFUNCION VARIABLE internos .)
+    R_LLAVE         shift and go to state 110
 
 
 state 81
 
-    (46) internos -> description .
-    (50) internos -> description . argumments body
-    (42) argumments -> . LCOR dato dato dato RCOR
-    (43) argumments -> . LCOR dato dato RCOR
-    (44) argumments -> . LCOR dato RCOR
+    (79) conjuntos -> NUMERAL L_LLAVE expresionConjuntoString . R_LLAVE
 
-    $end            reduce using rule 46 (internos -> description .)
-    LCOR            shift and go to state 109
+    R_LLAVE         shift and go to state 111
 
-    argumments                     shift and go to state 108
 
 state 82
 
-    (47) internos -> argumments .
-    (49) internos -> argumments . body
-    (45) body -> . instrucciones
-    (1) instrucciones -> . asignacion
-    (2) instrucciones -> . impresion
-    (3) instrucciones -> . operacion_aritmetica1
-    (4) instrucciones -> . condicional
-    (5) instrucciones -> . vectores
-    (6) instrucciones -> . conjuntos
-    (7) instrucciones -> . defn
-    (8) instrucciones -> . operacionesLogicas
-    (9) instrucciones -> . sentenciaLoopRecur
-    (10) instrucciones -> . cond_
-    (11) instrucciones -> . cond_else
-    (12) instrucciones -> . doseq
-    (13) instrucciones -> . case_expression
-    (14) instrucciones -> . lista
-    (15) instrucciones -> . sentencia_booleana
-    (16) instrucciones -> . definition
-    (32) asignacion -> . LPAREN DEFICION VARIABLE dato RPAREN
-    (33) asignacion -> . LPAREN LET LCOR VARIABLE dato RCOR RPAREN
-    (52) impresion -> . LPAREN IMPRIMIR dato RPAREN
-    (59) operacion_aritmetica1 -> . LPAREN operacion valor valor RPAREN
-    (60) condicional -> . LPAREN operacion valor valor RPAREN
-    (61) vectores -> . VECTORES
-    (67) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
-    (68) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
-    (69) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
-    (63) defn -> . LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
-    (64) defn -> . LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
-    (58) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
-    (70) sentenciaLoopRecur -> . LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
-    (36) cond_ -> . LPAREN COND linecondition linecondition RPAREN
-    (37) cond_else -> . LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
-    (62) doseq -> . LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
-    (39) case_expression -> . LPAREN CASE dato case case impresion RPAREN
-    (40) lista -> . LPAREN LIST dato dato RPAREN
-    (34) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
-    (51) definition -> . LPAREN DEFFUNCION VARIABLE internos
+    (81) expresionConjuntoEnteros -> ENTERO .
+    (82) expresionConjuntoEnteros -> ENTERO . expresionConjuntoEnteros
+    (81) expresionConjuntoEnteros -> . ENTERO
+    (82) expresionConjuntoEnteros -> . ENTERO expresionConjuntoEnteros
 
-    $end            reduce using rule 47 (internos -> argumments .)
-    LPAREN          shift and go to state 18
-    VECTORES        shift and go to state 19
-    NUMERAL         shift and go to state 20
+    R_LLAVE         reduce using rule 81 (expresionConjuntoEnteros -> ENTERO .)
+    ENTERO          shift and go to state 82
 
-    body                           shift and go to state 110
-    instrucciones                  shift and go to state 85
-    asignacion                     shift and go to state 2
-    impresion                      shift and go to state 3
-    operacion_aritmetica1          shift and go to state 4
-    condicional                    shift and go to state 5
-    vectores                       shift and go to state 6
-    conjuntos                      shift and go to state 7
-    defn                           shift and go to state 8
-    operacionesLogicas             shift and go to state 9
-    sentenciaLoopRecur             shift and go to state 10
-    cond_                          shift and go to state 11
-    cond_else                      shift and go to state 12
-    doseq                          shift and go to state 13
-    case_expression                shift and go to state 14
-    lista                          shift and go to state 15
-    sentencia_booleana             shift and go to state 16
-    definition                     shift and go to state 17
+    expresionConjuntoEnteros       shift and go to state 112
 
 state 83
 
-    (48) internos -> body .
+    (83) expresionConjuntoDouble -> FLOTANTE .
+    (84) expresionConjuntoDouble -> FLOTANTE . expresionConjuntoDouble
+    (83) expresionConjuntoDouble -> . FLOTANTE
+    (84) expresionConjuntoDouble -> . FLOTANTE expresionConjuntoDouble
 
-    $end            reduce using rule 48 (internos -> body .)
+    R_LLAVE         reduce using rule 83 (expresionConjuntoDouble -> FLOTANTE .)
+    FLOTANTE        shift and go to state 83
 
+    expresionConjuntoDouble        shift and go to state 113
 
 state 84
 
-    (41) description -> STRING .
+    (85) expresionConjuntoString -> STRING .
+    (86) expresionConjuntoString -> STRING . expresionConjuntoString
+    (85) expresionConjuntoString -> . STRING
+    (86) expresionConjuntoString -> . STRING expresionConjuntoString
 
-    LCOR            reduce using rule 41 (description -> STRING .)
-    $end            reduce using rule 41 (description -> STRING .)
+    R_LLAVE         reduce using rule 85 (expresionConjuntoString -> STRING .)
+    STRING          shift and go to state 84
 
+    expresionConjuntoString        shift and go to state 114
 
 state 85
 
-    (45) body -> instrucciones .
+    (63) if -> IF LPAREN operador_comparadores . dato dato RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    $end            reduce using rule 45 (body -> instrucciones .)
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 115
 
 state 86
 
-    (64) defn -> LPAREN DEFFUNCION INCREASE LCOR . VARIABLE RCOR operacionesLogicas RPAREN
+    (37) asignacion -> LPAREN DEFICION VARIABLE dato . RPAREN
 
-    VARIABLE        shift and go to state 111
+    RPAREN          shift and go to state 116
 
 
 state 87
 
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE . VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (38) asignacion -> LPAREN LET LCOR VARIABLE . dato RCOR RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    VARIABLE        shift and go to state 112
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 117
 
 state 88
 
-    (70) sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE . ENTERO RCOR operacionesLogicas RPAREN
+    (57) impresion -> LPAREN IMPRIMIR dato RPAREN .
 
-    ENTERO          shift and go to state 113
+    $end            reduce using rule 57 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
+    RPAREN          reduce using rule 57 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
+    LPAREN          reduce using rule 57 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
+    DOSPUNTOS       reduce using rule 57 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
+    STRING          reduce using rule 57 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
+    CHAR            reduce using rule 57 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
+    ENTERO          reduce using rule 57 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
+    FLOTANTE        reduce using rule 57 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
+    BOOLEAN         reduce using rule 57 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
+    VARIABLE        reduce using rule 57 (impresion -> LPAREN IMPRIMIR dato RPAREN .)
 
 
 state 89
 
-    (36) cond_ -> LPAREN COND linecondition linecondition . RPAREN
-    (37) cond_else -> LPAREN COND linecondition linecondition . DOSPUNTOS ELSE impresion RPAREN
+    (70) operacion_aritmetica1 -> LPAREN operacion valor valor . RPAREN
+    (71) condicional -> LPAREN operacion valor valor . RPAREN
 
-    RPAREN          shift and go to state 114
-    DOSPUNTOS       shift and go to state 115
+    RPAREN          shift and go to state 118
 
 
 state 90
 
-    (35) linecondition -> sentencia_booleana impresion .
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores . dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    LPAREN          reduce using rule 35 (linecondition -> sentencia_booleana impresion .)
-    RPAREN          reduce using rule 35 (linecondition -> sentencia_booleana impresion .)
-    DOSPUNTOS       reduce using rule 35 (linecondition -> sentencia_booleana impresion .)
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 119
 
 state 91
 
-    (52) impresion -> LPAREN . IMPRIMIR dato RPAREN
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE . VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (32) operador_comparadores -> MENORQUE .
 
-    IMPRIMIR        shift and go to state 23
+  ! shift/reduce conflict for VARIABLE resolved as shift
+    VARIABLE        shift and go to state 120
+    STRING          reduce using rule 32 (operador_comparadores -> MENORQUE .)
+    CHAR            reduce using rule 32 (operador_comparadores -> MENORQUE .)
+    ENTERO          reduce using rule 32 (operador_comparadores -> MENORQUE .)
+    FLOTANTE        reduce using rule 32 (operador_comparadores -> MENORQUE .)
+    BOOLEAN         reduce using rule 32 (operador_comparadores -> MENORQUE .)
+
+  ! VARIABLE        [ reduce using rule 32 (operador_comparadores -> MENORQUE .) ]
 
 
 state 92
 
-    (62) doseq -> LPAREN DOSEQ LCOR VARIABLE . LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+    (39) sentencia_booleana -> LPAREN operador_comparadores dato dato . RPAREN
 
-    LPAREN          shift and go to state 116
+    RPAREN          shift and go to state 121
 
 
 state 93
 
-    (38) case -> dato . impresion
-    (52) impresion -> . LPAREN IMPRIMIR dato RPAREN
+    (73) defn -> LPAREN DEFFUNCION VARIABLE LCOR . VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
+    (47) argumments -> LCOR . dato dato dato RCOR
+    (48) argumments -> LCOR . dato dato RCOR
+    (49) argumments -> LCOR . dato RCOR
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    LPAREN          shift and go to state 91
-
-    impresion                      shift and go to state 117
-
-state 94
-
-    (39) case_expression -> LPAREN CASE dato case . case impresion RPAREN
-    (38) case -> . dato impresion
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
-
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
-
-    dato                           shift and go to state 93
-    case                           shift and go to state 118
-
-state 95
-
-    (40) lista -> LPAREN LIST dato dato . RPAREN
-
-    RPAREN          shift and go to state 119
-
-
-state 96
-
-    (34) sentencia_booleana -> LPAREN operador_comparadores dato dato . RPAREN
-
-    RPAREN          shift and go to state 120
-
-
-state 97
-
-    (67) conjuntos -> NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE .
-
-    $end            reduce using rule 67 (conjuntos -> NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE .)
-
-
-state 98
-
-    (68) conjuntos -> NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE .
-
-    $end            reduce using rule 68 (conjuntos -> NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE .)
-
-
-state 99
-
-    (69) conjuntos -> NUMERAL L_LLAVE expresionConjuntoString R_LLAVE .
-
-    $end            reduce using rule 69 (conjuntos -> NUMERAL L_LLAVE expresionConjuntoString R_LLAVE .)
-
-
-state 100
-
-    (72) expresionConjuntoEnteros -> ENTERO expresionConjuntoEnteros .
-
-    R_LLAVE         reduce using rule 72 (expresionConjuntoEnteros -> ENTERO expresionConjuntoEnteros .)
-
-
-state 101
-
-    (74) expresionConjuntoDouble -> FLOTANTE expresionConjuntoDouble .
-
-    R_LLAVE         reduce using rule 74 (expresionConjuntoDouble -> FLOTANTE expresionConjuntoDouble .)
-
-
-state 102
-
-    (76) expresionConjuntoString -> STRING expresionConjuntoString .
-
-    R_LLAVE         reduce using rule 76 (expresionConjuntoString -> STRING expresionConjuntoString .)
-
-
-state 103
-
-    (32) asignacion -> LPAREN DEFICION VARIABLE dato RPAREN .
-
-    $end            reduce using rule 32 (asignacion -> LPAREN DEFICION VARIABLE dato RPAREN .)
-
-
-state 104
-
-    (33) asignacion -> LPAREN LET LCOR VARIABLE dato . RCOR RPAREN
-
-    RCOR            shift and go to state 121
-
-
-state 105
-
-    (59) operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN .
-    (60) condicional -> LPAREN operacion valor valor RPAREN .
-
-  ! reduce/reduce conflict for $end resolved using rule 59 (operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN .)
-    $end            reduce using rule 59 (operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN .)
-
-  ! $end            [ reduce using rule 60 (condicional -> LPAREN operacion valor valor RPAREN .) ]
-
-
-state 106
-
-    (63) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE . RCOR LPAREN expresionDefnElse RPAREN RPAREN
-    (22) dato -> VARIABLE .
-
-  ! shift/reduce conflict for RCOR resolved as shift
-    RCOR            shift and go to state 122
-    STRING          reduce using rule 22 (dato -> VARIABLE .)
-    CHAR            reduce using rule 22 (dato -> VARIABLE .)
-    ENTERO          reduce using rule 22 (dato -> VARIABLE .)
-    FLOTANTE        reduce using rule 22 (dato -> VARIABLE .)
-    BOOLEAN         reduce using rule 22 (dato -> VARIABLE .)
-    VARIABLE        reduce using rule 22 (dato -> VARIABLE .)
-
-  ! RCOR            [ reduce using rule 22 (dato -> VARIABLE .) ]
-
-
-state 107
-
-    (42) argumments -> LCOR dato . dato dato RCOR
-    (43) argumments -> LCOR dato . dato RCOR
-    (44) argumments -> LCOR dato . RCOR
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
-
-    RCOR            shift and go to state 124
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    VARIABLE        shift and go to state 122
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
 
     dato                           shift and go to state 123
 
-state 108
+state 94
 
-    (50) internos -> description argumments . body
-    (45) body -> . instrucciones
+    (56) definition -> LPAREN DEFFUNCION VARIABLE internos . RPAREN
+
+    RPAREN          shift and go to state 124
+
+
+state 95
+
+    (51) internos -> description .
+    (55) internos -> description . argumments body
+    (47) argumments -> . LCOR dato dato dato RCOR
+    (48) argumments -> . LCOR dato dato RCOR
+    (49) argumments -> . LCOR dato RCOR
+
+    RPAREN          reduce using rule 51 (internos -> description .)
+    LCOR            shift and go to state 126
+
+    argumments                     shift and go to state 125
+
+state 96
+
+    (52) internos -> argumments .
+    (54) internos -> argumments . body
+    (50) body -> . instrucciones
     (1) instrucciones -> . asignacion
     (2) instrucciones -> . impresion
     (3) instrucciones -> . operacion_aritmetica1
     (4) instrucciones -> . condicional
-    (5) instrucciones -> . vectores
-    (6) instrucciones -> . conjuntos
-    (7) instrucciones -> . defn
-    (8) instrucciones -> . operacionesLogicas
-    (9) instrucciones -> . sentenciaLoopRecur
-    (10) instrucciones -> . cond_
-    (11) instrucciones -> . cond_else
-    (12) instrucciones -> . doseq
-    (13) instrucciones -> . case_expression
-    (14) instrucciones -> . lista
-    (15) instrucciones -> . sentencia_booleana
-    (16) instrucciones -> . definition
-    (32) asignacion -> . LPAREN DEFICION VARIABLE dato RPAREN
-    (33) asignacion -> . LPAREN LET LCOR VARIABLE dato RCOR RPAREN
-    (52) impresion -> . LPAREN IMPRIMIR dato RPAREN
-    (59) operacion_aritmetica1 -> . LPAREN operacion valor valor RPAREN
-    (60) condicional -> . LPAREN operacion valor valor RPAREN
-    (61) vectores -> . VECTORES
-    (67) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
-    (68) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
-    (69) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
-    (63) defn -> . LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
-    (64) defn -> . LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
-    (58) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
-    (70) sentenciaLoopRecur -> . LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
-    (36) cond_ -> . LPAREN COND linecondition linecondition RPAREN
-    (37) cond_else -> . LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
-    (62) doseq -> . LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
-    (39) case_expression -> . LPAREN CASE dato case case impresion RPAREN
-    (40) lista -> . LPAREN LIST dato dato RPAREN
-    (34) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
-    (51) definition -> . LPAREN DEFFUNCION VARIABLE internos
+    (5) instrucciones -> . conjuntos
+    (6) instrucciones -> . vector_entero
+    (7) instrucciones -> . vector_flotante
+    (8) instrucciones -> . mapa_entero
+    (9) instrucciones -> . mapa_flotante
+    (10) instrucciones -> . if
+    (11) instrucciones -> . if_do
+    (12) instrucciones -> . defn
+    (13) instrucciones -> . operacionesLogicas
+    (14) instrucciones -> . sentenciaLoopRecur
+    (15) instrucciones -> . cond_
+    (16) instrucciones -> . cond_else
+    (17) instrucciones -> . doseq
+    (18) instrucciones -> . case_expression
+    (19) instrucciones -> . lista
+    (20) instrucciones -> . sentencia_booleana
+    (21) instrucciones -> . definition
+    (37) asignacion -> . LPAREN DEFICION VARIABLE dato RPAREN
+    (38) asignacion -> . LPAREN LET LCOR VARIABLE dato RCOR RPAREN
+    (57) impresion -> . LPAREN IMPRIMIR dato RPAREN
+    (70) operacion_aritmetica1 -> . LPAREN operacion valor valor RPAREN
+    (71) condicional -> . LPAREN operacion valor valor RPAREN
+    (77) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
+    (78) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
+    (79) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
+    (59) vector_entero -> . VECTOR_ENTERO
+    (60) vector_flotante -> . VECTOR_FLOTANTE
+    (61) mapa_entero -> . MAPA_ENTERO
+    (62) mapa_flotante -> . MAPA_FLOTANTE
+    (63) if -> . IF LPAREN operador_comparadores dato dato RPAREN
+    (64) if_do -> . LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+    (73) defn -> . LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
+    (74) defn -> . LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
+    (69) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (80) sentenciaLoopRecur -> . LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
+    (41) cond_ -> . LPAREN COND linecondition linecondition RPAREN
+    (42) cond_else -> . LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
+    (72) doseq -> . LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+    (44) case_expression -> . LPAREN CASE dato case case impresion RPAREN
+    (45) lista -> . LPAREN LIST dato dato RPAREN
+    (39) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
+    (56) definition -> . LPAREN DEFFUNCION VARIABLE internos RPAREN
 
-    LPAREN          shift and go to state 18
-    VECTORES        shift and go to state 19
-    NUMERAL         shift and go to state 20
+    RPAREN          reduce using rule 52 (internos -> argumments .)
+    LPAREN          shift and go to state 23
+    NUMERAL         shift and go to state 24
+    VECTOR_ENTERO   shift and go to state 25
+    VECTOR_FLOTANTE shift and go to state 26
+    MAPA_ENTERO     shift and go to state 27
+    MAPA_FLOTANTE   shift and go to state 28
+    IF              shift and go to state 29
 
-    body                           shift and go to state 125
-    instrucciones                  shift and go to state 85
+    body                           shift and go to state 127
+    instrucciones                  shift and go to state 99
     asignacion                     shift and go to state 2
     impresion                      shift and go to state 3
     operacion_aritmetica1          shift and go to state 4
     condicional                    shift and go to state 5
-    vectores                       shift and go to state 6
-    conjuntos                      shift and go to state 7
-    defn                           shift and go to state 8
-    operacionesLogicas             shift and go to state 9
-    sentenciaLoopRecur             shift and go to state 10
-    cond_                          shift and go to state 11
-    cond_else                      shift and go to state 12
-    doseq                          shift and go to state 13
-    case_expression                shift and go to state 14
-    lista                          shift and go to state 15
-    sentencia_booleana             shift and go to state 16
-    definition                     shift and go to state 17
+    conjuntos                      shift and go to state 6
+    vector_entero                  shift and go to state 7
+    vector_flotante                shift and go to state 8
+    mapa_entero                    shift and go to state 9
+    mapa_flotante                  shift and go to state 10
+    if                             shift and go to state 11
+    if_do                          shift and go to state 12
+    defn                           shift and go to state 13
+    operacionesLogicas             shift and go to state 14
+    sentenciaLoopRecur             shift and go to state 15
+    cond_                          shift and go to state 16
+    cond_else                      shift and go to state 17
+    doseq                          shift and go to state 18
+    case_expression                shift and go to state 19
+    lista                          shift and go to state 20
+    sentencia_booleana             shift and go to state 21
+    definition                     shift and go to state 22
+
+state 97
+
+    (53) internos -> body .
+
+    RPAREN          reduce using rule 53 (internos -> body .)
+
+
+state 98
+
+    (46) description -> STRING .
+
+    LCOR            reduce using rule 46 (description -> STRING .)
+    RPAREN          reduce using rule 46 (description -> STRING .)
+
+
+state 99
+
+    (50) body -> instrucciones .
+
+    RPAREN          reduce using rule 50 (body -> instrucciones .)
+
+
+state 100
+
+    (74) defn -> LPAREN DEFFUNCION INCREASE LCOR . VARIABLE RCOR operacionesLogicas RPAREN
+
+    VARIABLE        shift and go to state 128
+
+
+state 101
+
+    (80) sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE . ENTERO RCOR operacionesLogicas RPAREN
+
+    ENTERO          shift and go to state 129
+
+
+state 102
+
+    (41) cond_ -> LPAREN COND linecondition linecondition . RPAREN
+    (42) cond_else -> LPAREN COND linecondition linecondition . DOSPUNTOS ELSE impresion RPAREN
+
+    RPAREN          shift and go to state 130
+    DOSPUNTOS       shift and go to state 131
+
+
+state 103
+
+    (40) linecondition -> sentencia_booleana impresion .
+
+    LPAREN          reduce using rule 40 (linecondition -> sentencia_booleana impresion .)
+    RPAREN          reduce using rule 40 (linecondition -> sentencia_booleana impresion .)
+    DOSPUNTOS       reduce using rule 40 (linecondition -> sentencia_booleana impresion .)
+
+
+state 104
+
+    (57) impresion -> LPAREN . IMPRIMIR dato RPAREN
+
+    IMPRIMIR        shift and go to state 32
+
+
+state 105
+
+    (72) doseq -> LPAREN DOSEQ LCOR VARIABLE . LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+
+    LPAREN          shift and go to state 132
+
+
+state 106
+
+    (43) case -> dato . impresion
+    (57) impresion -> . LPAREN IMPRIMIR dato RPAREN
+
+    LPAREN          shift and go to state 104
+
+    impresion                      shift and go to state 133
+
+state 107
+
+    (44) case_expression -> LPAREN CASE dato case . case impresion RPAREN
+    (43) case -> . dato impresion
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
+
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
+
+    dato                           shift and go to state 106
+    case                           shift and go to state 134
+
+state 108
+
+    (45) lista -> LPAREN LIST dato dato . RPAREN
+
+    RPAREN          shift and go to state 135
+
 
 state 109
 
-    (42) argumments -> LCOR . dato dato dato RCOR
-    (43) argumments -> LCOR . dato dato RCOR
-    (44) argumments -> LCOR . dato RCOR
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (77) conjuntos -> NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE .
 
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    $end            reduce using rule 77 (conjuntos -> NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE .)
+    RPAREN          reduce using rule 77 (conjuntos -> NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE .)
 
-    dato                           shift and go to state 107
 
 state 110
 
-    (49) internos -> argumments body .
+    (78) conjuntos -> NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE .
 
-    $end            reduce using rule 49 (internos -> argumments body .)
+    $end            reduce using rule 78 (conjuntos -> NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE .)
+    RPAREN          reduce using rule 78 (conjuntos -> NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE .)
 
 
 state 111
 
-    (64) defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE . RCOR operacionesLogicas RPAREN
+    (79) conjuntos -> NUMERAL L_LLAVE expresionConjuntoString R_LLAVE .
 
-    RCOR            shift and go to state 126
+    $end            reduce using rule 79 (conjuntos -> NUMERAL L_LLAVE expresionConjuntoString R_LLAVE .)
+    RPAREN          reduce using rule 79 (conjuntos -> NUMERAL L_LLAVE expresionConjuntoString R_LLAVE .)
 
 
 state 112
 
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE . ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (82) expresionConjuntoEnteros -> ENTERO expresionConjuntoEnteros .
 
-    ENTERO          shift and go to state 127
+    R_LLAVE         reduce using rule 82 (expresionConjuntoEnteros -> ENTERO expresionConjuntoEnteros .)
 
 
 state 113
 
-    (70) sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO . RCOR operacionesLogicas RPAREN
+    (84) expresionConjuntoDouble -> FLOTANTE expresionConjuntoDouble .
 
-    RCOR            shift and go to state 128
+    R_LLAVE         reduce using rule 84 (expresionConjuntoDouble -> FLOTANTE expresionConjuntoDouble .)
 
 
 state 114
 
-    (36) cond_ -> LPAREN COND linecondition linecondition RPAREN .
+    (86) expresionConjuntoString -> STRING expresionConjuntoString .
 
-    $end            reduce using rule 36 (cond_ -> LPAREN COND linecondition linecondition RPAREN .)
+    R_LLAVE         reduce using rule 86 (expresionConjuntoString -> STRING expresionConjuntoString .)
 
 
 state 115
 
-    (37) cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS . ELSE impresion RPAREN
+    (63) if -> IF LPAREN operador_comparadores dato . dato RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    ELSE            shift and go to state 129
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 136
 
 state 116
 
-    (62) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN . RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+    (37) asignacion -> LPAREN DEFICION VARIABLE dato RPAREN .
 
-    RANGE           shift and go to state 130
+    $end            reduce using rule 37 (asignacion -> LPAREN DEFICION VARIABLE dato RPAREN .)
+    RPAREN          reduce using rule 37 (asignacion -> LPAREN DEFICION VARIABLE dato RPAREN .)
 
 
 state 117
 
-    (38) case -> dato impresion .
+    (38) asignacion -> LPAREN LET LCOR VARIABLE dato . RCOR RPAREN
 
-    STRING          reduce using rule 38 (case -> dato impresion .)
-    CHAR            reduce using rule 38 (case -> dato impresion .)
-    ENTERO          reduce using rule 38 (case -> dato impresion .)
-    FLOTANTE        reduce using rule 38 (case -> dato impresion .)
-    BOOLEAN         reduce using rule 38 (case -> dato impresion .)
-    VARIABLE        reduce using rule 38 (case -> dato impresion .)
-    LPAREN          reduce using rule 38 (case -> dato impresion .)
+    RCOR            shift and go to state 137
 
 
 state 118
 
-    (39) case_expression -> LPAREN CASE dato case case . impresion RPAREN
-    (52) impresion -> . LPAREN IMPRIMIR dato RPAREN
+    (70) operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN .
+    (71) condicional -> LPAREN operacion valor valor RPAREN .
 
-    LPAREN          shift and go to state 91
+  ! reduce/reduce conflict for $end resolved using rule 70 (operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN .)
+  ! reduce/reduce conflict for RPAREN resolved using rule 70 (operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN .)
+    $end            reduce using rule 70 (operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN .)
+    RPAREN          reduce using rule 70 (operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN .)
 
-    impresion                      shift and go to state 131
+  ! $end            [ reduce using rule 71 (condicional -> LPAREN operacion valor valor RPAREN .) ]
+  ! RPAREN          [ reduce using rule 71 (condicional -> LPAREN operacion valor valor RPAREN .) ]
+
 
 state 119
 
-    (40) lista -> LPAREN LIST dato dato RPAREN .
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores dato . dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    $end            reduce using rule 40 (lista -> LPAREN LIST dato dato RPAREN .)
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
+    dato                           shift and go to state 138
 
 state 120
 
-    (34) sentencia_booleana -> LPAREN operador_comparadores dato dato RPAREN .
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE . ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
 
-    $end            reduce using rule 34 (sentencia_booleana -> LPAREN operador_comparadores dato dato RPAREN .)
-    LPAREN          reduce using rule 34 (sentencia_booleana -> LPAREN operador_comparadores dato dato RPAREN .)
+    ENTERO          shift and go to state 139
 
 
 state 121
 
-    (33) asignacion -> LPAREN LET LCOR VARIABLE dato RCOR . RPAREN
+    (39) sentencia_booleana -> LPAREN operador_comparadores dato dato RPAREN .
 
-    RPAREN          shift and go to state 132
+    $end            reduce using rule 39 (sentencia_booleana -> LPAREN operador_comparadores dato dato RPAREN .)
+    LPAREN          reduce using rule 39 (sentencia_booleana -> LPAREN operador_comparadores dato dato RPAREN .)
+    RPAREN          reduce using rule 39 (sentencia_booleana -> LPAREN operador_comparadores dato dato RPAREN .)
 
 
 state 122
 
-    (63) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR . LPAREN expresionDefnElse RPAREN RPAREN
+    (73) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE . RCOR LPAREN expresionDefnElse RPAREN RPAREN
+    (27) dato -> VARIABLE .
 
-    LPAREN          shift and go to state 133
+  ! shift/reduce conflict for RCOR resolved as shift
+    RCOR            shift and go to state 140
+    STRING          reduce using rule 27 (dato -> VARIABLE .)
+    CHAR            reduce using rule 27 (dato -> VARIABLE .)
+    ENTERO          reduce using rule 27 (dato -> VARIABLE .)
+    FLOTANTE        reduce using rule 27 (dato -> VARIABLE .)
+    BOOLEAN         reduce using rule 27 (dato -> VARIABLE .)
+    VARIABLE        reduce using rule 27 (dato -> VARIABLE .)
+
+  ! RCOR            [ reduce using rule 27 (dato -> VARIABLE .) ]
 
 
 state 123
 
-    (42) argumments -> LCOR dato dato . dato RCOR
-    (43) argumments -> LCOR dato dato . RCOR
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (47) argumments -> LCOR dato . dato dato RCOR
+    (48) argumments -> LCOR dato . dato RCOR
+    (49) argumments -> LCOR dato . RCOR
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    RCOR            shift and go to state 135
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    RCOR            shift and go to state 142
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
-    dato                           shift and go to state 134
+    dato                           shift and go to state 141
 
 state 124
 
-    (44) argumments -> LCOR dato RCOR .
+    (56) definition -> LPAREN DEFFUNCION VARIABLE internos RPAREN .
 
-    LPAREN          reduce using rule 44 (argumments -> LCOR dato RCOR .)
-    VECTORES        reduce using rule 44 (argumments -> LCOR dato RCOR .)
-    NUMERAL         reduce using rule 44 (argumments -> LCOR dato RCOR .)
-    $end            reduce using rule 44 (argumments -> LCOR dato RCOR .)
+    $end            reduce using rule 56 (definition -> LPAREN DEFFUNCION VARIABLE internos RPAREN .)
+    RPAREN          reduce using rule 56 (definition -> LPAREN DEFFUNCION VARIABLE internos RPAREN .)
 
 
 state 125
 
-    (50) internos -> description argumments body .
+    (55) internos -> description argumments . body
+    (50) body -> . instrucciones
+    (1) instrucciones -> . asignacion
+    (2) instrucciones -> . impresion
+    (3) instrucciones -> . operacion_aritmetica1
+    (4) instrucciones -> . condicional
+    (5) instrucciones -> . conjuntos
+    (6) instrucciones -> . vector_entero
+    (7) instrucciones -> . vector_flotante
+    (8) instrucciones -> . mapa_entero
+    (9) instrucciones -> . mapa_flotante
+    (10) instrucciones -> . if
+    (11) instrucciones -> . if_do
+    (12) instrucciones -> . defn
+    (13) instrucciones -> . operacionesLogicas
+    (14) instrucciones -> . sentenciaLoopRecur
+    (15) instrucciones -> . cond_
+    (16) instrucciones -> . cond_else
+    (17) instrucciones -> . doseq
+    (18) instrucciones -> . case_expression
+    (19) instrucciones -> . lista
+    (20) instrucciones -> . sentencia_booleana
+    (21) instrucciones -> . definition
+    (37) asignacion -> . LPAREN DEFICION VARIABLE dato RPAREN
+    (38) asignacion -> . LPAREN LET LCOR VARIABLE dato RCOR RPAREN
+    (57) impresion -> . LPAREN IMPRIMIR dato RPAREN
+    (70) operacion_aritmetica1 -> . LPAREN operacion valor valor RPAREN
+    (71) condicional -> . LPAREN operacion valor valor RPAREN
+    (77) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
+    (78) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
+    (79) conjuntos -> . NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
+    (59) vector_entero -> . VECTOR_ENTERO
+    (60) vector_flotante -> . VECTOR_FLOTANTE
+    (61) mapa_entero -> . MAPA_ENTERO
+    (62) mapa_flotante -> . MAPA_FLOTANTE
+    (63) if -> . IF LPAREN operador_comparadores dato dato RPAREN
+    (64) if_do -> . LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+    (73) defn -> . LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
+    (74) defn -> . LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
+    (69) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (80) sentenciaLoopRecur -> . LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN
+    (41) cond_ -> . LPAREN COND linecondition linecondition RPAREN
+    (42) cond_else -> . LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN
+    (72) doseq -> . LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+    (44) case_expression -> . LPAREN CASE dato case case impresion RPAREN
+    (45) lista -> . LPAREN LIST dato dato RPAREN
+    (39) sentencia_booleana -> . LPAREN operador_comparadores dato dato RPAREN
+    (56) definition -> . LPAREN DEFFUNCION VARIABLE internos RPAREN
 
-    $end            reduce using rule 50 (internos -> description argumments body .)
+    LPAREN          shift and go to state 23
+    NUMERAL         shift and go to state 24
+    VECTOR_ENTERO   shift and go to state 25
+    VECTOR_FLOTANTE shift and go to state 26
+    MAPA_ENTERO     shift and go to state 27
+    MAPA_FLOTANTE   shift and go to state 28
+    IF              shift and go to state 29
 
+    body                           shift and go to state 143
+    instrucciones                  shift and go to state 99
+    asignacion                     shift and go to state 2
+    impresion                      shift and go to state 3
+    operacion_aritmetica1          shift and go to state 4
+    condicional                    shift and go to state 5
+    conjuntos                      shift and go to state 6
+    vector_entero                  shift and go to state 7
+    vector_flotante                shift and go to state 8
+    mapa_entero                    shift and go to state 9
+    mapa_flotante                  shift and go to state 10
+    if                             shift and go to state 11
+    if_do                          shift and go to state 12
+    defn                           shift and go to state 13
+    operacionesLogicas             shift and go to state 14
+    sentenciaLoopRecur             shift and go to state 15
+    cond_                          shift and go to state 16
+    cond_else                      shift and go to state 17
+    doseq                          shift and go to state 18
+    case_expression                shift and go to state 19
+    lista                          shift and go to state 20
+    sentencia_booleana             shift and go to state 21
+    definition                     shift and go to state 22
 
 state 126
 
-    (64) defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR . operacionesLogicas RPAREN
-    (58) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (47) argumments -> LCOR . dato dato dato RCOR
+    (48) argumments -> LCOR . dato dato RCOR
+    (49) argumments -> LCOR . dato RCOR
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
 
-    LPAREN          shift and go to state 136
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
 
-    operacionesLogicas             shift and go to state 137
+    dato                           shift and go to state 123
 
 state 127
 
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO . RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (54) internos -> argumments body .
 
-    RPAREN          shift and go to state 138
+    RPAREN          reduce using rule 54 (internos -> argumments body .)
 
 
 state 128
 
-    (70) sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR . operacionesLogicas RPAREN
-    (58) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (74) defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE . RCOR operacionesLogicas RPAREN
 
-    LPAREN          shift and go to state 136
+    RCOR            shift and go to state 144
 
-    operacionesLogicas             shift and go to state 139
 
 state 129
 
-    (37) cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS ELSE . impresion RPAREN
-    (52) impresion -> . LPAREN IMPRIMIR dato RPAREN
-
-    LPAREN          shift and go to state 91
-
-    impresion                      shift and go to state 140
-
-state 130
-
-    (62) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE . VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
-
-    VARIABLE        shift and go to state 141
-
-
-state 131
-
-    (39) case_expression -> LPAREN CASE dato case case impresion . RPAREN
-
-    RPAREN          shift and go to state 142
-
-
-state 132
-
-    (33) asignacion -> LPAREN LET LCOR VARIABLE dato RCOR RPAREN .
-
-    $end            reduce using rule 33 (asignacion -> LPAREN LET LCOR VARIABLE dato RCOR RPAREN .)
-
-
-state 133
-
-    (63) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN . expresionDefnElse RPAREN RPAREN
-    (65) expresionDefnElse -> . CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING
-
-    CASE            shift and go to state 144
-
-    expresionDefnElse              shift and go to state 143
-
-state 134
-
-    (42) argumments -> LCOR dato dato dato . RCOR
+    (80) sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO . RCOR operacionesLogicas RPAREN
 
     RCOR            shift and go to state 145
 
 
+state 130
+
+    (41) cond_ -> LPAREN COND linecondition linecondition RPAREN .
+
+    $end            reduce using rule 41 (cond_ -> LPAREN COND linecondition linecondition RPAREN .)
+    RPAREN          reduce using rule 41 (cond_ -> LPAREN COND linecondition linecondition RPAREN .)
+
+
+state 131
+
+    (42) cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS . ELSE impresion RPAREN
+
+    ELSE            shift and go to state 146
+
+
+state 132
+
+    (72) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN . RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
+
+    RANGE           shift and go to state 147
+
+
+state 133
+
+    (43) case -> dato impresion .
+
+    STRING          reduce using rule 43 (case -> dato impresion .)
+    CHAR            reduce using rule 43 (case -> dato impresion .)
+    ENTERO          reduce using rule 43 (case -> dato impresion .)
+    FLOTANTE        reduce using rule 43 (case -> dato impresion .)
+    BOOLEAN         reduce using rule 43 (case -> dato impresion .)
+    VARIABLE        reduce using rule 43 (case -> dato impresion .)
+    LPAREN          reduce using rule 43 (case -> dato impresion .)
+
+
+state 134
+
+    (44) case_expression -> LPAREN CASE dato case case . impresion RPAREN
+    (57) impresion -> . LPAREN IMPRIMIR dato RPAREN
+
+    LPAREN          shift and go to state 104
+
+    impresion                      shift and go to state 148
+
 state 135
 
-    (43) argumments -> LCOR dato dato RCOR .
+    (45) lista -> LPAREN LIST dato dato RPAREN .
 
-    LPAREN          reduce using rule 43 (argumments -> LCOR dato dato RCOR .)
-    VECTORES        reduce using rule 43 (argumments -> LCOR dato dato RCOR .)
-    NUMERAL         reduce using rule 43 (argumments -> LCOR dato dato RCOR .)
-    $end            reduce using rule 43 (argumments -> LCOR dato dato RCOR .)
+    $end            reduce using rule 45 (lista -> LPAREN LIST dato dato RPAREN .)
+    RPAREN          reduce using rule 45 (lista -> LPAREN LIST dato dato RPAREN .)
 
 
 state 136
 
-    (58) operacionesLogicas -> LPAREN . IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
-
-    IF              shift and go to state 26
-
-
-state 137
-
-    (64) defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas . RPAREN
-
-    RPAREN          shift and go to state 146
-
-
-state 138
-
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN . LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
-
-    LPAREN          shift and go to state 147
-
-
-state 139
-
-    (70) sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas . RPAREN
-
-    RPAREN          shift and go to state 148
-
-
-state 140
-
-    (37) cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion . RPAREN
+    (63) if -> IF LPAREN operador_comparadores dato dato . RPAREN
 
     RPAREN          shift and go to state 149
 
 
-state 141
+state 137
 
-    (62) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE . RPAREN RCOR LPAREN impresion RPAREN RPAREN
+    (38) asignacion -> LPAREN LET LCOR VARIABLE dato RCOR . RPAREN
 
     RPAREN          shift and go to state 150
 
 
-state 142
+state 138
 
-    (39) case_expression -> LPAREN CASE dato case case impresion RPAREN .
-
-    $end            reduce using rule 39 (case_expression -> LPAREN CASE dato case case impresion RPAREN .)
-
-
-state 143
-
-    (63) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse . RPAREN RPAREN
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores dato dato . RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
 
     RPAREN          shift and go to state 151
 
 
+state 139
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO . RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+
+    RPAREN          shift and go to state 152
+
+
+state 140
+
+    (73) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR . LPAREN expresionDefnElse RPAREN RPAREN
+
+    LPAREN          shift and go to state 153
+
+
+state 141
+
+    (47) argumments -> LCOR dato dato . dato RCOR
+    (48) argumments -> LCOR dato dato . RCOR
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
+
+    RCOR            shift and go to state 155
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
+
+    dato                           shift and go to state 154
+
+state 142
+
+    (49) argumments -> LCOR dato RCOR .
+
+    LPAREN          reduce using rule 49 (argumments -> LCOR dato RCOR .)
+    NUMERAL         reduce using rule 49 (argumments -> LCOR dato RCOR .)
+    VECTOR_ENTERO   reduce using rule 49 (argumments -> LCOR dato RCOR .)
+    VECTOR_FLOTANTE reduce using rule 49 (argumments -> LCOR dato RCOR .)
+    MAPA_ENTERO     reduce using rule 49 (argumments -> LCOR dato RCOR .)
+    MAPA_FLOTANTE   reduce using rule 49 (argumments -> LCOR dato RCOR .)
+    IF              reduce using rule 49 (argumments -> LCOR dato RCOR .)
+    RPAREN          reduce using rule 49 (argumments -> LCOR dato RCOR .)
+
+
+state 143
+
+    (55) internos -> description argumments body .
+
+    RPAREN          reduce using rule 55 (internos -> description argumments body .)
+
+
 state 144
 
-    (65) expresionDefnElse -> CASE . VARIABLE expresionCase DOSPUNTOS ELSE STRING
+    (74) defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR . operacionesLogicas RPAREN
+    (69) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
 
-    VARIABLE        shift and go to state 152
+    LPAREN          shift and go to state 156
 
+    operacionesLogicas             shift and go to state 157
 
 state 145
 
-    (42) argumments -> LCOR dato dato dato RCOR .
+    (80) sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR . operacionesLogicas RPAREN
+    (69) operacionesLogicas -> . LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
 
-    LPAREN          reduce using rule 42 (argumments -> LCOR dato dato dato RCOR .)
-    VECTORES        reduce using rule 42 (argumments -> LCOR dato dato dato RCOR .)
-    NUMERAL         reduce using rule 42 (argumments -> LCOR dato dato dato RCOR .)
-    $end            reduce using rule 42 (argumments -> LCOR dato dato dato RCOR .)
+    LPAREN          shift and go to state 156
 
+    operacionesLogicas             shift and go to state 158
 
 state 146
 
-    (64) defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN .
+    (42) cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS ELSE . impresion RPAREN
+    (57) impresion -> . LPAREN IMPRIMIR dato RPAREN
 
-    $end            reduce using rule 64 (defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN .)
+    LPAREN          shift and go to state 104
 
+    impresion                      shift and go to state 159
 
 state 147
 
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN . RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (72) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE . VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN
 
-    RECUR           shift and go to state 153
+    VARIABLE        shift and go to state 160
 
 
 state 148
 
-    (70) sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN .
+    (44) case_expression -> LPAREN CASE dato case case impresion . RPAREN
 
-    $end            reduce using rule 70 (sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN .)
+    RPAREN          shift and go to state 161
 
 
 state 149
 
-    (37) cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN .
+    (63) if -> IF LPAREN operador_comparadores dato dato RPAREN .
 
-    $end            reduce using rule 37 (cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN .)
+    $end            reduce using rule 63 (if -> IF LPAREN operador_comparadores dato dato RPAREN .)
+    RPAREN          reduce using rule 63 (if -> IF LPAREN operador_comparadores dato dato RPAREN .)
 
 
 state 150
 
-    (62) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN . RCOR LPAREN impresion RPAREN RPAREN
+    (38) asignacion -> LPAREN LET LCOR VARIABLE dato RCOR RPAREN .
 
-    RCOR            shift and go to state 154
+    $end            reduce using rule 38 (asignacion -> LPAREN LET LCOR VARIABLE dato RCOR RPAREN .)
+    RPAREN          reduce using rule 38 (asignacion -> LPAREN LET LCOR VARIABLE dato RCOR RPAREN .)
 
 
 state 151
 
-    (63) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN . RPAREN
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN . LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
 
-    RPAREN          shift and go to state 155
+    LPAREN          shift and go to state 162
 
 
 state 152
 
-    (65) expresionDefnElse -> CASE VARIABLE . expresionCase DOSPUNTOS ELSE STRING
-    (66) expresionCase -> . dato STRING
-    (17) dato -> . STRING
-    (18) dato -> . CHAR
-    (19) dato -> . ENTERO
-    (20) dato -> . FLOTANTE
-    (21) dato -> . BOOLEAN
-    (22) dato -> . VARIABLE
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN . LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
 
-    STRING          shift and go to state 47
-    CHAR            shift and go to state 48
-    ENTERO          shift and go to state 49
-    FLOTANTE        shift and go to state 50
-    BOOLEAN         shift and go to state 51
-    VARIABLE        shift and go to state 52
+    LPAREN          shift and go to state 163
 
-    expresionCase                  shift and go to state 156
-    dato                           shift and go to state 157
 
 state 153
 
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR . LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (73) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN . expresionDefnElse RPAREN RPAREN
+    (75) expresionDefnElse -> . CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING
 
-    LPAREN          shift and go to state 158
+    CASE            shift and go to state 165
 
+    expresionDefnElse              shift and go to state 164
 
 state 154
 
-    (62) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR . LPAREN impresion RPAREN RPAREN
+    (47) argumments -> LCOR dato dato dato . RCOR
 
-    LPAREN          shift and go to state 159
+    RCOR            shift and go to state 166
 
 
 state 155
 
-    (63) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN .
+    (48) argumments -> LCOR dato dato RCOR .
 
-    $end            reduce using rule 63 (defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN .)
+    LPAREN          reduce using rule 48 (argumments -> LCOR dato dato RCOR .)
+    NUMERAL         reduce using rule 48 (argumments -> LCOR dato dato RCOR .)
+    VECTOR_ENTERO   reduce using rule 48 (argumments -> LCOR dato dato RCOR .)
+    VECTOR_FLOTANTE reduce using rule 48 (argumments -> LCOR dato dato RCOR .)
+    MAPA_ENTERO     reduce using rule 48 (argumments -> LCOR dato dato RCOR .)
+    MAPA_FLOTANTE   reduce using rule 48 (argumments -> LCOR dato dato RCOR .)
+    IF              reduce using rule 48 (argumments -> LCOR dato dato RCOR .)
+    RPAREN          reduce using rule 48 (argumments -> LCOR dato dato RCOR .)
 
 
 state 156
 
-    (65) expresionDefnElse -> CASE VARIABLE expresionCase . DOSPUNTOS ELSE STRING
+    (69) operacionesLogicas -> LPAREN . IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
 
-    DOSPUNTOS       shift and go to state 160
+    IF              shift and go to state 167
 
 
 state 157
 
-    (66) expresionCase -> dato . STRING
+    (74) defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas . RPAREN
 
-    STRING          shift and go to state 161
+    RPAREN          shift and go to state 168
 
 
 state 158
 
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN . INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
-
-    INC             shift and go to state 162
-
-
-state 159
-
-    (62) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN . impresion RPAREN RPAREN
-    (52) impresion -> . LPAREN IMPRIMIR dato RPAREN
-
-    LPAREN          shift and go to state 91
-
-    impresion                      shift and go to state 163
-
-state 160
-
-    (65) expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS . ELSE STRING
-
-    ELSE            shift and go to state 164
-
-
-state 161
-
-    (66) expresionCase -> dato STRING .
-
-    DOSPUNTOS       reduce using rule 66 (expresionCase -> dato STRING .)
-
-
-state 162
-
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC . LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
-
-    LPAREN          shift and go to state 165
-
-
-state 163
-
-    (62) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion . RPAREN RPAREN
-
-    RPAREN          shift and go to state 166
-
-
-state 164
-
-    (65) expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS ELSE . STRING
-
-    STRING          shift and go to state 167
-
-
-state 165
-
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN . VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
-
-    VARIABLE        shift and go to state 168
-
-
-state 166
-
-    (62) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN . RPAREN
+    (80) sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas . RPAREN
 
     RPAREN          shift and go to state 169
 
 
-state 167
+state 159
 
-    (65) expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING .
-
-    RPAREN          reduce using rule 65 (expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING .)
-
-
-state 168
-
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE . RPAREN RPAREN VARIABLE RPAREN RPAREN
+    (42) cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion . RPAREN
 
     RPAREN          shift and go to state 170
 
 
-state 169
+state 160
 
-    (62) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN .
-
-    $end            reduce using rule 62 (doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN .)
-
-
-state 170
-
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN . RPAREN VARIABLE RPAREN RPAREN
+    (72) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE . RPAREN RCOR LPAREN impresion RPAREN RPAREN
 
     RPAREN          shift and go to state 171
 
 
-state 171
+state 161
 
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN . VARIABLE RPAREN RPAREN
+    (44) case_expression -> LPAREN CASE dato case case impresion RPAREN .
 
-    VARIABLE        shift and go to state 172
-
-
-state 172
-
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE . RPAREN RPAREN
-
-    RPAREN          shift and go to state 173
+    $end            reduce using rule 44 (case_expression -> LPAREN CASE dato case case impresion RPAREN .)
+    RPAREN          reduce using rule 44 (case_expression -> LPAREN CASE dato case case impresion RPAREN .)
 
 
-state 173
+state 162
 
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN . RPAREN
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN . DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+
+    DO              shift and go to state 172
+
+
+state 163
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN . RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+
+    RECUR           shift and go to state 173
+
+
+state 164
+
+    (73) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse . RPAREN RPAREN
 
     RPAREN          shift and go to state 174
 
 
+state 165
+
+    (75) expresionDefnElse -> CASE . VARIABLE expresionCase DOSPUNTOS ELSE STRING
+
+    VARIABLE        shift and go to state 175
+
+
+state 166
+
+    (47) argumments -> LCOR dato dato dato RCOR .
+
+    LPAREN          reduce using rule 47 (argumments -> LCOR dato dato dato RCOR .)
+    NUMERAL         reduce using rule 47 (argumments -> LCOR dato dato dato RCOR .)
+    VECTOR_ENTERO   reduce using rule 47 (argumments -> LCOR dato dato dato RCOR .)
+    VECTOR_FLOTANTE reduce using rule 47 (argumments -> LCOR dato dato dato RCOR .)
+    MAPA_ENTERO     reduce using rule 47 (argumments -> LCOR dato dato dato RCOR .)
+    MAPA_FLOTANTE   reduce using rule 47 (argumments -> LCOR dato dato dato RCOR .)
+    IF              reduce using rule 47 (argumments -> LCOR dato dato dato RCOR .)
+    RPAREN          reduce using rule 47 (argumments -> LCOR dato dato dato RCOR .)
+
+
+state 167
+
+    (69) operacionesLogicas -> LPAREN IF . LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+
+    LPAREN          shift and go to state 176
+
+
+state 168
+
+    (74) defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN .
+
+    $end            reduce using rule 74 (defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN .)
+    RPAREN          reduce using rule 74 (defn -> LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN .)
+
+
+state 169
+
+    (80) sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN .
+
+    $end            reduce using rule 80 (sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN .)
+    RPAREN          reduce using rule 80 (sentenciaLoopRecur -> LPAREN LOOP LCOR VARIABLE ENTERO RCOR operacionesLogicas RPAREN .)
+
+
+state 170
+
+    (42) cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN .
+
+    $end            reduce using rule 42 (cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN .)
+    RPAREN          reduce using rule 42 (cond_else -> LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN .)
+
+
+state 171
+
+    (72) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN . RCOR LPAREN impresion RPAREN RPAREN
+
+    RCOR            shift and go to state 177
+
+
+state 172
+
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO . LPAREN dato RPAREN BOOLEAN RPAREN RPAREN
+
+    LPAREN          shift and go to state 178
+
+
+state 173
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR . LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+
+    LPAREN          shift and go to state 179
+
+
 state 174
 
-    (58) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN .
+    (73) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN . RPAREN
 
-    $end            reduce using rule 58 (operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN .)
-    RPAREN          reduce using rule 58 (operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN .)
+    RPAREN          shift and go to state 180
+
+
+state 175
+
+    (75) expresionDefnElse -> CASE VARIABLE . expresionCase DOSPUNTOS ELSE STRING
+    (76) expresionCase -> . dato STRING
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
+
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
+
+    expresionCase                  shift and go to state 181
+    dato                           shift and go to state 182
+
+state 176
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN . MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+
+    MENORQUE        shift and go to state 183
+
+
+state 177
+
+    (72) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR . LPAREN impresion RPAREN RPAREN
+
+    LPAREN          shift and go to state 184
+
+
+state 178
+
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN . dato RPAREN BOOLEAN RPAREN RPAREN
+    (22) dato -> . STRING
+    (23) dato -> . CHAR
+    (24) dato -> . ENTERO
+    (25) dato -> . FLOTANTE
+    (26) dato -> . BOOLEAN
+    (27) dato -> . VARIABLE
+
+    STRING          shift and go to state 57
+    CHAR            shift and go to state 58
+    ENTERO          shift and go to state 59
+    FLOTANTE        shift and go to state 60
+    BOOLEAN         shift and go to state 61
+    VARIABLE        shift and go to state 62
+
+    dato                           shift and go to state 185
+
+state 179
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN . INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+
+    INC             shift and go to state 186
+
+
+state 180
+
+    (73) defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN .
+
+    $end            reduce using rule 73 (defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN .)
+    RPAREN          reduce using rule 73 (defn -> LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN .)
+
+
+state 181
+
+    (75) expresionDefnElse -> CASE VARIABLE expresionCase . DOSPUNTOS ELSE STRING
+
+    DOSPUNTOS       shift and go to state 187
+
+
+state 182
+
+    (76) expresionCase -> dato . STRING
+
+    STRING          shift and go to state 188
+
+
+state 183
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE . VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+
+    VARIABLE        shift and go to state 120
+
+
+state 184
+
+    (72) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN . impresion RPAREN RPAREN
+    (57) impresion -> . LPAREN IMPRIMIR dato RPAREN
+
+    LPAREN          shift and go to state 104
+
+    impresion                      shift and go to state 189
+
+state 185
+
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato . RPAREN BOOLEAN RPAREN RPAREN
+
+    RPAREN          shift and go to state 190
+
+
+state 186
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC . LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+
+    LPAREN          shift and go to state 191
+
+
+state 187
+
+    (75) expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS . ELSE STRING
+
+    ELSE            shift and go to state 192
+
+
+state 188
+
+    (76) expresionCase -> dato STRING .
+
+    DOSPUNTOS       reduce using rule 76 (expresionCase -> dato STRING .)
+
+
+state 189
+
+    (72) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion . RPAREN RPAREN
+
+    RPAREN          shift and go to state 193
+
+
+state 190
+
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN . BOOLEAN RPAREN RPAREN
+
+    BOOLEAN         shift and go to state 194
+
+
+state 191
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN . VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN
+
+    VARIABLE        shift and go to state 195
+
+
+state 192
+
+    (75) expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS ELSE . STRING
+
+    STRING          shift and go to state 196
+
+
+state 193
+
+    (72) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN . RPAREN
+
+    RPAREN          shift and go to state 197
+
+
+state 194
+
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN . RPAREN RPAREN
+
+    RPAREN          shift and go to state 198
+
+
+state 195
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE . RPAREN RPAREN VARIABLE RPAREN RPAREN
+
+    RPAREN          shift and go to state 199
+
+
+state 196
+
+    (75) expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING .
+
+    RPAREN          reduce using rule 75 (expresionDefnElse -> CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING .)
+
+
+state 197
+
+    (72) doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN .
+
+    $end            reduce using rule 72 (doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN .)
+    RPAREN          reduce using rule 72 (doseq -> LPAREN DOSEQ LCOR VARIABLE LPAREN RANGE VARIABLE RPAREN RCOR LPAREN impresion RPAREN RPAREN .)
+
+
+state 198
+
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN . RPAREN
+
+    RPAREN          shift and go to state 200
+
+
+state 199
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN . RPAREN VARIABLE RPAREN RPAREN
+
+    RPAREN          shift and go to state 201
+
+
+state 200
+
+    (64) if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN .
+
+    $end            reduce using rule 64 (if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN .)
+    RPAREN          reduce using rule 64 (if_do -> LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN .)
+
+
+state 201
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN . VARIABLE RPAREN RPAREN
+
+    VARIABLE        shift and go to state 202
+
+
+state 202
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE . RPAREN RPAREN
+
+    RPAREN          shift and go to state 203
+
+
+state 203
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN . RPAREN
+
+    RPAREN          shift and go to state 204
+
+
+state 204
+
+    (69) operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN .
+
+    $end            reduce using rule 69 (operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN .)
+    RPAREN          reduce using rule 69 (operacionesLogicas -> LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for RCOR in state 106 resolved as shift
-WARNING: reduce/reduce conflict in state 105 resolved using rule (operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN)
-WARNING: rejected rule (condicional -> LPAREN operacion valor valor RPAREN) in state 105
+WARNING: shift/reduce conflict for VARIABLE in state 91 resolved as shift
+WARNING: shift/reduce conflict for RCOR in state 122 resolved as shift
+WARNING: reduce/reduce conflict in state 118 resolved using rule (operacion_aritmetica1 -> LPAREN operacion valor valor RPAREN)
+WARNING: rejected rule (condicional -> LPAREN operacion valor valor RPAREN) in state 118
 WARNING: Rule (condicional -> LPAREN operacion valor valor RPAREN) is never reduced

@@ -38,9 +38,11 @@ tokens = [
   'BOOLEAN',
   'CHAR',
   'STRING',
-  'VECTORES',
+  'VECTOR_FLOTANTE',
+  'VECTOR_ENTERO',
+  'MAPA_FLOTANTE',
+  'MAPA_ENTERO',
   'CONJUNTOS',
-  'MAPAS',
   'MENOS',
   'MAS',
   'PRODUCTO',
@@ -81,7 +83,6 @@ t_MAYORQUE = r'>'
 t_MAYORIGUALQUE = r'>='
 t_MENORIGUALQUE = r'<='
 t_DIFERENTE = r'!='
-t_COMPARA_IGUAL = r'=='
 t_NUMERAL = r'\#'
 t_DOSPUNTOS = r'\:'
 
@@ -104,12 +105,6 @@ def t_BOOLEAN(t):
     r'(true|false)'
     t.type = reserved.get(t.value,'BOOLEAN')
     return t
-
-def t_VECTORES(t):
-      #r'^[\[]([a-zA-Z0-9]+[\s][a-zA-Z0-9]+)+[\]]$'
-      r'^[\[]([a-zA-Z0-9]+[\s]{0,})+[\]]$'
-      t.type = reserved.get(t.value,'VECTORES')
-      return t
  
 '''  
 def t_CONJUNTOS(t):
@@ -128,6 +123,22 @@ def t_INPUT(t):
 
 def t_LISTA(t):
   r'\(list\s([0-9]+\s*)+\)'
+  return t
+
+def t_VECTOR_FLOTANTE(t):
+  r'\[(\d+\.\d+\s*)+\]'
+  return t
+
+def t_VECTOR_ENTERO(t):
+  r'\[(\d+\s*)+\]'
+  return t
+
+def t_MAPA_FLOTANTE(t):
+  r'\{(\:[a-z]{1}\s\d+\.\d+\s)+\}'
+  return t 
+
+def t_MAPA_ENTERO(t):
+  r'\{(\:[a-zA-Z]{1}\s\d\s)+\}'
   return t
 
 def t_CHAR(t):
