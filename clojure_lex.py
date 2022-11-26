@@ -28,6 +28,7 @@ reserved = {
   'increase':'INCREASE',
   'range' :'RANGE',
   'list': 'LIST',
+  'prn' : 'PRN',
   
 }
 
@@ -89,7 +90,8 @@ t_DOSPUNTOS = r'\:'
 
 # A regular expression rule with some action code
 def t_FLOTANTE(t):
-  r'\d+\.\d+'
+  #r'\d+\.\d+'
+  r'\d+(\.\d+)?'
   return t
   
 def t_ENTERO(t):
