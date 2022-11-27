@@ -14,6 +14,7 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | if
                     | if_do
                     | defn
+                    | defn_with_return
                     | operacionesLogicas
                     | sentenciaLoopRecur
                     
@@ -201,10 +202,19 @@ def p_defn(p):
       
       '''  
 
+def p_defn_with_return(p):
+      '''defn_with_return : LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN defn_return
+                        | LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN defn_return
+      
+      ''' 
+
 def p_expresionDefnElse(p):
       'expresionDefnElse : CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING' 
 
   
+def p_defn_return(p):
+      'defn_return : LPAREN dato dato RPAREN'
+
 def p_expresionCase(p):
       '''expresionCase : dato STRING '''
   
@@ -248,6 +258,7 @@ def p_error(p):
   if p:
     print(f"Error de sintaxis - Token: {p.type}, Línea: {p.lineno}, Col: {p.lexpos}")
     parser.errok()
+                      
   else:
     print("Error de sintaxis Fin de Linea")
  
