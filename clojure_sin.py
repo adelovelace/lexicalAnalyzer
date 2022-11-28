@@ -69,9 +69,10 @@ def p_condElse(p):
     'cond_else : LPAREN COND linecondition linecondition DOSPUNTOS ELSE impresion RPAREN'
 
 # (case x 5 (println "x is 5") 10 (println "x is 10") (println "x is neither 5 nor 10"))
+# (case x 5 "x is 5" 10 "x is 10" :else "sdsd")
 def p_case(p):
     '''case : dato impresion
-            | dato dato STRING
+            | dato STRING
     '''
 def p_case_else(p):
       'case_else : DOSPUNTOS ELSE STRING'
@@ -116,6 +117,7 @@ def p_internos(p):
                 | description argumments body'''
 
 #(defn holi "sp"[x] (println 2))
+#(defn increase [i] (if (< i 10) (recur (inc i))i))
 def p_function(p):
     '''definition : LPAREN DEFFUNCION VARIABLE internos RPAREN
                 | LPAREN DEFFUNCION internos if dato RPAREN
@@ -180,18 +182,25 @@ def p_doseq_args(p):
       '''doseq_args : LCOR dato LPAREN RANGE dato RPAREN RCOR
                         | LCOR dato conjuntos RCOR
                         | LCOR dato vector_entero dato vector_entero RCOR
+                        | LCOR dato vector_entero RCOR
                         | LCOR vector_entero conjuntos RCOR
       
       '''
 
 def p_doseq_prn(p):
       '''doseq_prn : PRN LPAREN dato RPAREN
-                        | PRN LPAREN dato  dato RPAREN
-                        | PRN LPAREN dato  dato dato RPAREN
+                        | PRN dato dato
+                        | PRN dato dato dato 
+                        | PRN operacion_aritmetica1
       '''
 
+# (doseq [a [1 2] b [3 4]] (println "a"))
+# (doseq [a [1 2] b [3 4]] (prn (* x y)))
+# (doseq [a [1 2] b [3 4]] (prn x y z))
+# (doseq [a [1 2]] (prn x y))
+# (doseq [[1 2] #{1 2 3}] (prn x y))
 def p_doseq(p):
-      '''doseq : LPAREN DOSEQ doseq_args LPAREN impresion RPAREN RPAREN
+      '''doseq : LPAREN DOSEQ doseq_args impresion RPAREN
                         | LPAREN DOSEQ doseq_args LPAREN doseq_prn RPAREN RPAREN
       '''
 
@@ -231,7 +240,8 @@ def p_argumentsLoop(p):
 def p_recurLoop(p):
       'recurLoop : LPAREN RECURSION LPAREN INC dato RPAREN RPAREN'
 '''
- 
+
+# (loop [i 0] (if (< i 10) (recur (inc i))i))
 def p_sentenciaLoopRecur(p):
       'sentenciaLoopRecur : LPAREN LOOP argumments LPAREN if dato RPAREN RPAREN'
 

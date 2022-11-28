@@ -48,4 +48,10 @@
 
 {:a c :b d :e t :w q}
 
+(case x 5 "x is 5" 10.10 "x is 10" :else "sdsd")
+
+(doseq [a [1 2] b [3 4]] (println a))
+
+(defn increase [i] (if (< i 10) (recur (inc i)) i) ) 
+
 ;Fin: Steven

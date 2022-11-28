@@ -91,7 +91,7 @@ t_DOSPUNTOS = r'\:'
 # A regular expression rule with some action code
 def t_FLOTANTE(t):
   #r'\d+\.\d+'
-  r'\d+(\.\d+)?'
+  r'\d+(\.\d+)'
   return t
   
 def t_ENTERO(t):
@@ -137,7 +137,8 @@ def t_CHAR(t):
   return t
 
 def t_STRING(t):
-  r'\"[\w|\s|.|\S]*\"'
+  r'\"([^\\\n]|(\\.))*?\"'
+  #r'\"[\w|\s|.|\S]*\"'
   return t
 
 def t_newline(t):

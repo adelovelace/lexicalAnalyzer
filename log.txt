@@ -200,3 +200,114 @@ Prueba: 27/11/2022 21:37:27
 Prueba: 27/11/2022 21:46:03
 calc > (+ 3 4)
 Prueba: 27/11/2022 21:43:21
+Prueba: 27/11/2022 22:47:00
+calc > ()[Dcase )[Dx 5 ""[Dsdsd" 10 "sdsd" :else "sdsd")
+Prueba: 27/11/2022 22:52:01
+calc > (case x 5 (println "x is 5") 10 (println "x is 10") (println "x is neither 5 nor 10"))
+Prueba: 27/11/2022 22:46:08
+Prueba: 27/11/2022 22:58:14
+calc > (case x 5 "x is 5" 10 "x is 10" :else "sdsd")
+Prueba: 27/11/2022 22:58:01
+Prueba: 27/11/2022 23:21:17
+calc > exit
+Prueba: 27/11/2022 23:21:21
+calc > exit
+Prueba: 27/11/2022 23:16:11
+Prueba: 27/11/2022 23:22:28
+calc > exit
+Prueba: 27/11/2022 23:22:30
+calc > exit
+Prueba: 27/11/2022 23:21:36
+Prueba: 27/11/2022 23:22:36
+Prueba: 27/11/2022 23:23:07
+Prueba: 27/11/2022 23:26:37
+Prueba: 27/11/2022 23:28:11
+Prueba: 27/11/2022 23:29:27
+calc > (case x 5 "x is 5" 10 "x is 10" :else "sdsd")
+Prueba: 27/11/2022 23:30:01
+calc > ()[(cond (< 4 5) (println "3") (< 4 5) (println 3))
+Prueba: 27/11/2022 23:32:30
+calc > (doseq [a [1 2] b [3 4]] (println a))
+Prueba: 27/11/2022 23:28:40
+Prueba: 27/11/2022 23:35:05
+calc > (doseq [a [1 2] b [3 4]] (println "a"))
+Prueba: 27/11/2022 23:34:08
+Prueba: 27/11/2022 23:35:56
+Prueba: 27/11/2022 23:36:33
+Prueba: 27/11/2022 23:43:12
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)) )
+Prueba: 27/11/2022 23:44:53
+calc > ()[D* x y)
+Prueba: 27/11/2022 23:42:56
+Prueba: 27/11/2022 23:45:30
+Prueba: 27/11/2022 23:50:28
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)) )
+Prueba: 27/11/2022 23:50:16
+Prueba: 27/11/2022 23:51:21
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)) )
+Prueba: 27/11/2022 23:52:04
+calc > [A[B(doseq [a [1 2] b [3 4]] (prn (* x y)) )[D[D[D[C[[[C)[D[D[D[D[C[[D[D[C[[C[C
+Prueba: 27/11/2022 23:52:11
+calc > [A[B(doseq [a [1 2] b [3 4]] (prn (* x y)) )
+Prueba: 27/11/2022 23:51:17
+Prueba: 27/11/2022 23:52:32
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)) )
+Prueba: 27/11/2022 23:53:24
+calc > ()[D[* x y)
+Prueba: 27/11/2022 23:53:43
+calc > ()[D+ x y)
+Prueba: 27/11/2022 23:52:29
+Prueba: 27/11/2022 23:53:56
+calc > (+ x y)
+Prueba: 27/11/2022 23:54:05
+calc > (- x y)
+Prueba: 27/11/2022 23:54:11
+calc > (* x y)
+Prueba: 27/11/2022 23:54:39
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)))
+Prueba: 27/11/2022 23:53:51
+Prueba: 27/11/2022 23:55:47
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)))
+Prueba: 27/11/2022 23:55:42
+Prueba: 27/11/2022 23:58:46
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)))
+Prueba: 27/11/2022 23:58:27
+Prueba: 28/11/2022 00:00:55
+calc > (doseq [a [1 2] b [3 4]] (prn x y z))
+Prueba: 28/11/2022 00:01:11
+calc > (doseq [a [1 2]] (prn x y))
+Prueba: 28/11/2022 00:00:51
+Prueba: 28/11/2022 00:02:35
+calc > (doseq [a [1 2]] (prn x y))
+Prueba: 28/11/2022 00:02:12
+Prueba: 28/11/2022 00:04:28
+calc > # (doseq [[1 2] #{1 2 3}] (prn x y))
+Prueba: 28/11/2022 00:05:22
+calc > #{}[D1 2 3}
+Prueba: 28/11/2022 00:04:10
+Prueba: 28/11/2022 00:05:42
+calc > #{1 2 3}
+Prueba: 28/11/2022 00:08:18
+calc > (doseq [[1 2] #{1 2 3}] (prn x y))
+Prueba: 28/11/2022 00:11:45
+calc > (loop [i 0] (if (< i 10) (recur (inc i))))
+Prueba: 28/11/2022 00:05:33
+Prueba: 28/11/2022 00:13:16
+calc > (loop [i 0] (if (< i 10) (recur (inc i))))
+Prueba: 28/11/2022 00:14:32
+calc > (loop [i 0] (if (< i 10) (recur (inc i))i))
+Prueba: 28/11/2022 00:13:04
+Prueba: 28/11/2022 00:45:30
+calc > (defn increase [i] (if (< i 10) (recur (inc i)))i)
+Prueba: 28/11/2022 00:45:26
+Prueba: 28/11/2022 00:47:49
+calc > (defn increase [i] (if (< i 10) (recur (inc i)))i)
+Prueba: 28/11/2022 00:49:37
+calc > (defn increase [i] (if (< i 10) (recur (inc i))i))
+Prueba: 28/11/2022 00:47:29
+Prueba: 28/11/2022 00:49:50
+calc > (defn increase [i] (if (< i 10) (recur (inc i))i))
+Prueba: 28/11/2022 00:49:45
+Prueba: 28/11/2022 00:51:50
+calc > (defn increase [i] (if (< i 10) (recur (inc i))i))
+Prueba: 28/11/2022 00:51:32
