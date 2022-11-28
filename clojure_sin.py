@@ -7,12 +7,12 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | operacion_aritmetica1
                     | condicional
                     | conjuntos
-                    | vector_entero
-                    | vector_flotante
-                    | mapa_entero
-                    | mapa_flotante
+                    | vector
+                    | mapa
                     | if
+                    | do
                     | if_do
+                    | when
                     | defn
                     | defn_with_return
                     | operacionesLogicas
@@ -130,33 +130,28 @@ def p_impresion(p):
 def p_valor_variable(p):
   'valor : VARIABLE'
 
+def p_vector(p):
+  'vector : VECTOR'
 
-def p_vector_entero(p):
-  'vector_entero : VECTOR_ENTERO'
 
-def p_vector_flotante(p):
-  'vector_flotante : VECTOR_FLOTANTE'
+def p_mapa(p):
+  'mapa : MAPA'
 
-def p_mapa_entero(p):
-  'mapa_entero : MAPA_ENTERO'
-
-def p_mapa_flotante(p):
-  'mapa_flotante : MAPA_FLOTANTE'
 
 def p_if(p):
-    #'if :  IF LPAREN operador_comparadores dato dato RPAREN'
-    '''if : IF LPAREN operador_comparadores dato dato RPAREN
-          | IF sentencia_booleana
-          | IF sentencia_booleana recur
-    '''
-    #'if :  IF sentencia_booleana'
-    
+    '''if : LPAREN IF instrucciones body RPAREN'''
+
+def p_do(p):
+    '''do : LPAREN DO instrucciones body RPAREN'''
 
 def p_if_do(p):
-    'if_do : LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN'
+    'if_do : LPAREN IF instrucciones body do RPAREN'
 
-# def p_dotimes(p):
-#     'dotimes: '
+def p_when(p):
+      '''when : LPAREN WHEN instrucciones body RPAREN'''
+
+def p_dotimes(p):
+    'dotimes: LPAREN DOTIMES instrucciones body RPAREN'
 
 def p_op_aritmetica1(p):
     '''operacion : MAS
@@ -181,9 +176,14 @@ def p_booleanos(p):
 def p_doseq_args(p):
       '''doseq_args : LCOR dato LPAREN RANGE dato RPAREN RCOR
                         | LCOR dato conjuntos RCOR
+<<<<<<< Updated upstream
                         | LCOR dato vector_entero dato vector_entero RCOR
                         | LCOR dato vector_entero RCOR
                         | LCOR vector_entero conjuntos RCOR
+=======
+                        | LCOR dato vector dato vector RCOR
+                        | LCOR vector conjuntos RCOR
+>>>>>>> Stashed changes
       
       '''
 

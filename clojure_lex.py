@@ -29,7 +29,6 @@ reserved = {
   'range' :'RANGE',
   'list': 'LIST',
   'prn' : 'PRN',
-  
 }
 
 tokens = [
@@ -39,10 +38,8 @@ tokens = [
   'BOOLEAN',
   'CHAR',
   'STRING',
-  'VECTOR_FLOTANTE',
-  'VECTOR_ENTERO',
-  'MAPA_FLOTANTE',
-  'MAPA_ENTERO',
+  'VECTOR',
+  'MAPA',
   'CONJUNTOS',
   'MENOS',
   'MAS',
@@ -108,28 +105,23 @@ def t_BOOLEAN(t):
     t.type = reserved.get(t.value,'BOOLEAN')
     return t
 
+<<<<<<< Updated upstream
+=======
+def t_VECTOR(t):
+    r'\[(\d+|\d+\s|\d+(\.\d+)?|\d+(\.\d+)?\s|\"[\w|\s|.|\S]*\"|\"[\w|\s|.|\S]*\"\s|true\s|\false\s|true|false)+\]'
+    return t
+
+def t_MAPA(t):
+    r'\{(\:\w+\-*\w+\s(\d+|\"[\w|\s|.|\S]*\")(\s|))+\}'
+    return t
+
+>>>>>>> Stashed changes
 def t_INPUT(t):
   r'\(read-line\)'
   return t
 
 def t_LISTA(t):
   r'\(list\s([0-9]+\s*)+\)'
-  return t
-
-def t_VECTOR_FLOTANTE(t):
-  r'\[(\d+\.\d+\s*)+\]'
-  return t
-
-def t_VECTOR_ENTERO(t):
-  r'\[(\d+\s*)+\]'
-  return t
-
-def t_MAPA_FLOTANTE(t):
-  r'\{(\:[a-z]{1}\s\d+\.\d+\s)+\}'
-  return t 
-
-def t_MAPA_ENTERO(t):
-  r'\{(\:[a-zA-Z]{1}\s\d\s)+\}'
   return t
 
 def t_CHAR(t):
