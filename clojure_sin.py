@@ -16,8 +16,7 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | defn
                     | defn_with_return
                     | operacionesLogicas
-                    | sentenciaLoopRecur
-                    
+                    | sentenciaLoopRecur    
                     | cond_
                     | cond_else
                     | doseq

@@ -150,3 +150,53 @@ Prueba: 26/11/2022 19:15:20
 calc > (case x 5 "sdsd" 10 "sdsd" :else "sdsd")
 Prueba: 26/11/2022 19:14:39
 Prueba: 26/11/2022 19:30:48
+Prueba: 27/11/2022 21:32:28
+calc > (case x 5 "sdsd" 10 "sdsd" :else "sdsd")
+Prueba: 27/11/2022 21:32:27
+Prueba: 27/11/2022 21:36:18
+calc > (case x 1 (println "s") 1 (println "s") 1 (println 6)
+Prueba: 27/11/2022 21:36:01
+Prueba: 27/11/2022 21:37:28
+calc > '''  
+Prueba: 27/11/2022 21:37:28
+calc > def t_CONJUNTOS(t):
+Prueba: 27/11/2022 21:37:28
+calc >       r'^\#[\{]{1}(([a-zA-Z]+[\s]{0,})+|([\d]+[\s]{0,})+){1,}[\}]{1}'
+Prueba: 27/11/2022 21:37:28
+calc >       t.type = reserved.get(t.value,'CONJUNTOS')
+Prueba: 27/11/2022 21:37:28
+calc >       return t
+Prueba: 27/11/2022 21:37:28
+calc > 
+Prueba: 27/11/2022 21:37:28
+calc > def t_MAPAS(t):
+Prueba: 27/11/2022 21:37:28
+calc >       r'^[\{](([\:]{1}[\w]+[\s][\w]+)[\s]{0,})+[\}]$'
+Prueba: 27/11/2022 21:37:28
+calc >       t.type = reserved.get(t.value,'MAPAS')
+Prueba: 27/11/2022 21:37:28
+calc >       return t
+Prueba: 27/11/2022 21:37:41
+calc > '''  (case x 1 (println "s") 1 (println "s") 1 (println 6)
+Prueba: 27/11/2022 21:37:49
+calc > 
+Prueba: 27/11/2022 21:37:49
+calc > 
+Prueba: 27/11/2022 21:37:49
+calc > 
+Prueba: 27/11/2022 21:37:49
+calc > 
+Prueba: 27/11/2022 21:37:50
+calc > 
+Prueba: 27/11/2022 21:37:50
+calc > 
+Prueba: 27/11/2022 21:37:50
+calc > 
+Prueba: 27/11/2022 21:37:50
+calc > 
+Prueba: 27/11/2022 21:38:47
+calc >  (case x 1 (println "s") 1 (println "s") 1 (println 6))
+Prueba: 27/11/2022 21:37:27
+Prueba: 27/11/2022 21:46:03
+calc > (+ 3 4)
+Prueba: 27/11/2022 21:43:21
