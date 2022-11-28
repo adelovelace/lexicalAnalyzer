@@ -176,14 +176,8 @@ def p_booleanos(p):
 def p_doseq_args(p):
       '''doseq_args : LCOR dato LPAREN RANGE dato RPAREN RCOR
                         | LCOR dato conjuntos RCOR
-<<<<<<< Updated upstream
-                        | LCOR dato vector_entero dato vector_entero RCOR
-                        | LCOR dato vector_entero RCOR
-                        | LCOR vector_entero conjuntos RCOR
-=======
                         | LCOR dato vector dato vector RCOR
                         | LCOR vector conjuntos RCOR
->>>>>>> Stashed changes
       
       '''
 
