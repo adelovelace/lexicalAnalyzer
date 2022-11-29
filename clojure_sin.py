@@ -205,10 +205,18 @@ def p_impresion(p):
 
 # [1 2 3 4]
 # [true 3 "four" 5]
-def p_vector(p):
-  'vector : LCOR argumentos_lista RCOR'
+def p_secuencia_vector(p):
+    ''' secuencia_v : dato 
+        | dato secuencia_v
+    '''
+    if len(1):
+        p[0] = ("SECUENCIA DE VECTOR", p[1])
+    if len(2):
+        p[0] = ("SECUENCIA DE VECTOR", p[2])
 
-  p[0] = ("VECTOR", p[2])
+def p_vector(p):
+    'vector : LPAREN secuencia_v RPAREN'
+    p[0] = ("VECTOR", p[2])
 
 # Andrea (mapa y vector)
 
@@ -217,7 +225,7 @@ def p_secuencia_mapa(p):
     ''' secuencia_mapa : DOSPUNTOS VARIABLE dato 
         | DOSPUNTOS VARIABLE secuencia_mapa
     '''
-    p[0] = ("secuencia_mapa", p[2],p[3])
+    p[0] = ("SECUENCIA DE MAPA", p[2],p[3])
 
 def p_mapa(p):
     'mapa : LPAREN secuencia_mapa RPAREN'
