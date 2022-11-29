@@ -74,18 +74,14 @@ def p_asignacion(p): #puede reconocer (def x 10)
 
 # (< 2 2)
 def p_sentenciaBooleana(p):
+
     '''sentencia_booleana : LPAREN operador_comparadores dato dato RPAREN'''
     p[0] = ("SENTENCIA_BOOLEANA", p[2], p[3], p[4])
 
-    # if p[3].isdigit() and p[4].isdigit():
-
-
-
-
-# (< 2 2) (println 1)
+# (< 2 2) (println "1")
 def p_linecondition(p):
     '''linecondition : sentencia_booleana impresion'''
-    p[0] = ("SENTENCIA",p[1], p[2])
+    p[0] = ("SENTENCIA", p[1], p[2])
 
 #(cond (< 2 2) (println 1) (< 2 10) (println "1"))
 #(cond (< 4 5) (println "3") (< 4 5) (println 3))
@@ -134,14 +130,14 @@ def p_argumentos_lista(p):
                         | dato argumentos_lista'''
     if len(p) == 2:
         p[0] = ("ARGUMENTO", p[1])
-    if len(p) == 4:
+    if len(p) == 3:
         p[0] = ("ARGUMENTO", p[1], p[2])
+
 
 #(list 2 "3")
 def p_lista(p):
     'lista : LPAREN LIST argumentos_lista RPAREN'
-
-    p[0] = ("LISTA", p[2])
+    p[0] = ("LISTA", p[3])
 
 
 # (defn saludar
@@ -156,7 +152,6 @@ def p_description(p):
 
 def p_increase(p):
       'increase : INCREASE LCOR dato RCOR'
-
       p[0] = ("INCREASE", p[3])
 
 def p_argumments(p):
@@ -208,7 +203,7 @@ def p_impresion(p):
 def p_vector(p):
   'vector : LCOR argumentos_lista RCOR'
 
-  p[0] = ("VECTOR", p[2])
+  p[0] = ("VECTOR_", p[2])
 
 # Andrea (mapa y vector)
 
@@ -392,16 +387,12 @@ def p_expresionConjuntoString(p):
 
 # Error rule for syntax errors
 def p_error(p):
-    global error_info
-
     if p:
-        # print(f"Error de sintaxis - Token: {p.type}, Línea: {p.lineno}, Col: {p.lexpos}")
-        error_info = f"Error de sintaxis - Token: {p.type}, Línea: {p.lineno}, Col: {p.lexpos}"
+        print(f"Error de sintaxis - Token: {p.type}, Línea: {p.lineno}, Col: {p.lexpos}")
         parser.errok()
     else:
-        error_info = "Error de sintaxis Fin de Linea"
+        print("Error de sintaxis Fin de Linea")
 
-    return error_info
 # Build the parser
 parser = sintactico.yacc()
 
@@ -419,9 +410,12 @@ def format_parser_tree(str_tree):
     return output
 
 def validaRegla(s):
-    print(s)
+
+    # print(f"s -> {s}")
     result = parser.parse(s)
-    print(result)
+    print(f"result-> {result}")
+
+
     return format_parser_tree(str(result))
 
 
