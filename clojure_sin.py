@@ -1,12 +1,10 @@
 import ply.yacc as sintactico
 from lexicalAnalyzer.clojure_lex import tokens
-from bigtree import Node, shift_nodes, print_tree
 
 def p_instrucciones(p): #puede probar imprimir(var)
   '''instrucciones : asignacion
                     | impresion
-                    | operacion_aritmetica1
-                    | condicional
+                    | operacion_aritmetica
                     | conjuntos
                     | vector
                     | mapa
@@ -24,7 +22,10 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | case_expression
                     | lista
                     | sentencia_booleana
-                    | definition'''
+                    | function
+                    | dotimes
+                    | ciclo
+                    | valor'''
   p[0] = ("INSTRUCCION", p[1])
 
 def p_tipos_datos(p):
@@ -34,16 +35,16 @@ def p_tipos_datos(p):
             | FLOTANTE
             | BOOLEAN
             | VARIABLE '''
-  p[0] = ('DATO', p[1])
+  p[0] = ("DATO", p[1])
 
 def p_valor(p):
   '''valor : ENTERO
           | FLOTANTE
           | BOOLEAN
           '''
-  p[0] = ('VALOR', p[1])
+  p[0] = ("VALOR", p[1])
 
-def p_operadoresComparadores(p):
+def p_operadoresComparadores(p): #BOLEANOS
     '''operador_comparadores : COMPARA_IGUAL
                 | MENORQUE
                 | MAYORQUE
@@ -51,6 +52,13 @@ def p_operadoresComparadores(p):
                 | MENORIGUALQUE
                 | DIFERENTE'''
     p[0] = ('OP_COMPARADOR', p[1])
+
+def p_op_aritmetica1(p): #OP. MATEMICAS
+    '''operador_aritmetico : MAS
+                  | MENOS
+                  | PRODUCTO
+                  | DIVISION '''
+    p[0] = ("OPERADOR_ARITMETICO", p[1])
 
 def p_asignacion(p): #puede reconocer (def x 10)
   '''asignacion : LPAREN DEFICION VARIABLE dato RPAREN
@@ -62,13 +70,15 @@ def p_asignacion(p): #puede reconocer (def x 10)
       p[0] = ('ASIGNACION', p[4], p[5])
 
 
+# (< 2 2)
 def p_sentenciaBooleana(p):
     '''sentencia_booleana : LPAREN operador_comparadores dato dato RPAREN'''
     p[0] = ("SENTENCIA_BOOLEANA", p[2], p[3], p[4])
 
+# (< 2 2) (println 1)
 def p_linecondition(p):
     '''linecondition : sentencia_booleana impresion'''
-    p[0] = ('DECLARACION', p[1])
+    p[0] = ("SENTENCIA",p[1], p[2])
 
 #(cond (< 2 2) (println 1) (< 2 10) (println "1"))
 #(cond (< 4 5) (println "3") (< 4 5) (println 3))
@@ -82,23 +92,50 @@ def p_condElse(p):
     p[0] = ("COND_ELSE", p[3], p[4], p[7])
 
 
-# (case x 5 (println "x is 5") 10 (println "x is 10") (println "x is neither 5 nor 10"))
+# (case x
+#   5
+#       (println "x is 5")
+#   10
+#       (println "x is 10")
+#   (println "x is neither 5 nor 10"))
 # (case x 5 "x is 5" 10 "x is 10" :else "sdsd")
 def p_case(p):
     '''case : dato impresion
             | dato STRING
+            | dato impresion case
+            | dato STRING case
     '''
-def p_case_else(p):
-      'case_else : DOSPUNTOS ELSE STRING'
+
+    if len(p) == 3:
+        p[0] = (p[1], p[2])
+    if len(p) == 4:
+        p[0] = (p[1], p[2], p[3])
+
 
 def p_case_expression(p):
-    '''case_expression : LPAREN CASE dato case case impresion RPAREN
-            | LPAREN CASE dato case case case_else RPAREN
+    '''case_expression : LPAREN CASE dato case impresion RPAREN
+                        | LPAREN CASE dato case DOSPUNTOS ELSE STRING RPAREN
     '''
+
+    if len(p) == 7:
+        p[0] = ("CASE_EXPRESSION", p[3], p[5])
+    if len(p) == 9:
+        p[0] = ("CASE_EXPRESSION", p[3], p[7])
+
+def p_argumentos_lista(p):
+    '''argumentos_lista : dato
+                        | dato argumentos_lista'''
+    if len(p) == 2:
+        p[0] = ("ARGUMENTO", p[1])
+    if len(p) == 4:
+        p[0] = ("ARGUMENTO", p[1], p[2])
 
 #(list 2 "3")
 def p_lista(p):
-    'lista : LPAREN LIST dato dato RPAREN'
+    'lista : LPAREN LIST argumentos_lista RPAREN'
+
+    p[0] = ("LISTA", p[2])
+
 
 # (defn saludar
 # 	“Retorna un saludo predeterminado con el nombre de la persona ingresada como parámetro”
@@ -107,19 +144,25 @@ def p_lista(p):
 # )
 def p_description(p):
     'description : STRING'
+    p[0] = ("DESCRIPCION", p[1])
+
 
 def p_increase(p):
       'increase : INCREASE LCOR dato RCOR'
 
+      p[0] = ("INCREASE", p[3])
+
 def p_argumments(p):
-    '''argumments : LCOR dato dato dato RCOR
-                   | LCOR dato dato RCOR
-                   | LCOR dato RCOR'''
+    'argumments : LCOR argumentos_lista RCOR'
+    p[0] = ("ARGUMENTOS", p[2])
+
 def p_body(p):
     'body : instrucciones'
+    p[0] = ("BODY", p[1])
 
 def p_recur(p):
       'recur : LPAREN RECUR LPAREN INC dato RPAREN RPAREN'
+      p[0] = ("RECUR", p[5])
 
 
 def p_internos(p):
@@ -130,82 +173,114 @@ def p_internos(p):
                 | argumments body
                 | description argumments body'''
 
+    if len(p) == 2:
+        p[0] = (p[1])
+    if len(p) == 3:
+        p[0] = (p[1], p[2])
+    if len(p) == 4:
+        p[0] = (p[1], p[2], p[3])
+
 #(defn holi "sp"[x] (println 2))
 #(defn increase [i] (if (< i 10) (recur (inc i))i))
 def p_function(p):
-    '''definition : LPAREN DEFFUNCION VARIABLE internos RPAREN
+    '''function : LPAREN DEFFUNCION VARIABLE internos RPAREN
                 | LPAREN DEFFUNCION internos if dato RPAREN
     '''
-
+    if len(p)==6:
+        p[0] = ("FUNCION", p[3], p[4])
+    if len(p)==7:
+        p[0] = ("FUNCION", p[3], p[4], p[5])
 
 def p_impresion(p):
   'impresion : LPAREN IMPRIMIR dato RPAREN'
 
-def p_valor_variable(p):
-  'valor : VARIABLE'
+  p[0] = ("IMPRESION", p[3])
 
 def p_vector(p):
-  'vector : VECTOR'
+  'vector : LCOR argumentos_lista RCOR'
 
+  p[0] = ("VECTOR", p[2])
 
 def p_mapa(p):
   'mapa : MAPA'
 
 
 def p_if(p):
-    '''if : IF LPAREN operador_comparadores dato dato RPAREN
-          | IF sentencia_booleana
+    '''if : IF sentencia_booleana
           | IF sentencia_booleana recur
+          | LPAREN IF instrucciones body RPAREN
     '''
-    '''if : LPAREN IF instrucciones body RPAREN'''
+
+    if len(p) == 3:
+        p[0] = ("IF", p[2])
+    if len(p) == 4:
+        p[0] = ("IF", p[2], p[3])
+    if len(p) == 5:
+        p[0] = ("IF", p[3], p[4])
+
 
 def p_do(p):
-    '''do : LPAREN DO instrucciones body RPAREN'''
+    '''do : LPAREN DO instrucciones RPAREN'''
+    p[0] = ("DO", p[3])
+
 
 def p_if_do(p):
-    'if_do : LPAREN IF instrucciones body do RPAREN'
+    'if_do : LPAREN if do RPAREN'
+    p[0] = ("IF_DO", p[2], p[3])
 
 def p_when(p):
-      '''when : LPAREN WHEN instrucciones body RPAREN'''
+      '''when : LPAREN WHEN sentencia_booleana body RPAREN'''
+      p[0] = ("WHEN", p[3], p[4])
+
+def p_ciclo(p):
+    'ciclo : LCOR VARIABLE ENTERO RCOR'
+    p[0] = (p[2], p[3])
 
 def p_dotimes(p):
-    'dotimes: LPAREN DOTIMES instrucciones body RPAREN'
-
-def p_op_aritmetica1(p):
-    '''operacion : MAS
-          | MENOS
-          | PRODUCTO
-          | DIVISION '''
-
-#arrglar
+    'dotimes : LPAREN DOTIMES ciclo body RPAREN'
+    p[0] = ("DOTIMES", p[3], p[4])
 
 def p_operacionesLogicas(p):
-      """operacionesLogicas : LPAREN IF LPAREN MENORQUE VARIABLE ENTERO RPAREN LPAREN RECUR LPAREN INC LPAREN VARIABLE RPAREN RPAREN VARIABLE RPAREN RPAREN"""
-
+    '''operacionesLogicas : LPAREN if recur VARIABLE RPAREN RPAREN'''
+    p[0] = (p[2], p[3], p[4])
 
 def p_operacion_aritmetica1(p):
-    'operacion_aritmetica1 : LPAREN operacion valor valor RPAREN'
-
-def p_booleanos(p):
-      'condicional : LPAREN operacion valor valor RPAREN'
+    'operacion_aritmetica : LPAREN operador_aritmetico dato dato RPAREN'
+    p[0] = ("OP_ARITMETICA",p[2], p[4])
 
 
 #(doseq [n (range 3)](println n))
 def p_doseq_args(p):
-      '''doseq_args : LCOR dato LPAREN RANGE dato RPAREN RCOR
-                        | LCOR dato conjuntos RCOR
-                        | LCOR dato vector_entero dato vector_entero RCOR
-                        | LCOR vector_entero conjuntos RCOR
-                        | LCOR dato vector dato vector RCOR
-                        | LCOR vector conjuntos RCOR
-      '''
+    '''doseq_args : LCOR dato LPAREN RANGE dato RPAREN RCOR
+                    | LCOR dato conjuntos RCOR
+                    | LCOR dato vector dato vector RCOR
+                    | LCOR vector conjuntos RCOR'''
+
+    if len(p) == 8:
+        p[0] = ("DOSEQ_ARGS", p[2], p[5])
+    if p[2] == 'dato':
+        p[0] = ("DOSEQ_ARGS", p[2], p[3])
+    if len(p) == 7:
+        p[0] = ("DOSEQ_ARGS", p[2], p[3], p[4], p[5])
+    if p[2] == 'vector':
+        p[0] = ("DOSEQ_ARGS", p[2], p[3])
+
 
 def p_doseq_prn(p):
       '''doseq_prn : PRN LPAREN dato RPAREN
-                        | PRN dato dato
-                        | PRN dato dato dato 
-                        | PRN operacion_aritmetica1
+                    | PRN dato dato
+                    | PRN dato dato dato
+                    | PRN operacion_aritmetica
       '''
+      if len(p) == 5:
+          p[0] = ("DOSEQ_PRN", p[3])
+      if len(p) == 4:
+          p[0] = ("DOSEQ_PRN", p[3])
+      if len(p) == 5:
+          p[0] = ("DOSEQ_PRN", p[3])
+      if len(p) == 5:
+          p[0] = ("DOSEQ_PRN", p[3])
+
 
 # (doseq [a [1 2] b [3 4]] (println "a"))
 # (doseq [a [1 2] b [3 4]] (prn (* x y)))
@@ -213,63 +288,92 @@ def p_doseq_prn(p):
 # (doseq [a [1 2]] (prn x y))
 # (doseq [[1 2] #{1 2 3}] (prn x y))
 def p_doseq(p):
-      '''doseq : LPAREN DOSEQ doseq_args impresion RPAREN
-                        | LPAREN DOSEQ doseq_args LPAREN doseq_prn RPAREN RPAREN
-      '''
-
+    '''doseq : LPAREN DOSEQ doseq_args impresion RPAREN
+            | LPAREN DOSEQ doseq_args LPAREN doseq_prn RPAREN RPAREN
+    '''
+    if len(p) == 6:
+        p[0] = ("DOSEQ", p[3], p[4])
+    if len(p) == 8:
+        p[0] = ("DOSEQ", p[3], p[5])
 
 def p_defn(p):
-      '''defn : LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
-                        | LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
+    '''defn : LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN
+             | LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN
+    '''
+    if len(p) == 8:
+        p[0] = ("DEFN", p[3], p[5], p[8])
+    if len(p) == 9:
+        p[0] = ("DEFN", p[3], p[5], p[7])
 
-      '''
 
 def p_defn_with_return(p):
       '''defn_with_return : LPAREN DEFFUNCION VARIABLE LCOR VARIABLE RCOR LPAREN expresionDefnElse RPAREN RPAREN defn_return
                         | LPAREN DEFFUNCION INCREASE LCOR VARIABLE RCOR operacionesLogicas RPAREN defn_return
 
       '''
+      if len(p) == 12:
+          p[0] = ("Defn_Return", p[3], p[5], p[8],p[11])
+      if len(p) == 10:
+          p[0] = ("Defn_Return", p[3], p[5], p[7],p[9])
+
 
 def p_expresionDefnElse(p):
-      'expresionDefnElse : CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING'
-
+    'expresionDefnElse : CASE VARIABLE expresionCase DOSPUNTOS ELSE STRING'
+    p[0] = ("ExpresionDefnElse", p[2], p[3], p[6])
 
 def p_defn_return(p):
       'defn_return : LPAREN dato dato RPAREN'
-      p[0] = ("", p[2], p[3])
+      p[0] = ("DEFN_RETURN", p[2], p[3])
 
 def p_expresionCase(p):
-      '''expresionCase : dato STRING '''
+    '''expresionCase : dato STRING'''
+    p[0] = (p[1], p[2])
 
+# #{2 4 5 6}
 def p_conjuntos(p):
       '''conjuntos : NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
                       | NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
                       | NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
       '''
+      p[0] = ("CONJUNTOS", p[1], p[3])
 
 
 # (loop [i 0] (if (< i 10) (recur (inc i))i))
 def p_sentenciaLoopRecur(p):
-      'sentenciaLoopRecur : LPAREN LOOP argumments LPAREN if dato RPAREN RPAREN'
+    'sentenciaLoopRecur : LPAREN LOOP argumments LPAREN if dato RPAREN RPAREN'
 
+    p[0] = ("SENTENCIA_LOOP", p[3], p[5], p[6])
 
 
 def p_expresionConjuntoEnteros(p):
-      '''expresionConjuntoEnteros : ENTERO
-                     | ENTERO expresionConjuntoEnteros
+    '''expresionConjuntoEnteros : ENTERO
+                                 | ENTERO expresionConjuntoEnteros
     '''
+
+    if len(p) == 2:
+        p[0] = p[1]
+    if len(p) == 3:
+        p[0] = (p[1], p[2])
 
 def p_expresionConjuntoDouble(p):
       '''expresionConjuntoDouble : FLOTANTE
                      | FLOTANTE expresionConjuntoDouble
     '''
+      if len(p) == 2:
+          p[0] = p[1]
+      if len(p) == 3:
+          p[0] = (p[1], p[2])
 
 def p_expresionConjuntoString(p):
       '''expresionConjuntoString : STRING
-                     | STRING expresionConjuntoString
+                                  | STRING expresionConjuntoString
     '''
+      if len(p) == 2:
+          p[0] = p[1]
+      if len(p) == 3:
+          p[0] = (p[1], p[2])
 
- # Error rule for syntax errors
+# Error rule for syntax errors
 def p_error(p):
   if p:
     print(f"Error de sintaxis - Token: {p.type}, Línea: {p.lineno}, Col: {p.lexpos}")
@@ -280,14 +384,6 @@ def p_error(p):
 
 # Build the parser
 parser = sintactico.yacc()
-
-def make_tree():
-    root = Node("a", age=90)
-    b = Node("b", age=65, parent=root)
-    c = Node("c", age=60, parent=root)
-    d = Node("d", age=40, parent=b)
-
-    print_tree(root, attr_list=["age"])
 
 def format_parser_tree(str_tree):
     output = ""

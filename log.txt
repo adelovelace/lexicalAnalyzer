@@ -432,3 +432,55 @@ calc > (if (< 5 2) (do (println "even"))
 Prueba: 28/11/2022 07:09:14
 calc > (if (< 5 2) (do (println "even"))
 
+Prueba: 29/11/2022 14:54:47
+calc > def x 10)
+Prueba: 29/11/2022 14:54:49
+calc > (def x 10)
+Prueba: 29/11/2022 14:55:22
+calc > (< 2 2) 
+Prueba: 29/11/2022 14:55:26
+calc >  (< 2 2) (println 1) 
+Prueba: 29/11/2022 14:55:33
+calc > (< 2 2) (println 1) 
+Prueba: 29/11/2022 14:56:01
+calc > (cond (< 2 2) (println 1) (< 2 10) (println "1"))
+Prueba: 29/11/2022 14:56:11
+calc > (< 2 10) (println "1")
+Prueba: 29/11/2022 14:56:27
+calc > (cond (< 4 5) (println "3") (< 4 5) (println 3) : else (println 9))
+Prueba: 29/11/2022 14:56:42
+calc > (< 2 2)(println 1)
+Prueba: 29/11/2022 14:57:33
+calc > (< 2 2) (println 1)
+Prueba: 29/11/2022 14:57:42
+calc > (< 2 2) (println 1)
+Prueba: 29/11/2022 14:59:28
+calc > (defn saludar
+Prueba: 29/11/2022 14:59:28
+calc > 	“Retorna un saludo predeterminado con el nombre de la persona ingresada como parámetro”
+Prueba: 29/11/2022 14:59:28
+calc > 	[ name ]
+Prueba: 29/11/2022 14:59:28
+calc > 	( str “OH! Eres ” name “?! Que emoción verte nuevamente! :D” )
+Prueba: 29/11/2022 14:59:49
+calc > )(defn saludar “Retorna un saludo predeterminado con el nombre de la persona ingresada como parámetro” [ name ] ( str “OH! Eres ” name “?! Que emoción verte nuevamente! :D” ))
+Prueba: 29/11/2022 15:01:53
+calc > {2 4 5 6}
+Prueba: 29/11/2022 15:02:05
+calc > #{2 4 5 6}
+Prueba: 29/11/2022 15:02:30
+calc > #{2 5 7 9 4}
+Prueba: 29/11/2022 15:05:05
+calc > (list 2 "3")
+Prueba: 29/11/2022 15:05:14
+calc > (list 2 4 7 "p")
+Prueba: 29/11/2022 16:44:44
+calc > (doseq [n (range 3)](println n))
+Prueba: 29/11/2022 16:45:11
+calc > (doseq [n (range 3)](println n))
+Prueba: 29/11/2022 16:45:36
+calc > (doseq [n (range 3)](println n))
+Prueba: 29/11/2022 16:45:59
+calc > (def x 1)
+Prueba: 29/11/2022 16:46:16
+calc > (do (def x 1))
