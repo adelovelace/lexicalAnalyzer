@@ -172,41 +172,48 @@ lexer = lex.lex()
 
 
 def getTokens(lexer):
+  list_tokens = []
   for tok in lexer:
-    print(tok)
+    list_tokens.append(tok)
+    # print(tok)
+  return list_tokens
 
+def input_sentence(linea):
+  lexer.input(linea)
 
-print(f'Seleccione el modo de prueba:\n1. Ingresar datos. \n2. Evaluar por defecto. (source.txt)\n')
+  return getTokens(lexer)
 
-selector = input(">>")
-try:
-  selector = int(selector)
-except:
-  selector = -1
-
-if (selector == 1):
-
-  linea = " "
-  while linea != "":
-    linea = input("Ingrese >>")
-    lexer.input(linea)
-    getTokens(lexer)
-
-elif (selector == 2):
-
-  file = open('source.txt', 'r')
-  log_file = open('log.txt', 'a')
-  lines = file.readlines()
-  prueba = "Prueba: " + datetime.today().strftime("%d/%m/%Y") + " " + datetime.now().strftime("%H:%M:%S") + '\n'
-  for line in lines:
-    lexer.input(line)
-    getTokens(lexer)
-
-  log_file.writelines(prueba)
-  
-  print("Archivo leido")
-
-else:
-  pass
-
-print("Succesfull")
+#
+# print(f'Seleccione el modo de prueba:\n1. Ingresar datos. \n2. Evaluar por defecto. (source.txt)\n')
+# selector = input(">>")
+# try:
+#   selector = int(selector)
+# except:
+#   selector = -1
+#
+# if (selector == 1):
+#
+#   linea = " "
+#   while linea != "":
+#     linea = input("Ingrese >>")
+#     lexer.input(linea)
+#     getTokens(lexer)
+#
+# elif (selector == 2):
+#
+#   file = open('source.txt', 'r')
+#   log_file = open('log.txt', 'a')
+#   lines = file.readlines()
+#   prueba = "Prueba: " + datetime.today().strftime("%d/%m/%Y") + " " + datetime.now().strftime("%H:%M:%S") + '\n'
+#   for line in lines:
+#     lexer.input(line)
+#     getTokens(lexer)
+#
+#   log_file.writelines(prueba)
+#
+#   print("Archivo leido")
+#
+# else:
+#   pass
+#
+# print("Succesfull")

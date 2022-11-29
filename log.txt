@@ -151,3 +151,31 @@ calc > (case x 5 "sdsd" 10 "sdsd" :else "sdsd")
 Prueba: 26/11/2022 19:14:39
 Prueba: 26/11/2022 19:30:48
 Prueba: 28/11/2022 01:45:11
+Prueba: 28/11/2022 10:05:35
+calc > ( def x 1)
+Prueba: 28/11/2022 10:05:45
+calc > 
+Prueba: 28/11/2022 10:05:46
+calc > 
+Prueba: 28/11/2022 10:05:47
+calc > 
+Prueba: 28/11/2022 10:06:47
+calc > (def x 1)
+Prueba: 28/11/2022 10:08:03
+calc > (def x 1)
+Prueba: 28/11/2022 10:09:00
+calc > (def x 1)
+Prueba: 28/11/2022 10:17:21
+calc > (cond (< 2 2) (println 1) (< 2 10) (println "1"))
+Prueba: 28/11/2022 10:42:37
+calc > (def x 1)
+Prueba: 28/11/2022 12:06:57
+calc > (def x 1)
+Prueba: 28/11/2022 12:07:43
+calc > (def x 1)
+Prueba: 28/11/2022 12:08:04
+calc > (def x 1)
+Prueba: 28/11/2022 12:08:54
+calc > (cond (< 4 5) (println "3") (< 4 5) (println 3))
+Prueba: 29/11/2022 14:02:08
+calc > (def x 1 )
