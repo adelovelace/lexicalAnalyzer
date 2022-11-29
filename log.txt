@@ -484,3 +484,15 @@ Prueba: 29/11/2022 16:45:59
 calc > (def x 1)
 Prueba: 29/11/2022 16:46:16
 calc > (do (def x 1))
+Prueba: 29/11/2022 17:33:33
+calc > (doseq [n (range 3)](println n))
+Prueba: 29/11/2022 17:34:03
+calc > (doseq [n (range 3)](println n))
+Prueba: 29/11/2022 17:34:29
+calc > (doseq [n (range 3)](println n))
+Prueba: 29/11/2022 17:34:52
+calc > (doseq [n (range 3)](println n))
+Prueba: 29/11/2022 17:35:39
+calc >         print(p[4])
+Prueba: 29/11/2022 17:35:50
+calc > (doseq [n (range 3)](println n))

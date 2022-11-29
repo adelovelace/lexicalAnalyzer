@@ -1,5 +1,7 @@
 import ply.yacc as sintactico
 from lexicalAnalyzer.clojure_lex import tokens
+global error_info
+error_info = ""
 
 def p_instrucciones(p): #puede probar imprimir(var)
   '''instrucciones : asignacion
@@ -74,6 +76,11 @@ def p_asignacion(p): #puede reconocer (def x 10)
 def p_sentenciaBooleana(p):
     '''sentencia_booleana : LPAREN operador_comparadores dato dato RPAREN'''
     p[0] = ("SENTENCIA_BOOLEANA", p[2], p[3], p[4])
+
+    # if p[3].isdigit() and p[4].isdigit():
+
+
+
 
 # (< 2 2) (println 1)
 def p_linecondition(p):
@@ -256,14 +263,13 @@ def p_doseq_args(p):
                     | LCOR dato vector dato vector RCOR
                     | LCOR vector conjuntos RCOR'''
 
-    if len(p) == 8:
+    if p[4] == 'range':
         p[0] = ("DOSEQ_ARGS", p[2], p[5])
-    if p[2] == 'dato':
+    if len(p) == 5:
         p[0] = ("DOSEQ_ARGS", p[2], p[3])
     if len(p) == 7:
         p[0] = ("DOSEQ_ARGS", p[2], p[3], p[4], p[5])
-    if p[2] == 'vector':
-        p[0] = ("DOSEQ_ARGS", p[2], p[3])
+
 
 
 def p_doseq_prn(p):
@@ -365,23 +371,26 @@ def p_expresionConjuntoDouble(p):
           p[0] = (p[1], p[2])
 
 def p_expresionConjuntoString(p):
-      '''expresionConjuntoString : STRING
+    '''expresionConjuntoString : STRING
                                   | STRING expresionConjuntoString
     '''
-      if len(p) == 2:
-          p[0] = p[1]
-      if len(p) == 3:
-          p[0] = (p[1], p[2])
+    if len(p) == 2:
+        p[0] = p[1]
+    if len(p) == 3:
+        p[0] = (p[1], p[2])
 
 # Error rule for syntax errors
 def p_error(p):
-  if p:
-    print(f"Error de sintaxis - Token: {p.type}, Línea: {p.lineno}, Col: {p.lexpos}")
-    parser.errok()
+    global error_info
 
-  else:
-    print("Error de sintaxis Fin de Linea")
+    if p:
+        # print(f"Error de sintaxis - Token: {p.type}, Línea: {p.lineno}, Col: {p.lexpos}")
+        error_info = f"Error de sintaxis - Token: {p.type}, Línea: {p.lineno}, Col: {p.lexpos}"
+        parser.errok()
+    else:
+        error_info = "Error de sintaxis Fin de Linea"
 
+    return error_info
 # Build the parser
 parser = sintactico.yacc()
 
