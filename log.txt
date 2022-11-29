@@ -150,6 +150,7 @@ Prueba: 26/11/2022 19:15:20
 calc > (case x 5 "sdsd" 10 "sdsd" :else "sdsd")
 Prueba: 26/11/2022 19:14:39
 Prueba: 26/11/2022 19:30:48
+<<<<<<< HEAD
 Prueba: 28/11/2022 01:45:11
 Prueba: 28/11/2022 10:05:35
 calc > ( def x 1)
@@ -179,3 +180,255 @@ Prueba: 28/11/2022 12:08:54
 calc > (cond (< 4 5) (println "3") (< 4 5) (println 3))
 Prueba: 29/11/2022 14:02:08
 calc > (def x 1 )
+=======
+Prueba: 27/11/2022 21:32:28
+calc > (case x 5 "sdsd" 10 "sdsd" :else "sdsd")
+Prueba: 27/11/2022 21:32:27
+Prueba: 27/11/2022 21:36:18
+calc > (case x 1 (println "s") 1 (println "s") 1 (println 6)
+Prueba: 27/11/2022 21:36:01
+Prueba: 27/11/2022 21:37:28
+calc > '''  
+Prueba: 27/11/2022 21:37:28
+calc > def t_CONJUNTOS(t):
+Prueba: 27/11/2022 21:37:28
+calc >       r'^\#[\{]{1}(([a-zA-Z]+[\s]{0,})+|([\d]+[\s]{0,})+){1,}[\}]{1}'
+Prueba: 27/11/2022 21:37:28
+calc >       t.type = reserved.get(t.value,'CONJUNTOS')
+Prueba: 27/11/2022 21:37:28
+calc >       return t
+Prueba: 27/11/2022 21:37:28
+calc > 
+Prueba: 27/11/2022 21:37:28
+calc > def t_MAPAS(t):
+Prueba: 27/11/2022 21:37:28
+calc >       r'^[\{](([\:]{1}[\w]+[\s][\w]+)[\s]{0,})+[\}]$'
+Prueba: 27/11/2022 21:37:28
+calc >       t.type = reserved.get(t.value,'MAPAS')
+Prueba: 27/11/2022 21:37:28
+calc >       return t
+Prueba: 27/11/2022 21:37:41
+calc > '''  (case x 1 (println "s") 1 (println "s") 1 (println 6)
+Prueba: 27/11/2022 21:37:49
+calc > 
+Prueba: 27/11/2022 21:37:49
+calc > 
+Prueba: 27/11/2022 21:37:49
+calc > 
+Prueba: 27/11/2022 21:37:49
+calc > 
+Prueba: 27/11/2022 21:37:50
+calc > 
+Prueba: 27/11/2022 21:37:50
+calc > 
+Prueba: 27/11/2022 21:37:50
+calc > 
+Prueba: 27/11/2022 21:37:50
+calc > 
+Prueba: 27/11/2022 21:38:47
+calc >  (case x 1 (println "s") 1 (println "s") 1 (println 6))
+Prueba: 27/11/2022 21:37:27
+Prueba: 27/11/2022 21:46:03
+calc > (+ 3 4)
+Prueba: 27/11/2022 21:43:21
+<<<<<<< Updated upstream
+Prueba: 27/11/2022 22:47:00
+calc > ()[Dcase )[Dx 5 ""[Dsdsd" 10 "sdsd" :else "sdsd")
+Prueba: 27/11/2022 22:52:01
+calc > (case x 5 (println "x is 5") 10 (println "x is 10") (println "x is neither 5 nor 10"))
+Prueba: 27/11/2022 22:46:08
+Prueba: 27/11/2022 22:58:14
+calc > (case x 5 "x is 5" 10 "x is 10" :else "sdsd")
+Prueba: 27/11/2022 22:58:01
+Prueba: 27/11/2022 23:21:17
+calc > exit
+Prueba: 27/11/2022 23:21:21
+calc > exit
+Prueba: 27/11/2022 23:16:11
+Prueba: 27/11/2022 23:22:28
+calc > exit
+Prueba: 27/11/2022 23:22:30
+calc > exit
+Prueba: 27/11/2022 23:21:36
+Prueba: 27/11/2022 23:22:36
+Prueba: 27/11/2022 23:23:07
+Prueba: 27/11/2022 23:26:37
+Prueba: 27/11/2022 23:28:11
+Prueba: 27/11/2022 23:29:27
+calc > (case x 5 "x is 5" 10 "x is 10" :else "sdsd")
+Prueba: 27/11/2022 23:30:01
+calc > ()[(cond (< 4 5) (println "3") (< 4 5) (println 3))
+Prueba: 27/11/2022 23:32:30
+calc > (doseq [a [1 2] b [3 4]] (println a))
+Prueba: 27/11/2022 23:28:40
+Prueba: 27/11/2022 23:35:05
+calc > (doseq [a [1 2] b [3 4]] (println "a"))
+Prueba: 27/11/2022 23:34:08
+Prueba: 27/11/2022 23:35:56
+Prueba: 27/11/2022 23:36:33
+Prueba: 27/11/2022 23:43:12
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)) )
+Prueba: 27/11/2022 23:44:53
+calc > ()[D* x y)
+Prueba: 27/11/2022 23:42:56
+Prueba: 27/11/2022 23:45:30
+Prueba: 27/11/2022 23:50:28
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)) )
+Prueba: 27/11/2022 23:50:16
+Prueba: 27/11/2022 23:51:21
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)) )
+Prueba: 27/11/2022 23:52:04
+calc > [A[B(doseq [a [1 2] b [3 4]] (prn (* x y)) )[D[D[D[C[[[C)[D[D[D[D[C[[D[D[C[[C[C
+Prueba: 27/11/2022 23:52:11
+calc > [A[B(doseq [a [1 2] b [3 4]] (prn (* x y)) )
+Prueba: 27/11/2022 23:51:17
+Prueba: 27/11/2022 23:52:32
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)) )
+Prueba: 27/11/2022 23:53:24
+calc > ()[D[* x y)
+Prueba: 27/11/2022 23:53:43
+calc > ()[D+ x y)
+Prueba: 27/11/2022 23:52:29
+Prueba: 27/11/2022 23:53:56
+calc > (+ x y)
+Prueba: 27/11/2022 23:54:05
+calc > (- x y)
+Prueba: 27/11/2022 23:54:11
+calc > (* x y)
+Prueba: 27/11/2022 23:54:39
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)))
+Prueba: 27/11/2022 23:53:51
+Prueba: 27/11/2022 23:55:47
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)))
+Prueba: 27/11/2022 23:55:42
+Prueba: 27/11/2022 23:58:46
+calc > (doseq [a [1 2] b [3 4]] (prn (* x y)))
+Prueba: 27/11/2022 23:58:27
+Prueba: 28/11/2022 00:00:55
+calc > (doseq [a [1 2] b [3 4]] (prn x y z))
+Prueba: 28/11/2022 00:01:11
+calc > (doseq [a [1 2]] (prn x y))
+Prueba: 28/11/2022 00:00:51
+Prueba: 28/11/2022 00:02:35
+calc > (doseq [a [1 2]] (prn x y))
+Prueba: 28/11/2022 00:02:12
+Prueba: 28/11/2022 00:04:28
+calc > # (doseq [[1 2] #{1 2 3}] (prn x y))
+Prueba: 28/11/2022 00:05:22
+calc > #{}[D1 2 3}
+Prueba: 28/11/2022 00:04:10
+Prueba: 28/11/2022 00:05:42
+calc > #{1 2 3}
+Prueba: 28/11/2022 00:08:18
+calc > (doseq [[1 2] #{1 2 3}] (prn x y))
+Prueba: 28/11/2022 00:11:45
+calc > (loop [i 0] (if (< i 10) (recur (inc i))))
+Prueba: 28/11/2022 00:05:33
+Prueba: 28/11/2022 00:13:16
+calc > (loop [i 0] (if (< i 10) (recur (inc i))))
+Prueba: 28/11/2022 00:14:32
+calc > (loop [i 0] (if (< i 10) (recur (inc i))i))
+Prueba: 28/11/2022 00:13:04
+Prueba: 28/11/2022 00:45:30
+calc > (defn increase [i] (if (< i 10) (recur (inc i)))i)
+Prueba: 28/11/2022 00:45:26
+Prueba: 28/11/2022 00:47:49
+calc > (defn increase [i] (if (< i 10) (recur (inc i)))i)
+Prueba: 28/11/2022 00:49:37
+calc > (defn increase [i] (if (< i 10) (recur (inc i))i))
+Prueba: 28/11/2022 00:47:29
+Prueba: 28/11/2022 00:49:50
+calc > (defn increase [i] (if (< i 10) (recur (inc i))i))
+Prueba: 28/11/2022 00:49:45
+Prueba: 28/11/2022 00:51:50
+calc > (defn increase [i] (if (< i 10) (recur (inc i))i))
+Prueba: 28/11/2022 00:51:32
+=======
+Prueba: 28/11/2022 05:26:49
+Prueba: 28/11/2022 05:27:26
+Prueba: 28/11/2022 05:28:58
+calc > {:page-count 362}
+Prueba: 28/11/2022 05:29:17
+calc > {:page-count 362 :title "Oliver Twist" :author "Dickens" :published 1838}
+Prueba: 28/11/2022 05:29:29
+calc > {:a 2 :b 4}
+Prueba: 28/11/2022 05:29:57
+calc > {:page-count 362 :title "War & Peace"}
+Prueba: 28/11/2022 05:30:28
+calc > {:a 45 :b 4}
+Prueba: 28/11/2022 05:30:46
+calc > [1 2 3 4]
+Prueba: 28/11/2022 05:31:07
+calc > {:dbtype "derby" :dbname "books"}
+Prueba: 28/11/2022 05:33:12
+calc > [true 3 "four" 5]
+Prueba: 28/11/2022 05:33:29
+calc > ["Emma" "Coma" "War and Peace"]
+Prueba: 28/11/2022 05:34:02
+calc > {:a 1 :b 3 :c 4}
+Prueba: 28/11/2022 05:34:28
+calc > {:a 1}
+Prueba: 28/11/2022 06:00:14
+calc > (if preferred-customer (println "Welcome back to Blotts Books!"))
+Prueba: 28/11/2022 06:00:48
+calc > (if (x < 5) println("hola"))
+Prueba: 28/11/2022 05:28:40
+Prueba: 28/11/2022 06:15:59
+calc > (if (even? 2) "even" "odd")
+Prueba: 28/11/2022 06:16:37
+calc > (if (5 < 2) "even" "odd")
+Prueba: 28/11/2022 06:18:13
+calc > (if (5 < 2) (do (println "even") true) (do (println "odd") false))
+Prueba: 28/11/2022 06:21:35
+calc > (print "Hola")
+Prueba: 28/11/2022 06:21:45
+calc > (if (5 < 2) (do (println "even") true) (do (p
+Prueba: 28/11/2022 06:21:54
+calc > (println "Hola")
+Prueba: 28/11/2022 06:14:51
+Prueba: 28/11/2022 06:23:49
+calc > (if (5 < 2) (do (println "even") true) (do (println "odd") false))
+Prueba: 28/11/2022 06:24:37
+calc > (if (5 < 2) )
+Prueba: 28/11/2022 06:24:45
+calc > (5 < 2)
+Prueba: 28/11/2022 06:24:52
+calc > ( 5 < 2 )
+Prueba: 28/11/2022 06:26:13
+calc > (if (5 < 2) (hjkjjkh )
+Prueba: 28/11/2022 06:23:48
+Prueba: 28/11/2022 06:41:22
+calc > (if (5 < 2) (do (println "even") true) (do (println "odd") false))
+Prueba: 28/11/2022 06:42:05
+calc > (if (5 < 2) (do (println "even")))
+Prueba: 28/11/2022 06:41:13
+Prueba: 28/11/2022 06:43:13
+calc > (if (5 < 2) (do (println "even")))
+Prueba: 28/11/2022 06:57:29
+calc > exit
+Prueba: 28/11/2022 06:42:39
+Prueba: 28/11/2022 06:57:37
+calc >  (if (5 < 2) (do (println "even")))
+Prueba: 28/11/2022 06:57:34
+Prueba: 28/11/2022 06:58:10
+calc >  (if (5 < 2) (do ) )
+Prueba: 28/11/2022 06:59:31
+calc > (if (< 5 2) (do (println "even") true) (do (println "odd") false))
+Prueba: 28/11/2022 06:59:59
+calc > (if (< 5 2) (do ) )
+Prueba: 28/11/2022 06:57:57
+Prueba: 28/11/2022 07:01:03
+calc > (if (< 5 2) (do (println "even") true) (do (println "odd") false))
+Prueba: 28/11/2022 07:01:48
+calc > (if (< 5 2) (do (println "even") true))
+Prueba: 28/11/2022 07:02:04
+calc >  (if (< 5 2) (do (println "even"))
+Prueba: 28/11/2022 07:00:58
+Prueba: 28/11/2022 07:05:45
+calc > (if (< 5 2) (do (println "even"))
+Prueba: 28/11/2022 07:05:27
+Prueba: 28/11/2022 07:09:02
+calc > (if (< 5 2) (do (println "even"))
+Prueba: 28/11/2022 07:09:14
+calc > (if (< 5 2) (do (println "even"))
+

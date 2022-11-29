@@ -8,12 +8,12 @@ def p_instrucciones(p): #puede probar imprimir(var)
                     | operacion_aritmetica1
                     | condicional
                     | conjuntos
-                    | vector_entero
-                    | vector_flotante
-                    | mapa_entero
-                    | mapa_flotante
+                    | vector
+                    | mapa
                     | if
+                    | do
                     | if_do
+                    | when
                     | defn
                     | defn_with_return
                     | operacionesLogicas
@@ -83,9 +83,10 @@ def p_condElse(p):
 
 
 # (case x 5 (println "x is 5") 10 (println "x is 10") (println "x is neither 5 nor 10"))
+# (case x 5 "x is 5" 10 "x is 10" :else "sdsd")
 def p_case(p):
     '''case : dato impresion
-            | dato dato STRING
+            | dato STRING
     '''
 def p_case_else(p):
       'case_else : DOSPUNTOS ELSE STRING'
@@ -130,6 +131,7 @@ def p_internos(p):
                 | description argumments body'''
 
 #(defn holi "sp"[x] (println 2))
+#(defn increase [i] (if (< i 10) (recur (inc i))i))
 def p_function(p):
     '''definition : LPAREN DEFFUNCION VARIABLE internos RPAREN
                 | LPAREN DEFFUNCION internos if dato RPAREN
@@ -142,33 +144,32 @@ def p_impresion(p):
 def p_valor_variable(p):
   'valor : VARIABLE'
 
+def p_vector(p):
+  'vector : VECTOR'
 
-def p_vector_entero(p):
-  'vector_entero : VECTOR_ENTERO'
 
-def p_vector_flotante(p):
-  'vector_flotante : VECTOR_FLOTANTE'
+def p_mapa(p):
+  'mapa : MAPA'
 
-def p_mapa_entero(p):
-  'mapa_entero : MAPA_ENTERO'
-
-def p_mapa_flotante(p):
-  'mapa_flotante : MAPA_FLOTANTE'
 
 def p_if(p):
-    #'if :  IF LPAREN operador_comparadores dato dato RPAREN'
     '''if : IF LPAREN operador_comparadores dato dato RPAREN
           | IF sentencia_booleana
           | IF sentencia_booleana recur
     '''
-    #'if :  IF sentencia_booleana'
+    '''if : LPAREN IF instrucciones body RPAREN'''
 
+def p_do(p):
+    '''do : LPAREN DO instrucciones body RPAREN'''
 
 def p_if_do(p):
-    'if_do : LPAREN IF LPAREN operador_comparadores dato dato RPAREN LPAREN DO LPAREN dato RPAREN BOOLEAN RPAREN RPAREN'
+    'if_do : LPAREN IF instrucciones body do RPAREN'
 
-# def p_dotimes(p):
-#     'dotimes: '
+def p_when(p):
+      '''when : LPAREN WHEN instrucciones body RPAREN'''
+
+def p_dotimes(p):
+    'dotimes: LPAREN DOTIMES instrucciones body RPAREN'
 
 def p_op_aritmetica1(p):
     '''operacion : MAS
@@ -195,17 +196,24 @@ def p_doseq_args(p):
                         | LCOR dato conjuntos RCOR
                         | LCOR dato vector_entero dato vector_entero RCOR
                         | LCOR vector_entero conjuntos RCOR
-
+                        | LCOR dato vector dato vector RCOR
+                        | LCOR vector conjuntos RCOR
       '''
 
 def p_doseq_prn(p):
       '''doseq_prn : PRN LPAREN dato RPAREN
-                        | PRN LPAREN dato  dato RPAREN
-                        | PRN LPAREN dato  dato dato RPAREN
+                        | PRN dato dato
+                        | PRN dato dato dato 
+                        | PRN operacion_aritmetica1
       '''
 
+# (doseq [a [1 2] b [3 4]] (println "a"))
+# (doseq [a [1 2] b [3 4]] (prn (* x y)))
+# (doseq [a [1 2] b [3 4]] (prn x y z))
+# (doseq [a [1 2]] (prn x y))
+# (doseq [[1 2] #{1 2 3}] (prn x y))
 def p_doseq(p):
-      '''doseq : LPAREN DOSEQ doseq_args LPAREN impresion RPAREN RPAREN
+      '''doseq : LPAREN DOSEQ doseq_args impresion RPAREN
                         | LPAREN DOSEQ doseq_args LPAREN doseq_prn RPAREN RPAREN
       '''
 
@@ -240,14 +248,7 @@ def p_conjuntos(p):
       '''
 
 
-'''
-def p_argumentsLoop(p):
-      'argumentsLoop : dato dato'
-
-def p_recurLoop(p):
-      'recurLoop : LPAREN RECURSION LPAREN INC dato RPAREN RPAREN'
-'''
-
+# (loop [i 0] (if (< i 10) (recur (inc i))i))
 def p_sentenciaLoopRecur(p):
       'sentenciaLoopRecur : LPAREN LOOP argumments LPAREN if dato RPAREN RPAREN'
 
