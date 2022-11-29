@@ -203,14 +203,25 @@ def p_impresion(p):
 
   p[0] = ("IMPRESION", p[3])
 
+# [1 2 3 4]
+# [true 3 "four" 5]
 def p_vector(p):
   'vector : LCOR argumentos_lista RCOR'
 
   p[0] = ("VECTOR", p[2])
 
-def p_mapa(p):
-  'mapa : MAPA'
+# Andrea (mapa y vector)
 
+# {:page-count 362 :title "Oliver Twist" :author "Dickens" :published 1838}
+def p_secuencia_mapa(p):
+    ''' secuencia_mapa : DOSPUNTOS VARIABLE dato 
+        | DOSPUNTOS VARIABLE secuencia_mapa
+    '''
+    p[0] = ("secuencia_mapa", p[2],p[3])
+
+def p_mapa(p):
+    'mapa : LPAREN secuencia_mapa RPAREN'
+    p[0] = ("MAPA", p[2])
 
 def p_if(p):
     '''if : IF sentencia_booleana
