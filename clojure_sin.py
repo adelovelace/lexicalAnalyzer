@@ -105,7 +105,7 @@ def p_condElse(p):
 
 
 # (case x
-#   5
+#     5
 #       (println "x is 5")
 #   10
 #       (println "x is 10")
@@ -119,9 +119,9 @@ def p_case(p):
     '''
 
     if len(p) == 3:
-        p[0] = (p[1], p[2])
+        p[0] = ("CASE", p[1], p[2])
     if len(p) == 4:
-        p[0] = (p[1], p[2], p[3])
+        p[0] = ("CASE", p[1], p[2], p[3])
 
 
 def p_case_expression(p):
@@ -130,9 +130,9 @@ def p_case_expression(p):
     '''
 
     if len(p) == 7:
-        p[0] = ("CASE_EXPRESSION", p[3], p[5])
+        p[0] = ("CASE_EXPRESSION", p[3], p[4], p[5])
     if len(p) == 9:
-        p[0] = ("CASE_EXPRESSION", p[3], p[7])
+        p[0] = ("CASE_EXPRESSION", p[3], p[4], p[7])
 
 
 def p_argumentos_lista(p):
