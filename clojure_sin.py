@@ -1,5 +1,5 @@
 import ply.yacc as sintactico
-from lexicalAnalyzer.clojure_lex import tokens
+from clojure_lex import tokens
 
 global error_info
 error_info = ""
@@ -197,15 +197,15 @@ def p_internos(p):
 
 
 # (defn holi "sp"[x] (println 2))
-# (defn increase [i] (if (< i 10) (recur (inc i))i))
+# (defn increase [i] (if (< i 10) (recur (inc i)) i))
 def p_function(p):
     '''function : LPAREN DEFFUNCION VARIABLE internos RPAREN
-                | LPAREN DEFFUNCION internos if dato RPAREN
+                | LPAREN DEFFUNCION VARIABLE internos LPAREN if dato RPAREN RPAREN
     '''
     if len(p) == 6:
         p[0] = ("FUNCION", p[3], p[4])
-    if len(p) == 7:
-        p[0] = ("FUNCION", p[3], p[4], p[5])
+    if len(p) == 10:
+        p[0] = ("FUNCION", p[3], p[4], p[6], p[7])
 
 
 def p_impresion(p):
@@ -256,7 +256,7 @@ def p_if(p):
         p[0] = ("IF", p[2])
     if len(p) == 4:
         p[0] = ("IF", p[2], p[3])
-    if len(p) == 5:
+    if len(p) == 6:
         p[0] = ("IF", p[3], p[4])
 
 
@@ -300,11 +300,14 @@ def p_doseq_args(p):
     '''doseq_args : LCOR dato LPAREN RANGE dato RPAREN RCOR
                     | LCOR dato conjuntos RCOR
                     | LCOR dato vector dato vector RCOR
-                    | LCOR vector conjuntos RCOR'''
+                    | LCOR vector conjuntos RCOR
+                    | LCOR dato vector RCOR'''
 
     if p[4] == 'range':
-        p[0] = ("DOSEQ_ARGS", p[2], p[5])
+        p[0] = ("DOSEQ_ARGS", p[2], p[4])
     if len(p) == 5:
+        p[0] = ("DOSEQ_ARGS", p[2], p[3])
+    if len(p) == 'vector':
         p[0] = ("DOSEQ_ARGS", p[2], p[3])
     if len(p) == 7:
         p[0] = ("DOSEQ_ARGS", p[2], p[3], p[4], p[5])
@@ -319,11 +322,11 @@ def p_doseq_prn(p):
     if len(p) == 5:
         p[0] = ("DOSEQ_PRN", p[3])
     if len(p) == 4:
-        p[0] = ("DOSEQ_PRN", p[3])
-    if len(p) == 5:
-        p[0] = ("DOSEQ_PRN", p[3])
-    if len(p) == 5:
-        p[0] = ("DOSEQ_PRN", p[3])
+        p[0] = ("DOSEQ_PRN", p[2],p[3])
+    if len(p) == "DATO":
+        p[0] = ("DOSEQ_PRN", p[2],p[3],p[4])
+    if len(p) == 3:
+        p[0] = ("DOSEQ_PRN", p[2])
 
 
 # (doseq [a [1 2] b [3 4]] (println "a"))

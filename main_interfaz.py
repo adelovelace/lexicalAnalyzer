@@ -1,5 +1,5 @@
-from lexicalAnalyzer.clojure_lex import input_sentence
-from lexicalAnalyzer.clojure_sin import validaRegla
+from clojure_lex import input_sentence
+from clojure_sin import validaRegla
 import tkinter as tk
 from tkinter import ttk
 
