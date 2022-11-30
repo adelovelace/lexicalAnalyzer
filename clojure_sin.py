@@ -157,6 +157,13 @@ def p_argumments(p):
     'argumments : LCOR argumentos_lista RCOR'
     p[0] = ("ARGUMENTOS", p[2])
 
+def p_description(p):
+    'description : STRING'
+    p[0] = ("DESCRIPTION", p[1])
+
+def p_nombre_funct(p):
+    'nombre_funct : VARIABLE'
+    p[0] = ("FUNCT_NAME", p[1])
 
 def p_body(p):
     'body : instrucciones'
@@ -169,11 +176,11 @@ def p_recur(p):
 
 
 def p_internos(p):
-    '''internos : STRING
+    '''internos : description
                 | argumments
                 | body
                 | argumments body
-                | STRING argumments body'''
+                | description argumments body'''
 
     if len(p) == 2:
         p[0] = ("ARGS", p[1])
@@ -186,23 +193,31 @@ def p_internos(p):
 # (defn saludar
 #     "Retorna un saludo predeterminado con el nombre de la persona ingresada como parámetro"
 #     [ name ]
-# 	( str "OH! Eres" name "?! Que emoción verte nuevamente! :D")
+# 	( println "OH! Eres" name "?! Que emoción verte nuevamente! :D")
 # )
 
-# (defn holi "sp"[x] (println 2))
+# (defn holi "sp" [x] (println 2))
 # (defn increase [i] (if (< i 10) (recur (inc i)) (i)))
 def p_function(p):
-    '''function : LPAREN DEFFUNCION VARIABLE internos RPAREN
-                | LPAREN DEFFUNCION VARIABLE internos LPAREN if body RPAREN
+    '''function : LPAREN DEFFUNCION nombre_funct internos RPAREN
+                | LPAREN DEFFUNCION nombre_funct internos LPAREN if body RPAREN
     '''
     if len(p) == 6:
         p[0] = ("FUNCION", p[3], p[4])
     if len(p) == 10:
         p[0] = ("FUNCION", p[3], p[4], p[6], p[7])
 
+def p_datos_impresion(p):
+    '''info_imprimir : dato
+                    | dato info_imprimir
+    '''
+    if len(p) == 2:
+        p[0] = ("SECUENCIA DE VECTOR", p[1])
+    if len(p) == 3:
+        p[0] = ("SECUENCIA DE VECTOR", p[1], p[2])
 
 def p_impresion(p):
-    'impresion : LPAREN IMPRIMIR dato RPAREN'
+    'impresion : LPAREN IMPRIMIR info_imprimir RPAREN'
 
     p[0] = ("IMPRESION", p[3])
 
@@ -308,15 +323,14 @@ def p_doseq_prn(p):
                     | PRN dato dato
                     | PRN dato dato dato
                     | PRN operacion_aritmetica
-      '''
+    '''
+    if len(p) == 3:
+        p[0] = ("DOSEQ_PRN", p[2])
     if len(p) == 5:
         p[0] = ("DOSEQ_PRN", p[3])
     if len(p) == 4:
         p[0] = ("DOSEQ_PRN", p[3])
-    if len(p) == 5:
-        p[0] = ("DOSEQ_PRN", p[3])
-    if len(p) == 5:
-        p[0] = ("DOSEQ_PRN", p[3])
+
 
 
 # (doseq [a [1 2] b [3 4]] (println "a"))
