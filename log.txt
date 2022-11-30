@@ -568,3 +568,35 @@ Prueba: 29/11/2022 19:01:18
 calc > [1 2 3 4]
 Prueba: 29/11/2022 19:02:46
 calc > (list 1 2 4 4 45 7)
+Prueba: 29/11/2022 20:46:10
+calc > [1 2 3 4]
+Prueba: 29/11/2022 20:47:28
+calc > {:page-count 362 :title "Oliver Twist" :author "Dickens" :published 1838}
+Prueba: 29/11/2022 20:49:40
+calc > [1 2]
+Prueba: 29/11/2022 20:50:52
+calc > [1 2]
+Prueba: 29/11/2022 20:51:24
+calc > [1 2]
+Prueba: 29/11/2022 20:52:23
+calc > [1 2 3 4]
+Prueba: 29/11/2022 20:52:41
+calc > [true 3 "four" 5]
+Prueba: 29/11/2022 20:53:05
+calc > {:page-count 362 :title "Oliver Twist" :author "Dickens" :published 1838}
+Prueba: 29/11/2022 20:54:52
+calc > {:page-count 362 :title "Oliver Twist" :author "Dickens" :published 1838}
+Prueba: 29/11/2022 20:54:59
+calc > [true 3 "four" 5]
+Prueba: 29/11/2022 20:55:11
+calc > [1 2 3 4]
+Prueba: 29/11/2022 20:55:54
+calc > [true 3 "four" 5]
+Prueba: 29/11/2022 21:00:05
+calc > [1 2 3 4]
+Prueba: 29/11/2022 21:01:30
+calc > [1 2 3 4]
+Prueba: 29/11/2022 21:02:00
+calc > [1 2 3 4]
+Prueba: 29/11/2022 21:02:22
+calc > [true 3 "four" 5]
