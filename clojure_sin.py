@@ -29,7 +29,9 @@ def p_instrucciones(p):  # puede probar imprimir(var)
                     | function
                     | dotimes
                     | ciclo
-                    | valor'''
+                    | valor
+                    | recur
+                    '''
     p[0] = ("INSTRUCCION", p[1])
 
 
@@ -151,17 +153,6 @@ def p_lista(p):
     p[0] = ("LISTA", p[3])
 
 
-
-def p_description(p):
-    'description : STRING'
-    p[0] = ("DESCRIPCION", p[1])
-
-
-def p_increase(p):
-    'increase : INCREASE LCOR dato RCOR'
-    p[0] = ("INCREASE", p[3])
-
-
 def p_argumments(p):
     'argumments : LCOR argumentos_lista RCOR'
     p[0] = ("ARGUMENTOS", p[2])
@@ -178,12 +169,11 @@ def p_recur(p):
 
 
 def p_internos(p):
-    '''internos : description
+    '''internos : STRING
                 | argumments
                 | body
-                | increase
                 | argumments body
-                | description argumments body'''
+                | STRING argumments body'''
 
     if len(p) == 2:
         p[0] = ("ARGS", p[1])
@@ -200,15 +190,15 @@ def p_internos(p):
 # )
 
 # (defn holi "sp"[x] (println 2))
-# (defn increase [i] (if (< i 10) (recur (inc i))i))
+# (defn increase [i] (if (< i 10) (recur (inc i)) (i)))
 def p_function(p):
     '''function : LPAREN DEFFUNCION VARIABLE internos RPAREN
-                | LPAREN DEFFUNCION VARIABLE internos LPAREN if RPAREN RPAREN
+                | LPAREN DEFFUNCION VARIABLE internos LPAREN if body RPAREN
     '''
     if len(p) == 6:
         p[0] = ("FUNCION", p[3], p[4])
-    if len(p) == 8:
-        p[0] = ("FUNCION", p[3], p[4], p[5], p[6])
+    if len(p) == 10:
+        p[0] = ("FUNCION", p[3], p[4], p[6], p[7])
 
 
 def p_impresion(p):
@@ -226,7 +216,7 @@ def p_secuencia_vector(p):
     if len(p) == 2:
         p[0] = ("SECUENCIA DE VECTOR", p[1])
     if len(p) == 3:
-        p[0] = ("SECUENCIA DE VECTOR", p[2])
+        p[0] = ("SECUENCIA DE VECTOR", p[1], p[2])
 
 
 def p_vector(p):
@@ -239,7 +229,7 @@ def p_vector(p):
 # {:page-count 362 :title "Oliver Twist" :author "Dickens" :published 1838}
 def p_secuencia_mapa(p):
     ''' secuencia_mapa : DOSPUNTOS VARIABLE dato 
-        | DOSPUNTOS VARIABLE secuencia_mapa
+                        | DOSPUNTOS VARIABLE dato secuencia_mapa
     '''
     p[0] = ("SECUENCIA DE MAPA", p[2], p[3])
 
@@ -259,7 +249,7 @@ def p_if(p):
         p[0] = ("IF", p[2])
     if len(p) == 4:
         p[0] = ("IF", p[2], p[3])
-    if len(p) == 5:
+    if len(p) == 6:
         p[0] = ("IF", p[3], p[4])
 
 
