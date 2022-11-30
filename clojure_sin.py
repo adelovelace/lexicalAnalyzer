@@ -31,6 +31,7 @@ def p_instrucciones(p):  # puede probar imprimir(var)
                     | ciclo
                     | valor
                     | recur
+                    | dato
                     '''
     p[0] = ("INSTRUCCION", p[1])
 
@@ -196,8 +197,9 @@ def p_internos(p):
 # 	( println "OH! Eres" name "?! Que emoción verte nuevamente! :D")
 # )
 
-# (defn holi "sp" [x] (println 2))
-# (defn increase [i] (if (< i 10) (recur (inc i)) (i)))
+
+# (defn holi "sp"[x] (println 2))
+# (defn increase [i] (if (< i 10) (recur (inc i)) i))
 def p_function(p):
     '''function : LPAREN DEFFUNCION nombre_funct internos RPAREN
                 | LPAREN DEFFUNCION nombre_funct internos LPAREN if body RPAREN
@@ -212,9 +214,9 @@ def p_datos_impresion(p):
                     | dato info_imprimir
     '''
     if len(p) == 2:
-        p[0] = ("SECUENCIA DE VECTOR", p[1])
+        p[0] = ("DATO", p[1])
     if len(p) == 3:
-        p[0] = ("SECUENCIA DE VECTOR", p[1], p[2])
+        p[0] = ("DATO", p[1], p[2])
 
 def p_impresion(p):
     'impresion : LPAREN IMPRIMIR info_imprimir RPAREN'
@@ -308,7 +310,8 @@ def p_doseq_args(p):
     '''doseq_args : LCOR dato LPAREN RANGE dato RPAREN RCOR
                     | LCOR dato conjuntos RCOR
                     | LCOR dato vector dato vector RCOR
-                    | LCOR vector conjuntos RCOR'''
+                    | LCOR vector conjuntos RCOR
+                    | LCOR dato vector RCOR'''
 
     if p[4] == 'range':
         p[0] = ("DOSEQ_ARGS", p[2], p[5])
@@ -317,23 +320,29 @@ def p_doseq_args(p):
     if len(p) == 7:
         p[0] = ("DOSEQ_ARGS", p[2], p[3], p[4], p[5])
 
+def p_pnr_dato(p):
+    '''
+    pnr_dato : dato
+            | dato pnr_dato
+    '''
+    if len(p) == 2:
+        p[0] = ("DATO", p[1])
+    if len(p) == 3:
+        p[0] = ("DATO", p[1], p[2])
+
 
 def p_doseq_prn(p):
     '''doseq_prn : PRN LPAREN dato RPAREN
-                    | PRN dato dato
-                    | PRN dato dato dato
-                    | PRN operacion_aritmetica
+                | PRN pnr_dato
+                | PRN operacion_aritmetica
     '''
     if len(p) == 3:
         p[0] = ("DOSEQ_PRN", p[2])
     if len(p) == 5:
         p[0] = ("DOSEQ_PRN", p[3])
-    if len(p) == 4:
-        p[0] = ("DOSEQ_PRN", p[3])
 
 
-
-# (doseq [a [1 2] b [3 4]] (println "a"))
+# (doseq [n (range 3)](println n))
 # (doseq [a [1 2] b [3 4]] (prn (* x y)))
 # (doseq [a [1 2] b [3 4]] (prn x y z))
 # (doseq [a [1 2]] (prn x y))
@@ -387,8 +396,8 @@ def p_expresionCase(p):
 # #{2 4 5 6}
 def p_conjuntos(p):
     '''conjuntos : NUMERAL L_LLAVE expresionConjuntoEnteros R_LLAVE
-                      | NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
-                      | NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
+                | NUMERAL L_LLAVE expresionConjuntoDouble R_LLAVE
+                | NUMERAL L_LLAVE expresionConjuntoString R_LLAVE
       '''
     p[0] = ("CONJUNTOS", p[1], p[3])
 
