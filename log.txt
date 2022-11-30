@@ -652,3 +652,21 @@ Prueba: 29/11/2022 23:12:43
 calc > (if (< 5 2) (do (println "even") true) (do (println "odd") false))
 Prueba: 29/11/2022 23:13:06
 calc > (if (< 5 2) (do (println "even")) (do (println "odd")))
+Prueba: 29/11/2022 23:14:54
+calc > (when preferredCustomer (println "Hello returning customer!") (println "Welcome back to Blotts Books!")) 
+Prueba: 29/11/2022 23:21:16
+calc > (if (< i 10) (recur (inc i))
+Prueba: 29/11/2022 23:21:46
+calc > (if (< i 10) (recur (inc i)))
+Prueba: 29/11/2022 23:22:42
+calc > (if (< i 10) (recur (inc i)))
+Prueba: 29/11/2022 23:24:29
+calc > (defn increase [i] (if (< i 10) (recur (inc i)) i)
+Prueba: 29/11/2022 23:24:45
+calc > (defn increase [i] (if (< i 10) (recur (inc i)) i))
+Prueba: 29/11/2022 23:26:01
+calc > (if (< 5 2) (println "true") (println “false"))
+Prueba: 29/11/2022 23:26:20
+calc > if (< 5 2) (println "true") (println "false"))
+Prueba: 29/11/2022 23:26:27
+calc > (if (< 5 2) (println "true") (println "false"))

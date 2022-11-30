@@ -198,7 +198,7 @@ def p_internos(p):
 # )
 
 # (defn holi "sp"[x] (println 2))
-# (defn increase [i] (if (< i 10) (recur (inc i)) i))
+# (defn increase [i] (if (< i 10) (recur (inc i)) i)
 def p_function(p):
     '''function : LPAREN DEFFUNCION nombre_funct internos RPAREN
                 | LPAREN DEFFUNCION nombre_funct internos LPAREN if body RPAREN
@@ -302,8 +302,22 @@ def p_if_do(p):
     p[0] = ("IF_DO", p[2], p[3])
 
 
+def p_secuencia_expresion_when(p):
+    '''secuencia_expresion_when : body
+        | body secuencia_expresion_when
+    '''
+    if len(p) == 2:
+        p[0] = ("SECUENCIA DE EXPRESION DEL WHEN", p[1])
+    if len(p) == 3:
+        p[0] = ("SECUENCIA DE EXPRESION DEL WHEN", p[1], p[2])
+
+def p_secuencia_when(p):
+    '''secuencia_when : WHEN sentencia_booleana secuencia_expresion_when'''
+    p[0] = ("SECUENCIA DEL WHEN", p[2],p[3])
+
+
 def p_when(p):
-    '''when : LPAREN WHEN sentencia_booleana body RPAREN'''
+    '''when : LPAREN secuencia_when RPAREN'''
     p[0] = ("WHEN", p[3], p[4])
 
 
