@@ -197,7 +197,6 @@ def p_internos(p):
 # 	( println "OH! Eres" name "?! Que emoción verte nuevamente! :D")
 # )
 
-
 # (defn holi "sp"[x] (println 2))
 # (defn increase [i] (if (< i 10) (recur (inc i)) i))
 def p_function(p):
@@ -258,16 +257,17 @@ def p_mapa(p):
 
 def p_secuencia_expresion_if(p):
     '''secuencia_expresion_if : body
-        | body secuencia_expresion_if
+                            | body secuencia_expresion_if
     '''
-    if len(p) == 1:
-        p[0] = ("SECUENCIA DE EXPRESION DEL IF", p[1])
     if len(p) == 2:
         p[0] = ("SECUENCIA DE EXPRESION DEL IF", p[1])
+    if len(p) == 3:
+        p[0] = ("SECUENCIA DE EXPRESION DEL IF", p[1], p[2])
 
 def p_secuencia_if(p):
     '''secuencia_if : IF sentencia_booleana secuencia_expresion_if'''
     p[0] = ("SECUENCIA DEL IF", p[2],p[3])
+
 
 def p_if(p):
     '''if : IF sentencia_booleana
