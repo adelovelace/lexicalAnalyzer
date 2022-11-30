@@ -243,7 +243,7 @@ def p_vector(p):
 
 # Andrea (mapa y vector)
 
-# {:page-count 362 :title "Oliver Twist" :author "Dickens" :published 1838}
+# {:pagecount 362 :title "Oliver Twist" :author "Dickens" :published 1838}
 def p_secuencia_mapa(p):
     ''' secuencia_mapa : DOSPUNTOS VARIABLE dato 
                         | DOSPUNTOS VARIABLE dato secuencia_mapa
@@ -256,19 +256,33 @@ def p_mapa(p):
     p[0] = ("MAPA", p[2])
 
 
+def p_secuencia_expresion_if(p):
+    '''secuencia_expresion_if : body
+        | body secuencia_expresion_if
+    '''
+    if len(p) == 1:
+        p[0] = ("SECUENCIA DE EXPRESION DEL IF", p[1])
+    if len(p) == 2:
+        p[0] = ("SECUENCIA DE EXPRESION DEL IF", p[1])
+
+def p_secuencia_if(p):
+    '''secuencia_if : IF sentencia_booleana secuencia_expresion_if'''
+    p[0] = ("SECUENCIA DEL IF", p[2],p[3])
+
 def p_if(p):
     '''if : IF sentencia_booleana
           | IF sentencia_booleana recur
-          | LPAREN IF instrucciones body RPAREN
+          | LPAREN secuencia_if RPAREN
     '''
 
     if len(p) == 3:
         p[0] = ("IF", p[2])
     if len(p) == 4:
-        p[0] = ("IF", p[2], p[3])
-    if len(p) == 6:
-        p[0] = ("IF", p[3], p[4])
-
+        if p[1] == 'if':
+            p[0] = ("IF", p[2], p[3])
+        if p[1] == '(':
+            p[0] = ("IF", p[2])
+        
 
 def p_do(p):
     '''do : LPAREN DO instrucciones RPAREN'''

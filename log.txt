@@ -600,3 +600,47 @@ Prueba: 29/11/2022 21:02:00
 calc > [1 2 3 4]
 Prueba: 29/11/2022 21:02:22
 calc > [true 3 "four" 5]
+Prueba: 29/11/2022 22:40:02
+calc > [1 2 3 4]
+Prueba: 29/11/2022 22:40:24
+calc > {:pagecount 362 :title "Oliver Twist" :author "Dickens" :published 1838}
+Prueba: 29/11/2022 22:40:42
+calc > [true 3 "four" 5]
+Prueba: 29/11/2022 22:40:57
+calc > {:a :b :c}
+Prueba: 29/11/2022 22:41:13
+calc > {:a 1 :b 2 :c 3}
+Prueba: 29/11/2022 22:42:20
+calc > (if (< 5 2) "true" "false") 
+Prueba: 29/11/2022 22:42:32
+calc > (if (< 5 2) (println “true”) (println “false”))
+Prueba: 29/11/2022 22:42:59
+calc > (if (< 5 2) (println "true") (println "false"))
+Prueba: 29/11/2022 22:47:34
+calc > {:pagecount 362 :title "Oliver Twist" :author "Dickens" :published 1838}
+Prueba: 29/11/2022 22:47:41
+calc > (if (< 5 2) "true" "false") 
+Prueba: 29/11/2022 22:47:58
+calc > (if (< 5 2) (println "true") (println "false"))
+Prueba: 29/11/2022 22:50:00
+calc > (if (< 5 2) "true" "false") 
+Prueba: 29/11/2022 22:51:34
+calc > (if (< 5 2) (println "true") (println "false"))
+Prueba: 29/11/2022 22:51:51
+calc > (if (< 5 2) 1 2)
+Prueba: 29/11/2022 22:52:26
+calc > (if (< 5 2) "true" "false") 
+Prueba: 29/11/2022 22:52:31
+calc > (if (< 5 2) (println "true") (println "false"))
+Prueba: 29/11/2022 23:02:35
+calc > (if (< 5 2) "true" "false") 
+Prueba: 29/11/2022 23:03:03
+calc > (if (< 5 2) "true" "false") 
+Prueba: 29/11/2022 23:03:26
+calc > (if (< 5 2) (println "true") (println "false"))
+Prueba: 29/11/2022 23:04:43
+calc > (if (< 5 2) "true" "false") 
+Prueba: 29/11/2022 23:04:53
+calc > (if (< 5 2) (println "true") (println "false"))
+Prueba: 29/11/2022 23:05:17
+calc > (if (< 5 2) (println "true") (println "false"))
