@@ -95,23 +95,23 @@ def t_ENTERO(t):
   r'\d+' 
   return t
 
+def t_BOOLEAN(t):
+  r'(true|false)'
+  t.type = reserved.get(t.value, 'BOOLEAN')
+  return t
+
 def t_VARIABLE(t):
   r'[a-zA-Z_][a-zA-Z0-9]*'
   t.type = reserved.get(t.value,'VARIABLE')
   return t
 
-def t_BOOLEAN(t):
-    r'(true|false)'
-    t.type = reserved.get(t.value,'BOOLEAN')
-    return t
+# def t_VECTOR(t):
+#     r'\[(\d+|\d+\s|\d+(\.\d+)?|\d+(\.\d+)?\s|\"[\w|\s|.|\S]*\"|\"[\w|\s|.|\S]*\"\s|true\s|\false\s|true|false)+\]'
+#     return t
 
-def t_VECTOR(t):
-    r'\[(\d+|\d+\s|\d+(\.\d+)?|\d+(\.\d+)?\s|\"[\w|\s|.|\S]*\"|\"[\w|\s|.|\S]*\"\s|true\s|\false\s|true|false)+\]'
-    return t
-
-def t_MAPA(t):
-    r'\{(\:\w+\-*\w+\s(\d+|\"[\w|\s|.|\S]*\")(\s|))+\}'
-    return t
+# def t_MAPA(t):
+#     r'\{(\:\w+\-*\w+\s(\d+|\"[\w|\s|.|\S]*\")(\s|))+\}'
+#     return t
 
 def t_INPUT(t):
   r'\(read-line\)'
