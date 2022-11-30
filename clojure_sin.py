@@ -1,5 +1,5 @@
 import ply.yacc as sintactico
-from lexicalAnalyzer.clojure_lex import tokens
+from clojure_lex import tokens
 
 global error_info
 error_info = ""
