@@ -644,3 +644,11 @@ Prueba: 29/11/2022 23:04:53
 calc > (if (< 5 2) (println "true") (println "false"))
 Prueba: 29/11/2022 23:05:17
 calc > (if (< 5 2) (println "true") (println "false"))
+Prueba: 29/11/2022 23:07:49
+calc > (if (< 5 2) (do (println "even") true) (do (println "odd") false))
+Prueba: 29/11/2022 23:09:11
+calc > (if (< 5 2) (do (println "even") true) (do (println "odd") false))
+Prueba: 29/11/2022 23:12:43
+calc > (if (< 5 2) (do (println "even") true) (do (println "odd") false))
+Prueba: 29/11/2022 23:13:06
+calc > (if (< 5 2) (do (println "even")) (do (println "odd")))

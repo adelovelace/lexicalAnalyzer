@@ -283,9 +283,17 @@ def p_if(p):
         if p[1] == '(':
             p[0] = ("IF", p[2])
         
+def p_secuencia_do(p):
+    '''secuencia_do : instrucciones
+        | instrucciones secuencia_do
+    '''
+    if len(p) == 2:
+        p[0] = ("SECUENCIA DEL DO", p[1])
+    if len(p) == 3:
+        p[0] = ("SECUENCIA DEL DO", p[1],p[2])
 
 def p_do(p):
-    '''do : LPAREN DO instrucciones RPAREN'''
+    '''do : LPAREN DO secuencia_do RPAREN '''
     p[0] = ("DO", p[3])
 
 
