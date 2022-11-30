@@ -111,6 +111,7 @@ def p_condElse(p):
 #       (println "x is 10")
 #   (println "x is neither 5 nor 10"))
 # (case x 5 "x is 5" 10 "x is 10" :else "sdsd")
+
 def p_case(p):
     '''case : dato impresion
             | dato STRING
@@ -150,11 +151,7 @@ def p_lista(p):
     p[0] = ("LISTA", p[3])
 
 
-# (defn saludar
-# 	“Retorna un saludo predeterminado con el nombre de la persona ingresada como parámetro”
-# 	[ name ]
-# 	( str “OH! Eres ” name “?! Que emoción verte nuevamente! :D” )
-# )
+
 def p_description(p):
     'description : STRING'
     p[0] = ("DESCRIPCION", p[1])
@@ -189,23 +186,29 @@ def p_internos(p):
                 | description argumments body'''
 
     if len(p) == 2:
-        p[0] = (p[1])
+        p[0] = ("ARGS", p[1])
     if len(p) == 3:
-        p[0] = (p[1], p[2])
+        p[0] = ("ARGS", p[1], p[2])
     if len(p) == 4:
-        p[0] = (p[1], p[2], p[3])
+        p[0] = ("ARGS", p[1], p[2], p[3])
 
+
+# (defn saludar
+#     "Retorna un saludo predeterminado con el nombre de la persona ingresada como parámetro"
+#     [ name ]
+# 	( str "OH! Eres" name "?! Que emoción verte nuevamente! :D")
+# )
 
 # (defn holi "sp"[x] (println 2))
 # (defn increase [i] (if (< i 10) (recur (inc i))i))
 def p_function(p):
     '''function : LPAREN DEFFUNCION VARIABLE internos RPAREN
-                | LPAREN DEFFUNCION internos if dato RPAREN
+                | LPAREN DEFFUNCION VARIABLE internos LPAREN if RPAREN RPAREN
     '''
     if len(p) == 6:
         p[0] = ("FUNCION", p[3], p[4])
-    if len(p) == 7:
-        p[0] = ("FUNCION", p[3], p[4], p[5])
+    if len(p) == 8:
+        p[0] = ("FUNCION", p[3], p[4], p[5], p[6])
 
 
 def p_impresion(p):
